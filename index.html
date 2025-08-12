@@ -1,234 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Updated Color Scheme</title>
-  <style>
-    /* New Color Definitions */
-    :root {
-      --teal: #0080B1;
-      --light-teal: #00BCBE;
-      --deep-teal: #007879;
-    }
+import React from "react";
+import { FiCheck } from "lucide-react"; // For checkmark icons
 
-    /* General Styles */
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--light-teal);
-      color: var(--deep-teal);
-    }
+const App = () => {
+  return (
+    <div className="bg-teal-50 text-gray-900 min-h-screen">
+      {/* Header */}
+      <header className="bg-teal-600 text-white p-6 flex justify-between items-center">
+        <img
+          src="https://placehold.co/150x50?text=Growi+Logo"
+          alt="Growi Logo"
+          className="h-8"
+        />
+        <nav>
+          <ul className="flex space-x-4">
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+      </header>
 
-    .framer-text {
-      font-family: 'Dallas PS Sans Reg', 'Dallas PS Sans Reg Placeholder', sans-serif;
-      font-size: 68px;
-      line-height: 0.7em;
-      text-align: center;
-      color: var(--teal);
-    }
+      {/* Hero Section */}
+      <section className="py-12 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl font-bold mb-4">Transform Your Business with AI</h1>
+          <p className="text-lg mb-8">
+            Experience the power of our teal-themed marketing AI platform designed for modern businesses.
+          </p>
+          <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded">
+            Get Started
+          </button>
+        </div>
+      </section>
 
-    .framer-text span {
-      color: var(--deep-teal);
-    }
+      {/* Features Section */}
+      <section className="py-12 px-6 bg-teal-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-4">Powerful Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Feature 1 */}
+            <div className="bg-white p-4 rounded shadow">
+              <FiCheck size={24} className="text-teal-600 mb-2" />
+              <h3 className="text-xl font-bold mb-2">Fast Deployment</h3>
+              <p>Get your campaigns up and running in minutes</p>
+            </div>
 
-    .framer-image {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
+            {/* Feature 2 */}
+            <div className="bg-white p-4 rounded shadow">
+              <FiCheck size={24} className="text-teal-600 mb-2" />
+              <h3 className="text-xl font-bold mb-2">Advanced Analytics</h3>
+              <p>Gain deep insights into your performance</p>
+            </div>
 
-    .framer-link {
-      text-decoration: none;
-      color: var(--teal);
-      transition: color 0.3s ease;
-    }
+            {/* Feature 3 */}
+            <div className="bg-white p-4 rounded shadow">
+              <FiCheck size={24} className="text-teal-600 mb-2" />
+              <h3 className="text-xl font-bold mb-2">Smart Targeting</h3>
+              <p>Reach the right audience at the right time</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    .framer-link:hover {
-      color: var(--deep-teal);
-    }
+      {/* Process Section */}
+      <section className="py-12 px-6 bg-teal-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-4">Our Process</h2>
+          <p className="text-lg mb-8">
+            Simple steps to transform your marketing strategy
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Step 1 */}
+            <div className="bg-white p-4 rounded shadow">
+              <h3 className="text-xl font-bold mb-2">Step 1</h3>
+              <p>Define Your Goals</p>
+            </div>
 
-    .framer-button {
-      background-color: var(--teal);
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+            {/* Step 2 */}
+            <div className="bg-white p-4 rounded shadow">
+              <h3 className="text-xl font-bold mb-2">Step 2</h3>
+              <p>Create Campaigns</p>
+            </div>
 
-    .framer-button:hover {
-      background-color: var(--deep-teal);
-    }
+            {/* Step 3 */}
+            <div className="bg-white p-4 rounded shadow">
+              <h3 className="text-xl font-bold mb-2">Step 3</h3>
+              <p>Analyze Results</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    .framer-icon {
-      fill: var(--teal);
-      transition: fill 0.3s ease;
-    }
+      {/* Footer */}
+      <footer className="bg-teal-600 text-white p-6 text-center">
+        <p>© 2024 Growi. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+};
 
-    .framer-icon:hover {
-      fill: var(--deep-teal);
-    }
-
-    /* Specific Component Styles */
-    .framer-154n4bq {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-awfp22 {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-cITxm {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      padding: 16px 32px;
-      text-decoration: none;
-    }
-
-    .framer-cITxm:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    .framer-1rhreqx {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-1h95qol {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-umho0k {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-50yabw {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-1elrmi1 {
-      width: 18px;
-      height: 18px;
-      fill: var(--teal);
-    }
-
-    .framer-1ceatzk {
-      width: 18px;
-      height: 18px;
-      fill: var(--teal);
-    }
-
-    .framer-19lca11 {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-15jpmax {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-ssr-variant {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-
-    .framer-svgContainer {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: inherit;
-    }
-
-    .framer-svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .framer-svg use {
-      fill: var(--teal);
-    }
-  </style>
-</head>
-<body>
-  <!-- Example Content -->
-  <div class="framer-154n4bq">
-    <p class="framer-text">We <span style="--framer-text-color: var(--deep-teal)">do</span>?</p>
-  </div>
-
-  <div class="framer-awfp22">
-    <button class="framer-button">Explore More</button>
-  </div>
-
-  <div class="framer-cITxm">
-    <a href="#" class="framer-link">Learn More</a>
-  </div>
-
-  <div class="framer-1rhreqx">
-    <img src="https://placehold.co/600x400" alt="Placeholder Image" class="framer-image">
-  </div>
-
-  <div class="framer-1h95qol">
-    <svg class="framer-icon" viewBox="0 0 18 18">
-      <use href="#svg77117854_239"></use>
-    </svg>
-  </div>
-
-  <div class="framer-umho0k">
-    <p class="framer-text">Comunnity manager: Trust us with your digital presence, free up time for daily life, assured Instagram interactions are expertly managed.</p>
-  </div>
-
-  <div class="framer-50yabw">
-    <p class="framer-text">Great work</p>
-  </div>
-
-  <div class="framer-1elrmi1">
-    <svg class="framer-svg" viewBox="0 0 18 18">
-      <use href="#svg77117854_239"></use>
-    </svg>
-  </div>
-
-  <div class="framer-1ceatzk">
-    <svg class="framer-svg" viewBox="0 0 18 18">
-      <use href="#svg77117854_239"></use>
-    </svg>
-  </div>
-
-  <div class="framer-19lca11">
-    <p class="framer-text">Digital Services human experiences</p>
-  </div>
-
-  <div class="framer-15jpmax">
-    <p class="framer-text">We work with...</p>
-  </div>
-
-  <div class="framer-ssr-variant">
-    <p class="framer-text">Additional Content</p>
-  </div>
-</body>
-</html>
+export default App;
