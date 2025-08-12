@@ -1,102 +1,702 @@
-import React from "react";
-import { FiCheck } from "lucide-react"; // For checkmark icons
+<!doctype html>
+<!-- ✨ Built with Framer • https://www.framer.com/ -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="Framer 6d96db3">
+    <title>GROWI</title>
+    <meta name="description" content="Marketing AI">
+    <link href="https://framerusercontent.com/images/cyWUwaH4lOXapVXk0EDAtqBB8VA.png" rel="icon">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GROWI">
+    <meta property="og:description" content="Marketing AI">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GROWI">
+    <meta name="twitter:description" content="Marketing AI">
+    
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    
+    <style>
+/* Root variables with updated teal palette */
+:root {
+  --token-01e77466-bbbe-4a6f-b755-8f986ea23e5a: rgb(244, 244, 244);
+  --token-84f182b5-177a-462b-8bc9-12698d037604: rgb(0, 128, 129); /* Teal #008081 */
+  --token-c4550740-41b4-43e4-9583-766283e405df: rgb(24, 24, 24);
+  --token-306f4481-5ae2-4837-a6fb-e30230029fa6: rgb(0, 188, 190); /* Light Teal #00BCBE */
+}
 
-const App = () => {
-  return (
-    <div className="bg-teal-50 text-gray-900 min-h-screen">
-      {/* Header */}
-      <header className="bg-teal-600 text-white p-6 flex justify-between items-center">
-        <img
-          src="https://placehold.co/150x50?text=Growi+Logo"
-          alt="Growi Logo"
-          className="h-8"
-        />
-        <nav>
-          <ul className="flex space-x-4">
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-          </ul>
-        </nav>
-      </header>
+/* Global reset */
+html,body,#main{margin:0;padding:0;box-sizing:border-box}
+:root{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+*{box-sizing:border-box;-webkit-font-smoothing:inherit}
+h1,h2,h3,h4,h5,h6,p,figure{margin:0}
+body,input,textarea,select,button{font-size:12px;font-family:sans-serif}
 
-      {/* Hero Section */}
-      <section className="py-12 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-4">Transform Your Business with AI</h1>
-          <p className="text-lg mb-8">
-            Experience the power of our teal-themed marketing AI platform designed for modern businesses.
-          </p>
-          <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded">
-            Get Started
-          </button>
+body{
+--token-01e77466-bbbe-4a6f-b755-8f986ea23e5a: rgb(244, 244, 244);
+--token-84f182b5-177a-462b-8bc9-12698d037604: rgb(0, 128, 129);
+--token-c4550740-41b4-43e4-9583-766283e405df: rgb(24, 24, 24);
+--token-306f4481-5ae2-4837-a6fb-e30230029fa6: rgb(0, 188, 190);
+--framer-will-change-override: none;
+}
+
+/* Text and component styles */
+[data-framer-component-type]{position:absolute}
+[data-framer-component-type=Text]{cursor:inherit}
+.framer-text{
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.2em;
+  margin:0;
+  padding:0;
+}
+
+/* Layout classes */
+.framer-body-n0rgqVnRM-framer-2FDPz{background:#fff}
+.framer-2FDPz.framer-l7c8lp,.framer-2FDPz .framer-l7c8lp{display:block}
+.framer-2FDPz.framer-15jpmax{
+  align-content:center;
+  align-items:center;
+  background-color:#fff;
+  display:flex;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:min-content;
+  justify-content:flex-start;
+  overflow:visible;
+  padding:0;
+  position:relative;
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Hero section with deep teal background */
+.framer-2FDPz .framer-1f9jmr9{
+  align-content:center;
+  align-items:center;
+  background-color:#007879; /* Deep Teal */
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:min-content;
+  justify-content:flex-start;
+  overflow:visible;
+  padding:0;
+  position:relative;
+  width:100%;
+}
+
+/* Main content wrapper - teal background */
+.framer-2FDPz .framer-7rgir1,
+.framer-2FDPz .framer-1x8sk9t{
+  align-content:center;
+  align-items:center;
+  background-color:var(--token-84f182b5-177a-462b-8bc9-12698d037604, #008081); /* Teal */
+  display:flex;
+  flex:none;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:100vh;
+  justify-content:center;
+  overflow:visible;
+  padding:40px 0;
+  position:relative;
+  width:100%;
+  z-index:1;
+}
+
+/* Content containers */
+.framer-2FDPz .framer-apcjz4,
+.framer-2FDPz .framer-iqxrkn{
+  align-content:flex-start;
+  align-items:flex-start;
+  display:flex;
+  flex:1 0 0px;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  gap:10px;
+  height:min-content;
+  justify-content:flex-end;
+  overflow:visible;
+  padding:0 0 0 32px;
+  position:relative;
+  width:1px;
+}
+
+.framer-2FDPz .framer-66w9sn,
+.framer-2FDPz .framer-6ngcfg{
+  align-content:flex-start;
+  align-items:flex-start;
+  display:flex;
+  flex:1 0 0px;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:min-content;
+  justify-content:flex-start;
+  max-width:569px;
+  overflow:visible;
+  padding:0;
+  position:relative;
+  width:1px;
+}
+
+.framer-2FDPz .framer-g0wyx8,
+.framer-2FDPz .framer-xuvfnb{
+  align-content:flex-start;
+  align-items:flex-start;
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:16px;
+  height:min-content;
+  justify-content:flex-start;
+  overflow:visible;
+  padding:0 0 50px;
+  position:relative;
+  width:100%;
+}
+
+.framer-2FDPz .framer-1isd27d,
+.framer-2FDPz .framer-nl6fvq,
+.framer-2FDPz .framer-s75s3q,
+.framer-2FDPz .framer-6ybebb{
+  align-content:flex-start;
+  align-items:flex-start;
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:min-content;
+  justify-content:flex-start;
+  overflow:visible;
+  padding:0;
+  position:relative;
+  width:100%;
+}
+
+/* Text styling */
+.framer-2FDPz .framer-i57acf,
+.framer-2FDPz .framer-1bwgz6c{
+  --framer-paragraph-spacing: 0px;
+  flex:none;
+  height:auto;
+  position:relative;
+  white-space:pre-wrap;
+  width:100%;
+  word-break:break-word;
+  word-wrap:break-word;
+  color:#fff;
+  font-size:48px;
+  font-weight:800;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.framer-2FDPz .framer-ajdvg8,
+.framer-2FDPz .framer-3xsde2,
+.framer-2FDPz .framer-d5db7z,
+.framer-2FDPz .framer-5x9bt4{
+  --framer-paragraph-spacing: 0px;
+  flex:none;
+  height:auto;
+  position:relative;
+  white-space:pre-wrap;
+  width:100%;
+  word-break:break-word;
+  word-wrap:break-word;
+  color:#fff;
+  font-size:48px;
+  font-weight:800;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.framer-2FDPz .framer-ec03g4,
+.framer-2FDPz .framer-19cb95t{
+  --framer-paragraph-spacing: 0px;
+  flex:none;
+  height:auto;
+  max-width:500px;
+  position:relative;
+  white-space:pre-wrap;
+  width:100%;
+  word-break:break-word;
+  word-wrap:break-word;
+  color:rgba(255,255,255,0.9);
+  font-size:18px;
+  line-height:1.5;
+}
+
+/* Dark sidebar sections */
+.framer-2FDPz .framer-1gfjc40,
+.framer-2FDPz .framer-qtno2k{
+  align-content:flex-start;
+  align-items:flex-start;
+  background-color:var(--token-c4550740-41b4-43e4-9583-766283e405df, #232323);
+  border-bottom-left-radius:96px;
+  border-top-left-radius:96px;
+  display:flex;
+  flex:1 0 0px;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:10px;
+  height:min-content;
+  justify-content:flex-start;
+  overflow:visible;
+  padding:81px 32px 81px 96px;
+  position:relative;
+  width:1px;
+}
+
+/* Feature sections */
+.framer-2FDPz .framer-1l8ed8o,
+.framer-2FDPz .framer-1fs85m0{
+  align-content:center;
+  align-items:center;
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:45px;
+  height:min-content;
+  justify-content:center;
+  overflow:visible;
+  padding:0;
+  position:relative;
+  width:100%;
+}
+
+.framer-2FDPz .framer-u64717,
+.framer-2FDPz .framer-1rhreqx{
+  --framer-paragraph-spacing: 0px;
+  flex:none;
+  height:auto;
+  position:relative;
+  white-space:pre-wrap;
+  width:100%;
+  word-break:break-word;
+  word-wrap:break-word;
+  color:#fff;
+  font-size:32px;
+  font-weight:700;
+  text-align:center;
+  margin-bottom:30px;
+}
+
+/* Process sections with teal backgrounds */
+.framer-2FDPz .framer-15bc6ap{
+  align-content:center;
+  align-items:center;
+  background-color:var(--token-84f182b5-177a-462b-8bc9-12698d037604, #008081); /* Teal */
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:min-content;
+  justify-content:center;
+  overflow:visible;
+  padding:64px 0;
+  position:relative;
+  width:100%;
+  z-index:1;
+}
+
+.framer-2FDPz .framer-10vtv32{
+  align-content:center;
+  align-items:center;
+  background-color:var(--token-84f182b5-177a-462b-8bc9-12698d037604, #008081); /* Teal */
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:100vh;
+  justify-content:center;
+  overflow:visible;
+  padding:64px 0;
+  position:relative;
+  width:100%;
+  z-index:1;
+}
+
+.framer-2FDPz .framer-10wlaqp,
+.framer-2FDPz .framer-1ngwfcp{
+  align-content:center;
+  align-items:center;
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:9px;
+  height:min-content;
+  justify-content:center;
+  max-width:900px;
+  overflow:visible;
+  padding:0;
+  position:relative;
+  width:100%;
+}
+
+.framer-2FDPz .framer-1k2xk1u,
+.framer-2FDPz .framer-8gpfom{
+  --framer-paragraph-spacing: 0px;
+  flex:none;
+  height:auto;
+  max-width:650px;
+  position:relative;
+  white-space:pre-wrap;
+  width:100%;
+  word-break:break-word;
+  word-wrap:break-word;
+  color:#fff;
+  font-size:36px;
+  font-weight:700;
+  text-align:center;
+}
+
+/* Footer with teal background */
+.framer-2FDPz .framer-15knv7j{
+  align-content:center;
+  align-items:center;
+  background-color:var(--token-84f182b5-177a-462b-8bc9-12698d037604, #008081); /* Teal */
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:0px;
+  height:177px;
+  justify-content:center;
+  overflow:hidden;
+  padding:0;
+  position:relative;
+  width:100%;
+  z-index:10;
+}
+
+.framer-2FDPz .framer-1cdy11i{
+  align-content:center;
+  align-items:center;
+  display:flex;
+  flex:none;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  height:min-content;
+  justify-content:space-between;
+  max-width:1240px;
+  overflow:visible;
+  padding:0 32px;
+  position:relative;
+  width:100%;
+}
+
+/* Dark content sections */
+.framer-2FDPz .framer-18lgp6p,
+.framer-2FDPz .framer-1e30dac{
+  align-content:center;
+  align-items:center;
+  background-color:var(--token-c4550740-41b4-43e4-9583-766283e405df, #181818);
+  border-radius:84px;
+  box-shadow:0 4px 50px 8px #00000040;
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:32px;
+  height:min-content;
+  justify-content:center;
+  max-width:1248px;
+  overflow:hidden;
+  padding:74px 32px 120px;
+  position:relative;
+  width:100%;
+  margin:40px auto;
+}
+
+/* Special teal section */
+.framer-2FDPz .framer-ifel93{
+  align-content:center;
+  align-items:center;
+  background-color:#007879; /* Deep Teal */
+  border-radius:84px;
+  box-shadow:0 4px 30px 8px #00000026;
+  display:flex;
+  flex:none;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:32px;
+  height:min-content;
+  justify-content:center;
+  max-width:1248px;
+  overflow:hidden;
+  padding:74px 112px 74px 62px;
+  position:relative;
+  width:100%;
+  margin:40px auto;
+}
+
+/* CRITICAL: Force visibility of all elements */
+.framer-2FDPz .framer-2k9dxc,
+.framer-2FDPz .framer-nwas77,
+.framer-2FDPz .framer-pwc6f9,
+.framer-2FDPz .framer-1lj3jyu,
+.framer-2FDPz .framer-m9gvwx,
+.framer-2FDPz .framer-3ktrip,
+.framer-2FDPz .framer-17ob0qa,
+.framer-2FDPz .framer-1rf4xe0,
+.framer-2FDPz .framer-7wfbtr,
+.framer-2FDPz .framer-13hgcr1 {
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+}
+
+/* Override any hidden elements */
+[class*="framer-"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Container positioning fix */
+.framer-2FDPz .framer-q2pr6y-container,
+.framer-2FDPz .framer-1b5yem-container,
+.framer-2FDPz .framer-5m6aps-container,
+.framer-2FDPz .framer-7riort-container{
+  flex:none;
+  height:auto;
+  position:relative;
+  width:auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .framer-2FDPz .framer-7rgir1,
+  .framer-2FDPz .framer-1x8sk9t {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 0;
+  }
+  
+  .framer-2FDPz .framer-apcjz4,
+  .framer-2FDPz .framer-iqxrkn {
+    flex-direction: column;
+  }
+  
+  .framer-2FDPz .framer-1gfjc40,
+  .framer-2FDPz .framer-qtno2k {
+    border-radius: 24px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .framer-2FDPz .framer-ajdvg8,
+  .framer-2FDPz .framer-i57acf {
+    font-size: 32px;
+  }
+  
+  .framer-2FDPz .framer-15jpmax {
+    width: 100%;
+  }
+}
+    </style>
+</head>
+
+<body class="framer-body-n0rgqVnRM-framer-2FDPz">
+    <div id="main" class="framer-15jpmax framer-l7c8lp" data-framer-name="Desktop" name="Desktop">
+        
+        <!-- Hero Section -->
+        <div class="framer-1f9jmr9" data-framer-name="Home" name="Home">
+            <div class="framer-7rgir1" data-framer-name="Wrapper" name="Wrapper">
+                <div class="framer-apcjz4">
+                    <div class="framer-66w9sn">
+                        <div class="framer-g0wyx8">
+                            <div class="framer-1isd27d">
+                                <div class="framer-ajdvg8" data-framer-name="Transform Your Business with AI" name="Transform Your Business with AI">
+                                    <p class="framer-text">Transform Your Business with AI</p>
+                                </div>
+                                <div class="framer-ec03g4" data-framer-name="Experience the power of our teal-themed marketing AI platform designed for modern businesses." name="Experience the power of our teal-themed marketing AI platform designed for modern businesses.">
+                                    <p class="framer-text">Experience the power of our teal-themed marketing AI platform designed for modern businesses.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side dark section -->
+                <div class="framer-1gfjc40">
+                    <div class="framer-1l8ed8o">
+                        <div class="framer-xx0qg">
+                            <div class="framer-u64717" data-framer-name="Powerful Features" name="Powerful Features">
+                                <p class="framer-text">Powerful Features</p>
+                            </div>
+                            <div class="framer-m4gwi">
+                                <div class="framer-7bsk1n">
+                                    <div class="framer-juxvr5">
+                                        <div class="framer-1tlf4x">🚀</div>
+                                        <div class="framer-f598ks">
+                                            <p class="framer-text">Fast Deployment</p>
+                                        </div>
+                                    </div>
+                                    <div class="framer-pu786z">
+                                        <div class="framer-17d5z1r">✓</div>
+                                        <div class="framer-ie9z19">
+                                            <p class="framer-text">Get your campaigns up and running in minutes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="framer-1le3alw">
+                                    <div class="framer-z2rj6v">
+                                        <div class="framer-z9r2dh">📊</div>
+                                        <div class="framer-f9t45k">
+                                            <p class="framer-text">Advanced Analytics</p>
+                                        </div>
+                                    </div>
+                                    <div class="framer-1yd7vye">
+                                        <div class="framer-1gz7ffx">✓</div>
+                                        <div class="framer-n8gju3">
+                                            <p class="framer-text">Gain deep insights into your performance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="framer-1gtmeta">
+                                    <div class="framer-hsr01b">
+                                        <div class="framer-8ycwrp">🎯</div>
+                                        <div class="framer-11k3lq8">
+                                            <p class="framer-text">Smart Targeting</p>
+                                        </div>
+                                    </div>
+                                    <div class="framer-162nyce">
+                                        <div class="framer-tsxhli">✓</div>
+                                        <div class="framer-1g234e1">
+                                            <p class="framer-text">Reach the right audience at the right time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-12 px-6 bg-teal-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4">Powerful Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Feature 1 */}
-            <div className="bg-white p-4 rounded shadow">
-              <FiCheck size={24} className="text-teal-600 mb-2" />
-              <h3 className="text-xl font-bold mb-2">Fast Deployment</h3>
-              <p>Get your campaigns up and running in minutes</p>
+        <!-- Process Section -->
+        <div class="framer-15bc6ap">
+            <div class="framer-10wlaqp">
+                <div class="framer-1k2xk1u" data-framer-name="Our Process" name="Our Process">
+                    <p class="framer-text">Our Process</p>
+                </div>
+                <div class="framer-8gpfom" data-framer-name="Simple steps to transform your marketing strategy" name="Simple steps to transform your marketing strategy">
+                    <p class="framer-text">Simple steps to transform your marketing strategy</p>
+                </div>
             </div>
-
-            {/* Feature 2 */}
-            <div className="bg-white p-4 rounded shadow">
-              <FiCheck size={24} className="text-teal-600 mb-2" />
-              <h3 className="text-xl font-bold mb-2">Advanced Analytics</h3>
-              <p>Gain deep insights into your performance</p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-white p-4 rounded shadow">
-              <FiCheck size={24} className="text-teal-600 mb-2" />
-              <h3 className="text-xl font-bold mb-2">Smart Targeting</h3>
-              <p>Reach the right audience at the right time</p>
-            </div>
-          </div>
         </div>
-      </section>
 
-      {/* Process Section */}
-      <section className="py-12 px-6 bg-teal-100">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4">Our Process</h2>
-          <p className="text-lg mb-8">
-            Simple steps to transform your marketing strategy
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Step 1 */}
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-xl font-bold mb-2">Step 1</h3>
-              <p>Define Your Goals</p>
+        <!-- Services Section -->
+        <div class="framer-18lgp6p">
+            <div class="framer-1n0n54p">
+                <div class="framer-1etp5v8">
+                    <p class="framer-text" style="color: #fff; font-size: 28px; font-weight: 700; text-align: center;">About GROWI</p>
+                </div>
+                <div class="framer-1a1nlcd">
+                    <div class="framer-1aw8hmp">
+                        <p class="framer-text" style="color: #ccc; font-size: 16px; line-height: 1.6;">We're revolutionizing digital marketing with AI-powered solutions and our new teal-themed interface.</p>
+                    </div>
+                </div>
             </div>
-
-            {/* Step 2 */}
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-xl font-bold mb-2">Step 2</h3>
-              <p>Create Campaigns</p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-xl font-bold mb-2">Step 3</h3>
-              <p>Analyze Results</p>
-            </div>
-          </div>
         </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="bg-teal-600 text-white p-6 text-center">
-        <p>© 2024 Growi. All rights reserved.</p>
-      </footer>
+        <!-- Special Teal Section -->
+        <div class="framer-ifel93">
+            <div class="framer-1q14nod-container">
+                <div class="framer-ramtyi">
+                    <div class="framer-p6b4rx">
+                        <p class="framer-text" style="color: #fff; font-size: 24px; font-weight: 700; text-align: center;">Ready to Get Started?</p>
+                        <p class="framer-text" style="color: rgba(255,255,255,0.9); font-size: 16px; text-align: center;">Join thousands of businesses using our teal-themed platform</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="framer-15knv7j">
+            <div class="framer-1cdy11i">
+                <div class="framer-1ci6vd4">
+                    <div class="framer-w9vx0a">
+                        <p class="framer-text" style="color: #fff; font-size: 20px; font-weight: 700;">GROWI</p>
+                    </div>
+                </div>
+                <div class="framer-1qpd2kc">
+                    <div class="framer-1ngubqj">
+                        <p class="framer-text" style="color: rgba(255,255,255,0.8); font-size: 14px;">© 2025 GROWI. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  );
-};
 
-export default App;
+    <script>
+        // Comprehensive visibility and error handling
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('GROWI teal-themed website loaded successfully');
+            
+            // Force all elements to be visible
+            const allElements = document.querySelectorAll('[class*="framer-"]');
+            allElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.visibility = 'visible';
+            });
+            
+            // Remove any transform styles that might hide content
+            const hiddenElements = document.querySelectorAll('[style*="opacity: 0"], [style*="display: none"]');
+            hiddenElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.display = 'flex';
+                el.style.visibility = 'visible';
+            });
+            
+            // Simple fade-in animation for key elements
+            const textElements = document.querySelectorAll('.framer-text');
+            textElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+                el.style.animation = 'fadeInUp 0.6s ease forwards';
+            });
+        });
+        
+        // Add fade-in animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Handle any potential errors gracefully
+        window.addEventListener('error', function(e) {
+            console.log('Error handled:', e.message);
+            return true; // Prevent error from breaking the page
+        });
+    </script>
+</body>
+</html>
