@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/hupscale' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/hupscale/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/Hupscale' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Hupscale/' : '',
 }
 
 module.exports = nextConfig
