@@ -2,6 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  assetPrefix: '/Hupscale',
+  basePath: '/Hupscale',
   images: {
     unoptimized: true
   }
