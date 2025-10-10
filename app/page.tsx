@@ -5,6 +5,13 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Star, Plus, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect } from "react"
+import BaseImage from "@/components/BaseImage"
+
+// Helper function to get proper image path for GitHub Pages
+const getImagePath = (path: string) => {
+  const basePath = process.env.NODE_ENV === 'production' ? '/Hupscale' : ''
+  return `${basePath}${path}`
+}
 
 // Image constants from Figma - Updated with exact Figma assets
 const imgVideo = "/fe540649cf394e58a3b8ab82969a56c8986eabd0.png";
@@ -633,7 +640,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Motorsport" className="block max-w-none size-full" src="/svg-motorsport.svg" />
+                          <img alt="Motorsport" className="block max-w-none size-full" src={getImagePath("/svg-motorsport.svg")} />
                         </div>
                       </div>
                     </div>
@@ -647,7 +654,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Content creators" className="block max-w-none size-full" src="/svg-content.svg" />
+                          <img alt="Content creators" className="block max-w-none size-full" src={getImagePath("/svg-content.svg")} />
                         </div>
                       </div>
                     </div>
@@ -661,7 +668,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Golf athletes" className="block max-w-none size-full" src="/svg-golf.svg" />
+                          <img alt="Golf athletes" className="block max-w-none size-full" src={getImagePath("/svg-golf.svg")} />
                         </div>
                       </div>
                     </div>
@@ -675,7 +682,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Soccer teams" className="block max-w-none size-full" src="/svg-soccer.svg" />
+                          <img alt="Soccer teams" className="block max-w-none size-full" src={getImagePath("/svg-soccer.svg")} />
                         </div>
                       </div>
                     </div>
@@ -689,7 +696,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Personal brand" className="block max-w-none size-full" src="/svg-personal.svg" />
+                          <img alt="Personal brand" className="block max-w-none size-full" src={getImagePath("/svg-personal.svg")} />
                         </div>
                       </div>
                     </div>
@@ -708,7 +715,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Real estate" className="block max-w-none size-full" src="/svg-real.svg" />
+                          <img alt="Real estate" className="block max-w-none size-full" src={getImagePath("/svg-real.svg")} />
                         </div>
                       </div>
                     </div>
@@ -722,7 +729,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Models" className="block max-w-none size-full" src="/svg-models.svg" />
+                          <img alt="Models" className="block max-w-none size-full" src={getImagePath("/svg-models.svg")} />
                         </div>
                       </div>
                     </div>
@@ -736,7 +743,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Influencers" className="block max-w-none size-full" src="/svg-influencer.svg" />
+                          <img alt="Influencers" className="block max-w-none size-full" src={getImagePath("/svg-influencer.svg")} />
                         </div>
                       </div>
                     </div>
@@ -750,7 +757,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Car rentals" className="block max-w-none size-full" src="/svg-car.svg" />
+                          <img alt="Car rentals" className="block max-w-none size-full" src={getImagePath("/svg-car.svg")} />
                         </div>
                       </div>
                     </div>
@@ -764,7 +771,7 @@ export default function Home() {
                           </div>
                         </div>
                         <div className="absolute left-0 overflow-clip size-[30px] top-0">
-                          <img alt="Medical" className="block max-w-none size-full" src="/svg-medical.svg" />
+                          <img alt="Medical" className="block max-w-none size-full" src={getImagePath("/svg-medical.svg")} />
                         </div>
                       </div>
                     </div>
@@ -782,7 +789,7 @@ export default function Home() {
             }}>
               {/* Facebook Logo */}
               <img 
-                src="/Facebook.png" 
+                src={getImagePath("/Facebook.png")} 
                 alt="Facebook" 
                 style={{
                   height: '30px',
@@ -792,7 +799,7 @@ export default function Home() {
               
               {/* Instagram Logo */}
               <img 
-                src="/Instagram.png" 
+                src={getImagePath("/Instagram.png")} 
                 alt="Instagram" 
                 style={{
                   height: '30px',
@@ -802,7 +809,7 @@ export default function Home() {
               
               {/* YouTube Logo */}
               <img 
-                src="/YouTube.png" 
+                src={getImagePath("/YouTube.png")} 
                 alt="YouTube" 
                 style={{
                   height: '30px',
@@ -986,7 +993,7 @@ export default function Home() {
                 width: '624px',
                 height: '550px',
                 borderRadius: '80px',
-                backgroundImage: `url("${serviceCards[activeService as keyof typeof serviceCards]?.backgroundImage || ''}")`,
+                backgroundImage: `url("${getImagePath(serviceCards[activeService as keyof typeof serviceCards]?.backgroundImage || '')}")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundColor: '#f0f0f0',
@@ -1051,7 +1058,7 @@ export default function Home() {
         <div 
           className="w-full flex justify-center py-16 px-4"
           style={{
-            backgroundImage: "url('/gradient-background-teal.png')"
+            backgroundImage: `url('${getImagePath('/gradient-background-teal.png')}')`
           }}
         >
         <div 
@@ -1438,7 +1445,7 @@ export default function Home() {
                       {/* Author Section */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <img 
-                          src={testimonial.image} 
+                          src={getImagePath(testimonial.image)} 
                           alt={testimonial.name} 
                           className="avatar-circular"
                           style={{
@@ -1531,7 +1538,7 @@ export default function Home() {
 
       {/* Interaction Section - Image as full background, text overlay */}
       <section className="sticky-section" style={{ 
-        backgroundImage: 'url(/interaction-person-teal.png)',
+        backgroundImage: `url(${getImagePath('/interaction-person-teal.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -1613,7 +1620,7 @@ export default function Home() {
           borderRadius: 'inherit'
         }}>
           <img 
-            src="/answers-section-bg-teal-vectorized.png"
+            src={getImagePath("/answers-section-bg-teal-vectorized.png")}
             alt=""
             style={{
               display: 'block',

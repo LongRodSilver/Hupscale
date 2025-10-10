@@ -5,7 +5,9 @@ const nextConfig = {
   assetPrefix: '/Hupscale',
   basePath: '/Hupscale',
   images: {
-    unoptimized: true
+    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './loader.js'
   }
 }
 
