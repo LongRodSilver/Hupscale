@@ -568,7 +568,7 @@ export default function Home() {
       <section className="relative w-full h-screen" style={{ backgroundColor: '#1a1a1a' }}>
         <video 
           className="absolute inset-0 w-full h-full object-cover"
-          src="/HUPSCALE_Final.mp4"
+          src={getImagePath("/HUPSCALE_Final.mp4")}
           autoPlay
           muted
           loop
@@ -1786,7 +1786,7 @@ export default function Home() {
             textTransform: 'uppercase',
             maxWidth: '800px'              // Keep line break constraint
           }}>
-            TAKE YOUR ASTEROIDS AND<br/>GROW YOUR VISION
+            TAKE YOUR ASTEROIDS AND<br/>SCALE YOUR VISION
           </h1>
           
           {/* Contact Info Text - INCREASE size */}
