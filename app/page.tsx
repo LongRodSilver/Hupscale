@@ -612,9 +612,9 @@ export default function Home() {
       </nav>
 
       {/* Section 1: Hero - Base layer */}
-      <section className="sticky-section relative w-full h-screen" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', zIndex: 1, backgroundColor: '#1a1a1a'}}>
+      <section className="sticky-section relative w-full h-screen overflow-hidden" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', zIndex: 1, backgroundColor: '#1a1a1a'}}>
         <video 
-          className="absolute inset-0 w-full h-full object-contain sm:object-cover"
+          className="absolute inset-0 w-full h-full object-fill md:object-cover"
           src={getImagePath("/HUPSCALE_Final.mp4")}
           autoPlay
           muted
