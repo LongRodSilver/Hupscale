@@ -1019,12 +1019,12 @@ export default function Home() {
                     marginBottom: '40px'
                   }}
                 >
-                  {serviceCards[activeService].title}
+                  {serviceCards[activeService as keyof typeof serviceCards]?.title}
                 </div>
                 
                 {/* Dynamic Content */}
                 <div className="space-y-8">
-                  {serviceCards[activeService].content.map((item, i) => (
+                  {serviceCards[activeService as keyof typeof serviceCards]?.content?.map((item, i) => (
                     <div 
                       key={i}
                       className="flex items-start transition-all duration-300 ease-out"
