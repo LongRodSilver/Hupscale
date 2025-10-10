@@ -986,7 +986,7 @@ export default function Home() {
                 width: '624px',
                 height: '550px',
                 borderRadius: '80px',
-                backgroundImage: `url("${serviceCards[activeService].backgroundImage}")`,
+                backgroundImage: `url("${serviceCards[activeService as keyof typeof serviceCards]?.backgroundImage || ''}")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundColor: '#f0f0f0',
