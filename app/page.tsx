@@ -348,7 +348,84 @@ export default function Home() {
         padding-bottom: 3rem !important;
       }
       
-      nav { z-index: 50 !important; }
+      /* Navigation - Highest priority z-index */
+      nav { 
+        z-index: 9999 !important; 
+        position: fixed !important;
+        top: 1rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+      
+      /* Mobile menu overlay - High z-index */
+      .mobile-menu-overlay {
+        z-index: 9998 !important;
+      }
+      
+      /* Video container - Ensure it stays below navigation */
+      .hero-video-container {
+        z-index: 1 !important;
+        position: relative !important;
+      }
+      
+      /* Mobile video optimization - Prevent stretching and pixelation */
+      @media (max-width: 640px) {
+        .hero-video {
+          object-fit: cover !important;
+          object-position: center center !important;
+          transform: scale(1.01) !important; /* Slight scale to prevent edge artifacts */
+          filter: contrast(1.05) brightness(1.02) !important; /* Enhance mobile video quality */
+        }
+        
+        /* Ensure proper viewport handling on mobile */
+        .hero-video-container {
+          width: 100vw !important;
+          height: 100vh !important;
+          overflow: hidden !important;
+        }
+      }
+      
+      /* Tablet and small desktop optimization */
+      @media (min-width: 641px) and (max-width: 1024px) {
+        .hero-video {
+          object-fit: cover !important;
+          object-position: center center !important;
+        }
+      }
+      
+      /* Mobile landscape orientation */
+      @media (max-width: 768px) and (orientation: landscape) {
+        .hero-video {
+          object-fit: cover !important;
+          object-position: center center !important;
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+      
+      /* Prevent video from interfering with touch events on mobile */
+      @media (max-width: 768px) {
+        .hero-video {
+          pointer-events: none !important;
+        }
+      }
+      
+      /* High DPI mobile screens */
+      @media (max-width: 640px) and (-webkit-min-device-pixel-ratio: 2) {
+        .hero-video {
+          image-rendering: -webkit-optimize-contrast !important;
+          image-rendering: crisp-edges !important;
+        }
+      }
+      
+      /* Ensure navigation stays visible on all mobile devices */
+      @media (max-width: 768px) {
+        nav {
+          backdrop-filter: blur(10px) !important;
+          -webkit-backdrop-filter: blur(10px) !important;
+          background-color: rgba(244, 244, 244, 0.95) !important;
+        }
+      }
     `;
     document.head.appendChild(style);
 
@@ -369,7 +446,7 @@ export default function Home() {
       backgroundColor: 'white' 
     }}>
       {/* Responsive navigation */}
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-fit px-4" style={{
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full max-w-fit px-4" style={{
         backgroundColor: 'rgb(244, 244, 244)',
         borderRadius: '206px',
         padding: '8px 16px',
@@ -378,7 +455,8 @@ export default function Home() {
         justifyContent: 'space-between',
         margin: '0 auto',
         border: '1px solid rgb(35, 35, 35)',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        zIndex: 9999
       }}>
         
         {/* HUPSCALE Logo - Responsive */}
@@ -546,8 +624,8 @@ export default function Home() {
         
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="fixed top-20 left-4 right-4 bg-white rounded-2xl p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+          <div className="mobile-menu-overlay md:hidden fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsMobileMenuOpen(false)}>
+            <div className="fixed top-20 left-4 right-4 bg-white rounded-2xl p-6 shadow-xl max-w-[calc(100vw-32px)]" onClick={(e) => e.stopPropagation()}>
               <div className="flex flex-col space-y-4">
                 <button
                   className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
@@ -613,14 +691,32 @@ export default function Home() {
 
       {/* Section 1: Hero - Base layer */}
       <section className="sticky-section relative w-full h-screen overflow-hidden" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', zIndex: 1, backgroundColor: '#1a1a1a'}}>
-        <video 
-          className="absolute inset-0 w-full h-full object-fill md:object-cover"
-          src={getImagePath("/HUPSCALE_Final.mp4")}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        {/* Video Container with Mobile Optimization */}
+        <div className="hero-video-container absolute inset-0 w-full h-full">
+          <video 
+            className="hero-video absolute inset-0 w-full h-full object-cover"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              width: '100%',
+              height: '100%',
+              minWidth: '100%',
+              minHeight: '100%',
+              maxWidth: 'none',
+              maxHeight: 'none'
+            }}
+            src={getImagePath("/HUPSCALE_Final.mp4")}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={getImagePath("/video-poster.jpg")}
+          />
+          
+          {/* Mobile Video Quality Enhancement Overlay */}
+          <div className="absolute inset-0 bg-black bg-opacity-10 sm:bg-opacity-0 pointer-events-none" />
+        </div>
       </section>
 
       {/* Section 2: What is Hupscale - Layer 2 */}
@@ -1030,8 +1126,9 @@ export default function Home() {
                       key={testimonial.id}
                       className="bg-white rounded-3xl lg:rounded-[54px] p-6 flex flex-col justify-between flex-shrink-0 select-none"
                       style={{
-                        width: `${CARD_WIDTH}px`,
-                        height: '420px'
+                        width: `min(${CARD_WIDTH}px, 90vw)`,
+                        height: '420px',
+                        maxWidth: '100%'
                       }}
                     >
                       {/* Star Rating - Compact Spacing */}
