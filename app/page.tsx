@@ -292,21 +292,22 @@ export default function Home() {
         margin: 0 !important;
         padding: 0 !important;
         background-color: white !important;
-        overflow: visible !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        width: 100% !important;
+        max-width: 100vw !important;
       }
       
-      /* OVERFLOW DEBUG - Force all elements to visible */
-      html, body, * {
-        overflow: visible !important;
-      }
-      
-      /* SURGICAL OVERFLOW FIX - Minimal addition */
+      /* CRITICAL MOBILE OVERFLOW FIX */
       body {
         overflow-x: hidden !important;
+        position: relative !important;
       }
+      
       .sticky-section {
-        width: 100vw !important;
-        max-width: 100vw !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
       }
       
       .scroll-container {
@@ -348,13 +349,16 @@ export default function Home() {
         padding-bottom: 3rem !important;
       }
       
-      /* Navigation - Highest priority z-index */
+      /* Navigation - Highest priority z-index with isolation */
       nav { 
         z-index: 9999 !important; 
         position: fixed !important;
         top: 1rem !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
+        isolation: isolate !important;
+        will-change: transform !important;
+        pointer-events: auto !important;
       }
       
       /* Mobile menu overlay - High z-index */
@@ -362,25 +366,50 @@ export default function Home() {
         z-index: 9998 !important;
       }
       
-      /* Video container - Ensure it stays below navigation */
+      /* Video container - Ensure it stays below navigation with strict constraints */
       .hero-video-container {
         z-index: 1 !important;
-        position: relative !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
       }
       
-      /* Mobile video optimization - Prevent stretching and pixelation */
+      /* Mobile video optimization - Prevent stretching, pixelation AND overflow */
       @media (max-width: 640px) {
         .hero-video {
           object-fit: cover !important;
           object-position: center center !important;
-          transform: scale(1.01) !important; /* Slight scale to prevent edge artifacts */
-          filter: contrast(1.05) brightness(1.02) !important; /* Enhance mobile video quality */
+          transform: none !important;
+          filter: contrast(1.05) brightness(1.02) !important;
+          max-width: 100% !important;
+          max-height: 100% !important;
+          width: 100% !important;
+          height: 100% !important;
         }
         
-        /* Ensure proper viewport handling on mobile */
+        /* Strict mobile viewport constraints */
         .hero-video-container {
-          width: 100vw !important;
+          width: 100% !important;
           height: 100vh !important;
+          max-width: 100% !important;
+          max-height: 100vh !important;
+          overflow: hidden !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+        }
+        
+        /* Prevent hero section overflow on mobile */
+        .sticky-section:first-of-type {
+          width: 100% !important;
+          max-width: 100% !important;
           overflow: hidden !important;
         }
       }
@@ -418,12 +447,17 @@ export default function Home() {
         }
       }
       
-      /* Ensure navigation stays visible on all mobile devices */
+      /* Ensure navigation stays visible and persistent on all mobile devices */
       @media (max-width: 768px) {
         nav {
           backdrop-filter: blur(10px) !important;
           -webkit-backdrop-filter: blur(10px) !important;
           background-color: rgba(244, 244, 244, 0.95) !important;
+          z-index: 99999 !important;
+          position: fixed !important;
+          isolation: isolate !important;
+          transform: translateX(-50%) translateZ(0) !important;
+          -webkit-transform: translateX(-50%) translateZ(0) !important;
         }
       }
     `;
@@ -690,9 +724,9 @@ export default function Home() {
       </nav>
 
       {/* Section 1: Hero - Base layer */}
-      <section className="sticky-section relative w-full h-screen overflow-hidden" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', zIndex: 1, backgroundColor: '#1a1a1a'}}>
+      <section className="sticky-section relative w-full h-screen overflow-hidden" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', maxWidth: '100%', zIndex: 1, backgroundColor: '#1a1a1a', overflow: 'hidden'}}>
         {/* Video Container with Mobile Optimization */}
-        <div className="hero-video-container absolute inset-0 w-full h-full">
+        <div className="hero-video-container absolute inset-0 w-full h-full" style={{maxWidth: '100%', maxHeight: '100%', overflow: 'hidden'}}>
           <video 
             className="hero-video absolute inset-0 w-full h-full object-cover"
             style={{
@@ -702,8 +736,8 @@ export default function Home() {
               height: '100%',
               minWidth: '100%',
               minHeight: '100%',
-              maxWidth: 'none',
-              maxHeight: 'none'
+              maxWidth: '100%',
+              maxHeight: '100%'
             }}
             src={getImagePath("/HUPSCALE_Final.mp4")}
             autoPlay
