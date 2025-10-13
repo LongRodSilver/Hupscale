@@ -2,8 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  assetPrefix: '/Hupscale',
-  basePath: '/Hupscale',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Hupscale' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/Hupscale' : '',
   images: {
     unoptimized: true,
     loader: 'custom',
