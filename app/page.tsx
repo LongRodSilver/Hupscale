@@ -287,7 +287,11 @@ export default function Home() {
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
-      /* Global CSS Reset */
+      /* ===== GLOBAL CSS RESET ===== */
+      * {
+        box-sizing: border-box;
+      }
+      
       html, body {
         margin: 0 !important;
         padding: 0 !important;
@@ -296,51 +300,100 @@ export default function Home() {
         overflow-y: auto !important;
         width: 100% !important;
         max-width: 100vw !important;
+        position: relative;
       }
       
-      /* CRITICAL MOBILE OVERFLOW FIX */
       body {
         overflow-x: hidden !important;
-        position: relative !important;
       }
       
+      /* ===== SCROLL CONTAINER ===== */
+      .scroll-container {
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: white !important;
+        width: 100% !important;
+      }
+      
+      /* ===== STICKY SECTION SYSTEM ===== */
       .sticky-section {
+        position: sticky !important;
+        top: 0 !important;
+        height: 100vh !important;
         width: 100% !important;
         max-width: 100% !important;
         overflow: hidden !important;
       }
       
-      .scroll-container {
-        overflow: visible !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: white !important;
+      /* Z-INDEX HIERARCHY FOR 6 STICKY SECTIONS */
+      section.sticky-section:nth-of-type(1) { z-index: 1 !important; } /* Hero */
+      section.sticky-section:nth-of-type(2) { z-index: 2 !important; } /* What is Hupscale */
+      section.sticky-section:nth-of-type(3) { z-index: 3 !important; } /* What we do */
+      section.sticky-section:nth-of-type(4) { z-index: 4 !important; } /* Idea to Execution */
+      section.sticky-section:nth-of-type(5) { z-index: 5 !important; } /* Testimonials */
+      section.sticky-section:nth-of-type(6) { z-index: 6 !important; } /* Interaction */
+      
+      /* ===== NAVIGATION - ALWAYS ON TOP ===== */
+      nav { 
+        z-index: 9999 !important; 
+        position: fixed !important;
+        top: 1rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        isolation: isolate !important;
+        pointer-events: auto !important;
       }
       
-      /* 6-SECTION STICKY TRACK - MATCHING ORIGINAL */
-      .sticky-section {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        width: 100%;
-        z-index: 1;
+      /* Mobile menu overlay */
+      .mobile-menu-overlay {
+        z-index: 9998 !important;
       }
       
-      .sticky-section:nth-child(1) { z-index: 1; } /* Hero - lowest */
-      .sticky-section:nth-child(2) { z-index: 2; } /* What is Hupscale */
-      .sticky-section:nth-child(3) { z-index: 3; } /* What we do */
-      .sticky-section:nth-child(4) { z-index: 4; } /* Idea to Execution */
-      .sticky-section:nth-child(5) { z-index: 5; } /* Testimonials */
-      .sticky-section:nth-child(6) { z-index: 6; } /* Interaction - highest sticky */
+      /* ===== HERO VIDEO CONTAINER ===== */
+      .hero-video-container {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        overflow: hidden !important;
+      }
       
-      /* Avatar circular styling */
+      .hero-video {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+      }
+      
+      /* ===== TESTIMONIALS SECTION FIX ===== */
+      .testimonials-section {
+        min-height: 130vh !important;
+        height: auto !important;
+      }
+      
+      .testimonial-card {
+        height: 400px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+      
+      /* ===== AVATAR STYLING ===== */
       .avatar-circular {
         border-radius: 50% !important;
         overflow: hidden !important;
         display: block !important;
       }
       
-      /* Footer styling */
+      /* ===== FOOTER ===== */
       footer {
         position: relative !important;
         z-index: 100 !important;
@@ -349,115 +402,45 @@ export default function Home() {
         padding-bottom: 3rem !important;
       }
       
-      /* Navigation - Highest priority z-index with isolation */
-      nav { 
-        z-index: 9999 !important; 
-        position: fixed !important;
-        top: 1rem !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        isolation: isolate !important;
-        will-change: transform !important;
-        pointer-events: auto !important;
-      }
-      
-      /* Mobile menu overlay - High z-index */
-      .mobile-menu-overlay {
-        z-index: 9998 !important;
-      }
-      
-      /* Video container - Ensure it stays below navigation with strict constraints */
-      .hero-video-container {
-        z-index: 1 !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100vw !important;
-        max-height: 100vh !important;
-        overflow: hidden !important;
-      }
-      
-      /* Mobile video optimization - Prevent stretching, pixelation AND overflow */
+      /* ===== MOBILE OPTIMIZATIONS ===== */
       @media (max-width: 640px) {
         .hero-video {
-          object-fit: cover !important;
-          object-position: center center !important;
-          transform: none !important;
           filter: contrast(1.05) brightness(1.02) !important;
-          max-width: 100% !important;
-          max-height: 100% !important;
-          width: 100% !important;
-          height: 100% !important;
         }
         
-        /* Strict mobile viewport constraints */
-        .hero-video-container {
+        .sticky-section {
           width: 100% !important;
-          height: 100vh !important;
           max-width: 100% !important;
-          max-height: 100vh !important;
-          overflow: hidden !important;
-          position: absolute !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
         }
         
-        /* Prevent hero section overflow on mobile */
-        .sticky-section:first-of-type {
-          width: 100% !important;
-          max-width: 100% !important;
-          overflow: hidden !important;
-        }
-      }
-      
-      /* Tablet and small desktop optimization */
-      @media (min-width: 641px) and (max-width: 1024px) {
-        .hero-video {
-          object-fit: cover !important;
-          object-position: center center !important;
-        }
-      }
-      
-      /* Mobile landscape orientation */
-      @media (max-width: 768px) and (orientation: landscape) {
-        .hero-video {
-          object-fit: cover !important;
-          object-position: center center !important;
-          width: 100% !important;
-          height: 100% !important;
-        }
-      }
-      
-      /* Prevent video from interfering with touch events on mobile */
-      @media (max-width: 768px) {
-        .hero-video {
-          pointer-events: none !important;
-        }
-      }
-      
-      /* High DPI mobile screens */
-      @media (max-width: 640px) and (-webkit-min-device-pixel-ratio: 2) {
-        .hero-video {
-          image-rendering: -webkit-optimize-contrast !important;
-          image-rendering: crisp-edges !important;
-        }
-      }
-      
-      /* Ensure navigation stays visible and persistent on all mobile devices */
-      @media (max-width: 768px) {
         nav {
           backdrop-filter: blur(10px) !important;
           -webkit-backdrop-filter: blur(10px) !important;
           background-color: rgba(244, 244, 244, 0.95) !important;
-          z-index: 99999 !important;
-          position: fixed !important;
-          isolation: isolate !important;
           transform: translateX(-50%) translateZ(0) !important;
           -webkit-transform: translateX(-50%) translateZ(0) !important;
+        }
+      }
+      
+      /* ===== TABLET OPTIMIZATIONS ===== */
+      @media (min-width: 641px) and (max-width: 1024px) {
+        .hero-video {
+          object-fit: cover !important;
+        }
+      }
+      
+      /* ===== MOBILE LANDSCAPE ===== */
+      @media (max-width: 768px) and (orientation: landscape) {
+        .hero-video {
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+      
+      /* ===== TOUCH OPTIMIZATION ===== */
+      @media (max-width: 768px) {
+        .hero-video {
+          pointer-events: none !important;
         }
       }
     `;
@@ -474,10 +457,10 @@ export default function Home() {
 
   return (
     <div className="scroll-container bg-white" style={{ 
-      overflow: 'visible', 
       margin: 0, 
       padding: 0, 
-      backgroundColor: 'white' 
+      backgroundColor: 'white',
+      width: '100%'
     }}>
       {/* Responsive navigation */}
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full max-w-fit px-4" style={{
@@ -724,9 +707,9 @@ export default function Home() {
       </nav>
 
       {/* Section 1: Hero - Base layer */}
-      <section className="sticky-section relative w-full h-screen overflow-hidden" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', maxWidth: '100%', zIndex: 1, backgroundColor: '#1a1a1a', overflow: 'hidden'}}>
+      <section className="sticky-section relative w-full h-screen overflow-hidden bg-[#1a1a1a]">
         {/* Video Container with Mobile Optimization */}
-        <div className="hero-video-container absolute inset-0 w-full h-full" style={{maxWidth: '100%', maxHeight: '100%', overflow: 'hidden'}}>
+        <div className="hero-video-container absolute inset-0 w-full h-full">
           <video 
             className="hero-video absolute inset-0 w-full h-full object-cover"
             style={{
@@ -754,7 +737,7 @@ export default function Home() {
       </section>
 
       {/* Section 2: What is Hupscale - Layer 2 */}
-      <section id="benefits" className="sticky-section min-h-screen bg-[#007B79] py-16 pl-4 sm:pl-8 lg:pl-16" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', zIndex: 2}}>
+      <section id="benefits" className="sticky-section min-h-screen bg-[#007B79] py-16 pl-4 sm:pl-8 lg:pl-16">
         <div className="flex w-full h-full flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
         {/* What is Hupscale - Left side content */}
         <div className="flex-1 max-w-2xl">
@@ -869,7 +852,7 @@ export default function Home() {
       </section>
 
       {/* Section 3: What we do - Layer 3 */}
-      <section id="services" className="sticky-section min-h-screen bg-[#181818] py-16 px-4 sm:px-8 lg:px-16" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', zIndex: 3}}>
+      <section id="services" className="sticky-section min-h-screen bg-[#181818] py-16 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto h-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
             {/* Left Content - Responsive */}
             <div className="text-white flex-1 max-w-2xl text-center lg:text-left">
@@ -987,11 +970,6 @@ export default function Home() {
 
       {/* Section 4: Idea to Execution - Layer 4 */}
       <section className="sticky-section min-h-screen bg-[#F5F5F5] py-16 px-4 sm:px-8 lg:px-16" style={{
-        position: 'sticky',
-        top: 0,
-        height: '100vh',
-        width: '100%',
-        zIndex: 4,
         backgroundImage: `url('${getImagePath('/gradient-background-teal.png')}')`
       }}>
         <div className="max-w-6xl mx-auto">
@@ -1119,7 +1097,7 @@ export default function Home() {
       </section>
 
       {/* Section 5: Testimonials - Layer 5 */}
-      <section id="testimonials" className="sticky-section min-h-screen bg-[#007B79] pt-6 pb-32 px-4 sm:px-8 lg:px-16" style={{position: 'sticky', top: 0, height: '100vh', width: '100%', zIndex: 5}}>
+      <section id="testimonials" className="sticky-section testimonials-section bg-[#007B79] pt-6 pb-32 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto h-full flex flex-col justify-start">
           <div className="w-full flex flex-col items-center gap-6 lg:gap-8">
             {/* Header Section - Responsive */}
@@ -1158,10 +1136,10 @@ export default function Home() {
                   return (
                     <div 
                       key={testimonial.id}
-                      className="bg-white rounded-3xl lg:rounded-[54px] p-6 flex flex-col justify-between flex-shrink-0 select-none"
+                      className="testimonial-card bg-white rounded-3xl lg:rounded-[54px] p-6 flex flex-col justify-between flex-shrink-0 select-none"
                       style={{
                         width: `min(${CARD_WIDTH}px, 90vw)`,
-                        height: '420px',
+                        height: '400px',
                         maxWidth: '100%'
                       }}
                     >
@@ -1228,11 +1206,6 @@ export default function Home() {
 
       {/* Section 6: Interaction - Top layer */}
       <section className="sticky-section min-h-screen w-full flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 xl:px-24 relative" style={{ 
-        position: 'sticky',
-        top: 0,
-        height: '100vh',
-        width: '100%',
-        zIndex: 6,
         backgroundImage: `url(${getImagePath('/interaction-person-teal.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
