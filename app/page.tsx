@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Star, Plus, ChevronLeft, ChevronRight } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { motion } from "framer-motion"
 import BaseImage from "@/components/BaseImage"
 
 // Helper function to get proper image path for GitHub Pages
@@ -136,6 +137,7 @@ export default function Home() {
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+
   // FAQ Data Array
   const faqs = [
     {
@@ -161,40 +163,41 @@ export default function Home() {
   const defaultTestimonials = [
     {
       id: 1,
-      name: "Jake W.",
-      image: "/jake-w-profile.png",
-      text: "Working with Hupscale has been a game-changer! My Instagram went from a few hundred followers to over 10k in just a couple of months. The engagement is off the charts too. If you're serious about growing your social media, these guys are the real deal!"
+      name: "Sarah M.",
+      image: "/Sarah-M.jpeg",
+      text: "I was struggling to get traction for my coaching business until I found Hupscale. Within three months, my client base tripled and my revenue doubled. Their strategies are simple but incredibly effective. If you want real results, not just promises, this is your team!"
     },
     {
       id: 2,
-      name: "Emily R.",
-      image: "/Emily-r-profile.png",
-      text: "I had struggled to develop a clear online presence as a small business owner. Hupscale not only increased that visibility but actually connected me with my customer base in a way I never had before. My sales went through the roof. So worth it!"
+      name: "Rachel T.",
+      image: "/Rachel-T.jpeg",
+      text: "Hupscale transformed my content strategy completely! I went from posting randomly to having a clear plan that actually converts. My email list grew from 200 to 5,000 subscribers in just four months. The team really understands what it takes to scale a business!"
     },
     {
       id: 3,
-      name: "Michael L.",
-      image: "/Michael-l-profile.png",
-      text: "I've always had trouble finding the right strategy to make my brand pop on social media. Working with Hupscale, however, has brought my business to another level. Their personalized approach is what makes them stand out. Recommended!"
+      name: "Marcus D.",
+      image: "/Marcus-D.jpeg",
+      text: "As a small business owner, I thought growth was out of reach. Hupscale proved me wrong. They helped me streamline my processes and reach customers I never thought possible. My sales increased by 150% in six months. Absolutely worth every penny!"
     },
     {
       id: 4,
-      name: "Sarah H.",
-      image: "/Sarah-h-profile.png",
-      text: "I appreciate Hupscale's dedication to their customers and, truly, they know what they are doing in the area of social media marketing. Finally, my professional profile has the visibility it's been asking for, and my followers are actually engaging with my content now. Kudos to the Hupscale team!"
+      name: "Emma K.",
+      image: "/Emma-K.jpeg",
+      text: "I've worked with several agencies before, but Hupscale is different. They actually care about your success. My brand visibility skyrocketed, and I finally feel confident in my business direction. The results speak for themselves—my best investment this year!"
     },
     {
       id: 5,
-      name: "Chris M.",
-      image: "/chris-m-profile.png",
-      text: "Hupscale has played a key role in the success of my new venture. They haven't just helped grow my followers but taught me how to manage my social media like a pro. The team is super creative, professional, and always there for you when you need them. Couldn't be happier with the results!"
+      name: "Paul T.",
+      image: "/Paul-T.jpeg",
+      text: "Hupscale transformed my business completely! I went from struggling to scale to generating six-figure revenue in just four months. Their strategies are practical and powerful. If you're ready to take your business to the next level, Hupscale is the team you need!"
     }
   ]
   
-  const CARD_WIDTH = 400
-  const GAP = 24
-  const STEP = CARD_WIDTH + GAP // 424px per card
-  // NATURAL VIEWPORT EDGE CUTTING - No artificial container constraints
+  // FIGMA SPECIFICATIONS WITH NATURAL FLOW
+  const CARD_WIDTH = 354.4 // Exact width from Figma
+  const CARD_HEIGHT = 390 // Exact height from Figma
+  const GAP = 32 // Rounded gap from Figma (31.97px)
+  const STEP = CARD_WIDTH + GAP // 386.4px per card - used for transform calculations
   
   // CREATE EXACTLY 50 TESTIMONIAL CARDS (10 SETS OF 5)
   const createInfiniteArray = () => {
@@ -283,185 +286,38 @@ export default function Home() {
   };
 
 
-  // Simple Scroll Animation Implementation
   useEffect(() => {
+    // Simple CSS for carousel scrollbars only
     const style = document.createElement('style');
+    style.setAttribute('data-carousel-styles', 'true');
     style.textContent = `
-      /* ===== GLOBAL CSS RESET ===== */
-      * {
-        box-sizing: border-box;
+      /* Hide scrollbars for clean carousel look */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
       }
       
-      html, body {
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: white !important;
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        width: 100% !important;
-        max-width: 100vw !important;
-        position: relative;
-      }
-      
+      /* Prevent horizontal scroll */
       body {
-        overflow-x: hidden !important;
-      }
-      
-      /* ===== SCROLL CONTAINER ===== */
-      .scroll-container {
-        overflow-x: hidden !important;
-        overflow-y: visible !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: white !important;
-        width: 100% !important;
-      }
-      
-      /* ===== STICKY SECTION SYSTEM ===== */
-      .sticky-section {
-        position: sticky !important;
-        top: 0 !important;
-        height: 100vh !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-      }
-      
-      /* Z-INDEX HIERARCHY FOR 6 STICKY SECTIONS */
-      section.sticky-section:nth-of-type(1) { z-index: 1 !important; } /* Hero */
-      section.sticky-section:nth-of-type(2) { z-index: 2 !important; } /* What is Hupscale */
-      section.sticky-section:nth-of-type(3) { z-index: 3 !important; } /* What we do */
-      section.sticky-section:nth-of-type(4) { z-index: 4 !important; } /* Idea to Execution */
-      section.sticky-section:nth-of-type(5) { z-index: 5 !important; } /* Testimonials */
-      section.sticky-section:nth-of-type(6) { z-index: 6 !important; } /* Interaction */
-      
-      /* ===== NAVIGATION - ALWAYS ON TOP ===== */
-      nav { 
-        z-index: 9999 !important; 
-        position: fixed !important;
-        top: 1rem !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        isolation: isolate !important;
-        pointer-events: auto !important;
-      }
-      
-      /* Mobile menu overlay */
-      .mobile-menu-overlay {
-        z-index: 9998 !important;
-      }
-      
-      /* ===== HERO VIDEO CONTAINER ===== */
-      .hero-video-container {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
-        overflow: hidden !important;
-      }
-      
-      .hero-video {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center center !important;
-      }
-      
-      /* ===== TESTIMONIALS SECTION FIX ===== */
-      .testimonials-section {
-        min-height: 130vh !important;
-        height: auto !important;
-      }
-      
-      .testimonial-card {
-        height: 400px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-      }
-      
-      /* ===== AVATAR STYLING ===== */
-      .avatar-circular {
-        border-radius: 50% !important;
-        overflow: hidden !important;
-        display: block !important;
-      }
-      
-      /* ===== FOOTER ===== */
-      footer {
-        position: relative !important;
-        z-index: 100 !important;
-        margin: 0 !important;
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-      }
-      
-      /* ===== MOBILE OPTIMIZATIONS ===== */
-      @media (max-width: 640px) {
-        .hero-video {
-          filter: contrast(1.05) brightness(1.02) !important;
-        }
-        
-        .sticky-section {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-        
-        nav {
-          backdrop-filter: blur(10px) !important;
-          -webkit-backdrop-filter: blur(10px) !important;
-          background-color: rgba(244, 244, 244, 0.95) !important;
-          transform: translateX(-50%) translateZ(0) !important;
-          -webkit-transform: translateX(-50%) translateZ(0) !important;
-        }
-      }
-      
-      /* ===== TABLET OPTIMIZATIONS ===== */
-      @media (min-width: 641px) and (max-width: 1024px) {
-        .hero-video {
-          object-fit: cover !important;
-        }
-      }
-      
-      /* ===== MOBILE LANDSCAPE ===== */
-      @media (max-width: 768px) and (orientation: landscape) {
-        .hero-video {
-          width: 100% !important;
-          height: 100% !important;
-        }
-      }
-      
-      /* ===== TOUCH OPTIMIZATION ===== */
-      @media (max-width: 768px) {
-        .hero-video {
-          pointer-events: none !important;
-        }
+        overflow-x: hidden;
       }
     `;
+    
     document.head.appendChild(style);
-
-    // No scroll animation needed - using 5-section sticky track
-
+    
     return () => {
-      if (style.parentNode) {
-        style.parentNode.removeChild(style);
+      const existingStyle = document.querySelector('style[data-carousel-styles]');
+      if (existingStyle) {
+        existingStyle.remove();
       }
     };
   }, []);
 
   return (
-    <div className="scroll-container bg-white" style={{ 
-      margin: 0, 
-      padding: 0, 
-      backgroundColor: 'white',
-      width: '100%'
-    }}>
+    <div className="relative">
       {/* Responsive navigation */}
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full max-w-fit px-4" style={{
         backgroundColor: 'rgb(244, 244, 244)',
@@ -627,6 +483,43 @@ export default function Home() {
           </button>
         </div>
         
+        {/* Language Toggle Buttons */}
+        <div className="hidden md:flex items-center gap-2 ml-4 lg:ml-6">
+          {/* French Flag Button */}
+          <button
+            aria-label="Switch to French"
+            className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
+            onClick={() => {
+              // TODO: Implement French language switch
+              console.log('Switching to French');
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
+              <rect x="0" y="0" width="8" height="18" fill="#002395"/>
+              <rect x="8" y="0" width="8" height="18" fill="#FFFFFF"/>
+              <rect x="16" y="0" width="8" height="18" fill="#ED2939"/>
+            </svg>
+          </button>
+          
+          {/* British Flag Button */}
+          <button
+            aria-label="Switch to English"
+            className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
+            onClick={() => {
+              // TODO: Implement English language switch
+              console.log('Switching to English');
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
+              <rect width="24" height="18" fill="#012169"/>
+              <path d="M0,0 L24,18 M24,0 L0,18" stroke="#FFFFFF" strokeWidth="2"/>
+              <path d="M0,0 L24,18 M24,0 L0,18" stroke="#C8102E" strokeWidth="1"/>
+              <path d="M12,0 L12,18 M0,9 L24,9" stroke="#FFFFFF" strokeWidth="3"/>
+              <path d="M12,0 L12,18 M0,9 L24,9" stroke="#C8102E" strokeWidth="2"/>
+            </svg>
+          </button>
+        </div>
+        
         {/* Get Started Button - Responsive */}
         <button
           className="hidden md:block bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-4 lg:px-5 py-2 lg:py-3 text-xs lg:text-sm font-medium font-inter cursor-pointer transition-all duration-200 shadow-sm whitespace-nowrap ml-4 lg:ml-6"
@@ -688,6 +581,44 @@ export default function Home() {
                 >
                   FAQ's
                 </button>
+                
+                {/* Language Toggle Buttons - Mobile */}
+                <div className="flex items-center justify-center gap-2 mt-4">
+                  {/* French Flag Button */}
+                  <button
+                    aria-label="Switch to French"
+                    className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
+                    onClick={() => {
+                      // TODO: Implement French language switch
+                      console.log('Switching to French');
+                    }}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
+                      <rect x="0" y="0" width="8" height="18" fill="#002395"/>
+                      <rect x="8" y="0" width="8" height="18" fill="#FFFFFF"/>
+                      <rect x="16" y="0" width="8" height="18" fill="#ED2939"/>
+                    </svg>
+                  </button>
+                  
+                  {/* British Flag Button */}
+                  <button
+                    aria-label="Switch to English"
+                    className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
+                    onClick={() => {
+                      // TODO: Implement English language switch
+                      console.log('Switching to English');
+                    }}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
+                      <rect width="24" height="18" fill="#012169"/>
+                      <path d="M0,0 L24,18 M24,0 L0,18" stroke="#FFFFFF" strokeWidth="2"/>
+                      <path d="M0,0 L24,18 M24,0 L0,18" stroke="#C8102E" strokeWidth="1"/>
+                      <path d="M12,0 L12,18 M0,9 L24,9" stroke="#FFFFFF" strokeWidth="3"/>
+                      <path d="M12,0 L12,18 M0,9 L24,9" stroke="#C8102E" strokeWidth="2"/>
+                    </svg>
+                  </button>
+                </div>
+                
                 <button
                   className="bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-6 py-3 text-sm font-medium text-center mt-4"
                   onClick={() => {
@@ -707,7 +638,7 @@ export default function Home() {
       </nav>
 
       {/* Section 1: Hero - Base layer */}
-      <section className="sticky-section relative w-full h-screen overflow-hidden bg-[#1a1a1a]">
+      <section className="sticky top-0 h-screen z-[1] bg-[#1a1a1a]">
         {/* Video Container with Mobile Optimization */}
         <div className="hero-video-container absolute inset-0 w-full h-full">
           <video 
@@ -737,7 +668,7 @@ export default function Home() {
       </section>
 
       {/* Section 2: What is Hupscale - Layer 2 */}
-      <section id="benefits" className="sticky-section min-h-screen bg-[#007B79] py-16 pl-4 sm:pl-8 lg:pl-16">
+      <section className="sticky top-0 h-screen z-[2] bg-[#007B79] py-16 pl-4 sm:pl-8 lg:pl-16">
         <div className="flex w-full h-full flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
         {/* What is Hupscale - Left side content */}
         <div className="flex-1 max-w-2xl">
@@ -852,7 +783,7 @@ export default function Home() {
       </section>
 
       {/* Section 3: What we do - Layer 3 */}
-      <section id="services" className="sticky-section min-h-screen bg-[#181818] py-16 px-4 sm:px-8 lg:px-16">
+      <section className="sticky top-0 h-screen z-[3] bg-[#181818] py-16 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto h-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
             {/* Left Content - Responsive */}
             <div className="text-white flex-1 max-w-2xl text-center lg:text-left">
@@ -969,9 +900,12 @@ export default function Home() {
       </section>
 
       {/* Section 4: Idea to Execution - Layer 4 */}
-      <section className="sticky-section min-h-screen bg-[#F5F5F5] py-16 px-4 sm:px-8 lg:px-16" style={{
-        backgroundImage: `url('${getImagePath('/gradient-background-teal.png')}')`
-      }}>
+      <section 
+        className="sticky top-0 h-screen z-[4] bg-[#F5F5F5] py-16 px-4 sm:px-8 lg:px-16" 
+        style={{
+          backgroundImage: `url('${getImagePath('/gradient-background-teal.png')}')`
+        }}
+      >
         <div className="max-w-6xl mx-auto">
         <div className="bg-[#181818] rounded-3xl lg:rounded-[84px] p-8 sm:p-12 lg:p-16 xl:p-20 shadow-2xl flex flex-col items-center gap-8 lg:gap-12">
           {/* Main Title - Responsive */}
@@ -1097,50 +1031,85 @@ export default function Home() {
       </section>
 
       {/* Section 5: Testimonials - Layer 5 */}
-      <section id="testimonials" className="sticky-section testimonials-section bg-[#007B79] pt-6 pb-32 px-4 sm:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto h-full flex flex-col justify-start">
-          <div className="w-full flex flex-col items-center gap-6 lg:gap-8">
-            {/* Header Section - Responsive */}
-            <div className="text-center flex flex-col gap-2 lg:gap-4">
-              {/* "Great work" text - Responsive */}
-              <p className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white m-0">
-                GREAT WORK
-              </p>
+      <section className="sticky top-0 h-screen z-[5] bg-[#007B79] pt-6 pb-32">
+        <div className="h-full flex flex-col justify-start">
+          {/* Header Section - Constrained */}
+          <div className="px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto w-full">
+            <div className="w-full flex flex-col items-center gap-6 lg:gap-8">
+              <div className="text-center flex flex-col gap-2 lg:gap-4">
+                {/* "Great work" text - Responsive */}
+                <p className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white m-0">
+                  WE SCALE
+                </p>
+                
+                {/* "For great people" text - Responsive */}
+                <p className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(35,35,35)] m-0">
+                  FOR GREAT PEOPLE
+                </p>
+                
+                {/* Subtext - Responsive */}
+                <p className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-center text-[rgb(35,35,35)] mt-4 mb-8 lg:mb-12 max-w-4xl mx-auto">
+                  Since 2019 <span className="font-bold">we work with incredible businesses</span> to create<br className="hidden sm:block" />
+                  <span className="sm:hidden"> </span>meaningful impact and compelling experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Carousel Section - Full Viewport Width */}
+          <div className="relative mt-2">
+            {/* Navigation Arrows - Positioned relative to viewport */}
+            <div className="absolute -top-12 sm:-top-16 right-4 sm:right-8 lg:right-16 flex gap-2 sm:gap-3 z-10">
+              {/* Left Arrow Button - Responsive */}
+              <button
+                className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
+                onClick={handlePrevious}
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+              </button>
               
-              {/* "For great people" text - Responsive */}
-              <p className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(35,35,35)] m-0">
-                FOR GREAT PEOPLE
-              </p>
-              
-              {/* Subtext - Responsive */}
-              <p className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-center text-[rgb(35,35,35)] mt-4 mb-8 lg:mb-12 max-w-4xl mx-auto">
-                Since 2021 <span className="font-bold">we work with incredible clients</span> to create<br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>meaningful impact and compelling experiences.
-              </p>
+              {/* Right Arrow Button - Responsive */}
+              <button
+                className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
+                onClick={handleNext}
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+              </button>
             </div>
 
-            {/* Carousel Section - Compact Layout */}
-            <div className="w-full mt-2">
-              <div className="relative w-full overflow-hidden flex items-center">
-              {/* Testimonials Track - Responsive */}
+            {/* Natural Viewport-Based Carousel Container */}
+            <div 
+              className="relative overflow-x-auto overflow-y-visible scrollbar-hide"
+              style={{
+                width: '100vw',
+                marginLeft: '50%',
+                transform: 'translateX(-50%)',
+                WebkitOverflowScrolling: 'touch', // Momentum scrolling for mobile
+                paddingLeft: '2rem',
+                paddingRight: '2rem'
+              }}
+            >
+              {/* Testimonials Track - Full Width with Horizontal Scroll */}
               <div 
                 className="flex transition-transform duration-500 ease-out cursor-grab select-none"
                 style={{
                   gap: `${GAP}px`,
                   transform: `translateX(${translateX}px)`,
                   touchAction: 'pan-y',
-                  width: `${infiniteTestimonials.length * STEP}px`
+                  width: 'max-content',
+                  minWidth: `${infiniteTestimonials.length * STEP}px`
                 }}
               >
                 {infiniteTestimonials.map((testimonial, index) => {
                   return (
                     <div 
                       key={testimonial.id}
-                      className="testimonial-card bg-white rounded-3xl lg:rounded-[54px] p-6 flex flex-col justify-between flex-shrink-0 select-none"
+                      className="testimonial-card bg-white rounded-3xl lg:rounded-[54px] p-6 flex flex-col justify-between select-none"
                       style={{
-                        width: `min(${CARD_WIDTH}px, 90vw)`,
-                        height: '400px',
-                        maxWidth: '100%'
+                        width: `${CARD_WIDTH}px`,
+                        height: `${CARD_HEIGHT}px`,
+                        flexShrink: 0,
+                        minWidth: `${CARD_WIDTH}px`
                       }}
                     >
                       {/* Star Rating - Compact Spacing */}
@@ -1178,26 +1147,6 @@ export default function Home() {
                   )
                 })}
               </div>
-
-              {/* Navigation Arrows - Responsive */}
-              <div className="absolute -top-12 sm:-top-16 right-0 flex gap-2 sm:gap-3 z-10">
-                {/* Left Arrow Button - Responsive */}
-                <button
-                  className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
-                  onClick={handlePrevious}
-                >
-                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
-                </button>
-                
-                {/* Right Arrow Button - Responsive */}
-                <button
-                  className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
-                  onClick={handleNext}
-                >
-                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
-                </button>
-              </div>
-              </div>
             </div>
           </div>
         </div>
@@ -1205,24 +1154,27 @@ export default function Home() {
 
 
       {/* Section 6: Interaction - Top layer */}
-      <section className="sticky-section min-h-screen w-full flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 xl:px-24 relative" style={{ 
-        backgroundImage: `url(${getImagePath('/interaction-person-teal.png')})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <section 
+        className="sticky top-0 h-screen z-[6] flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 xl:px-24" 
+        style={{ 
+          backgroundImage: `url(${getImagePath('/hupscale_final_hd.png')})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         
         {/* Text content overlay - Responsive */}
         <div className="text-center lg:text-right text-white max-w-2xl">
           <h1 className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 lg:mb-5 leading-tight" style={{
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
-            INTERACTION
+            HUPSCALE
           </h1>
           <p className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-8 lg:mb-10 leading-tight" style={{
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
-            into <span style={{ color: '#007B79' }}>BUSINESS.</span>
+            your <span style={{ color: '#007B79' }}>BUSINESS.</span>
           </p>
           
           <button className="bg-[#007B79] text-white border-none rounded-full px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold cursor-pointer uppercase shadow-lg hover:shadow-xl transition-all duration-200">
@@ -1232,9 +1184,15 @@ export default function Home() {
         
       </section>
 
-      {/* Final sections: Non-sticky */}
-      <section id="faq" className="relative z-50 min-h-screen bg-cover bg-center bg-no-repeat py-16 px-4 sm:px-8 lg:px-16" style={{backgroundImage: `url(${getImagePath("/answers-section-bg-teal-vectorized.png")})`}}>
-        <div className="w-full min-h-screen relative overflow-visible">
+      {/* Section 7: FAQ - Top layer */}
+      <section 
+        className="sticky top-0 z-[7] bg-cover bg-center bg-no-repeat py-16 px-4 sm:px-8 lg:px-16" 
+        style={{
+          backgroundImage: `url(${getImagePath("/answers-section-bg-teal-vectorized.png")})`,
+          height: 'auto'
+        }}
+      >
+        <div className="w-full relative overflow-visible">
 
         {/* FAQ Container - Responsive */}
         <div className="relative z-10 flex justify-center py-12 lg:py-16 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 overflow-visible">
@@ -1279,7 +1237,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CTA Section - Responsive */}
+        {/* CTA Content - Inside FAQ Section */}
         <div className="relative z-10 flex flex-col items-center gap-12 lg:gap-16 pt-20 lg:pt-32 pb-20 lg:pb-32">
           
           {/* Main Heading - Responsive */}
@@ -1306,52 +1264,56 @@ export default function Home() {
             href="https://wa.me/qr/ASGK4GMJI7E7P1"
             target="_blank"
             rel="noopener"
-            className="bg-[#007B79] rounded-full px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 no-underline inline-block mt-4 lg:mt-6 hover:bg-opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="bg-white text-[#007B79] rounded-full px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 no-underline inline-block mt-4 lg:mt-6 hover:bg-opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
-            <span className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-white uppercase tracking-wide">
+            <span className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl font-bold uppercase tracking-wide">
               Let's Hupscale
             </span>
           </a>
           
         </div>
+
+        {/* Footer Container with Teal Background */}
+        <div className="w-full bg-[#007B79] mt-20">
+          <footer className="relative px-4 sm:px-8 lg:px-16 py-8 lg:py-12">
+            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-8">
+              
+              {/* Left: Copyright - Responsive */}
+              <p className="text-base sm:text-lg text-white font-onest font-normal text-center lg:text-left order-3 lg:order-1">
+                2025 Hupscale. All rights reserved.
+              </p>
+              
+              {/* Center: Instagram Link with Icon - Responsive */}
+              <div className="flex items-center gap-2 sm:gap-3 order-2">
+                {/* Instagram Icon */}
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.8 0H14.2C17.4 0 20 2.6 20 5.8V14.2C20 17.4 17.4 20 14.2 20H5.8C2.6 20 0 17.4 0 14.2V5.8C0 2.6 2.6 0 5.8 0ZM5.6 2C3.61 2 2 3.61 2 5.6V14.4C2 16.39 3.61 18 5.6 18H14.4C16.39 18 18 16.39 18 14.4V5.6C18 3.61 16.39 2 14.4 2H5.6ZM15.25 3.5C15.94 3.5 16.5 4.06 16.5 4.75C16.5 5.44 15.94 6 15.25 6C14.56 6 14 5.44 14 4.75C14 4.06 14.56 3.5 15.25 3.5ZM10 5C12.76 5 15 7.24 15 10C15 12.76 12.76 15 10 15C7.24 15 5 12.76 5 10C5 7.24 7.24 5 10 5ZM10 7C8.34 7 7 8.34 7 10C7 11.66 8.34 13 10 13C11.66 13 13 11.66 13 10C13 8.34 11.66 7 10 7Z" fill="white"/>
+                </svg>
+                <a href="https://www.instagram.com/lets.hupscale/" target="_blank" rel="noopener" className="text-base sm:text-lg text-white font-onest font-semibold hover:text-opacity-80 transition-all duration-200">
+                  Instagram
+                </a>
+              </div>
+              
+              {/* Right: Logo + Terms & Privacy - Responsive */}
+              <div className="flex flex-col items-center gap-3 lg:gap-4 order-1 lg:order-3">
+                {/* HUPSCALE Logo */}
+                <div className="text-xl sm:text-2xl font-bold text-white font-inter">
+                  HUPSCALE
+                </div>
+                
+                {/* Terms & Privacy */}
+                <div className="flex items-center gap-4 sm:gap-6 text-white">
+                  <span className="text-base sm:text-lg font-onest cursor-pointer hover:text-opacity-80 transition-all duration-200">Terms</span>
+                  <span className="text-base sm:text-lg font-onest cursor-pointer hover:text-opacity-80 transition-all duration-200">Privacy</span>
+                </div>
+              </div>
+              
+            </div>
+          </footer>
+        </div>
         </div>
       </section>
 
-      <footer className="relative z-100 bg-[#007B79] px-4 sm:px-8 lg:px-16 py-8 lg:py-12">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-8">
-          
-          {/* Left: Copyright - Responsive */}
-          <p className="text-base sm:text-lg text-white font-onest font-normal text-center lg:text-left order-3 lg:order-1">
-            2025 Hupscale. All rights reserved.
-          </p>
-          
-          {/* Center: Instagram Link with Icon - Responsive */}
-          <div className="flex items-center gap-2 sm:gap-3 order-2">
-            {/* Instagram Icon */}
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5.8 0H14.2C17.4 0 20 2.6 20 5.8V14.2C20 17.4 17.4 20 14.2 20H5.8C2.6 20 0 17.4 0 14.2V5.8C0 2.6 2.6 0 5.8 0ZM5.6 2C3.61 2 2 3.61 2 5.6V14.4C2 16.39 3.61 18 5.6 18H14.4C16.39 18 18 16.39 18 14.4V5.6C18 3.61 16.39 2 14.4 2H5.6ZM15.25 3.5C15.94 3.5 16.5 4.06 16.5 4.75C16.5 5.44 15.94 6 15.25 6C14.56 6 14 5.44 14 4.75C14 4.06 14.56 3.5 15.25 3.5ZM10 5C12.76 5 15 7.24 15 10C15 12.76 12.76 15 10 15C7.24 15 5 12.76 5 10C5 7.24 7.24 5 10 5ZM10 7C8.34 7 7 8.34 7 10C7 11.66 8.34 13 10 13C11.66 13 13 11.66 13 10C13 8.34 11.66 7 10 7Z" fill="white"/>
-            </svg>
-            <a href="https://www.instagram.com/lets.hupscale/" target="_blank" rel="noopener" className="text-base sm:text-lg text-white font-onest font-semibold hover:text-opacity-80 transition-all duration-200">
-              Instagram
-            </a>
-          </div>
-          
-          {/* Right: Logo + Terms & Privacy - Responsive */}
-          <div className="flex flex-col items-center gap-3 lg:gap-4 order-1 lg:order-3">
-            {/* HUPSCALE Logo */}
-            <div className="text-xl sm:text-2xl font-bold text-white font-inter">
-              HUPSCALE
-            </div>
-            
-            {/* Terms & Privacy */}
-            <div className="flex items-center gap-4 sm:gap-6 text-white">
-              <span className="text-base sm:text-lg font-onest cursor-pointer hover:text-opacity-80 transition-all duration-200">Terms</span>
-              <span className="text-base sm:text-lg font-onest cursor-pointer hover:text-opacity-80 transition-all duration-200">Privacy</span>
-            </div>
-          </div>
-          
-        </div>
-      </footer>
     </div>
   )
 }
