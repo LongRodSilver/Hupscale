@@ -7,6 +7,8 @@ import { Star, Plus, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import BaseImage from "@/components/BaseImage"
+import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext"
+import { useTranslations } from "@/hooks/useTranslations"
 
 // Helper function to get proper image path for GitHub Pages
 const getImagePath = (path: string) => {
@@ -131,7 +133,9 @@ const serviceCards = {
   }
 };
 
-export default function Home() {
+function HomeContent() {
+  const { t, language } = useTranslations();
+  const { setLanguage } = useLanguage();
   const [activeService, setActiveService] = useState('Social Media');
   const [isAnimating, setIsAnimating] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
@@ -380,7 +384,7 @@ export default function Home() {
               target.style.backgroundColor = 'rgba(0, 0, 0, 0)';
             }}
           >
-            Benefits
+            {t('navigation.benefits')}
           </button>
 
           {/* Services */}
@@ -413,7 +417,7 @@ export default function Home() {
               target.style.backgroundColor = 'rgba(0, 0, 0, 0)';
             }}
           >
-            Services
+            {t('navigation.services')}
           </button>
 
           {/* Testimonials */}
@@ -446,7 +450,7 @@ export default function Home() {
               target.style.backgroundColor = 'rgba(0, 0, 0, 0)';
             }}
           >
-            Testimonials
+            {t('navigation.testimonials')}
           </button>
 
           {/* FAQ's */}
@@ -479,7 +483,7 @@ export default function Home() {
               target.style.backgroundColor = 'rgba(0, 0, 0, 0)';
             }}
           >
-            FAQ's
+            {t('navigation.faqs')}
           </button>
         </div>
         
@@ -487,12 +491,11 @@ export default function Home() {
         <div className="hidden md:flex items-center gap-2 ml-4 lg:ml-6">
           {/* French Flag Button */}
           <button
-            aria-label="Switch to French"
-            className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
-            onClick={() => {
-              // TODO: Implement French language switch
-              console.log('Switching to French');
-            }}
+            aria-label={t('navigation.switchToFrench')}
+            className={`w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm ${
+              language === 'fr' ? 'ring-2 ring-[#007B79] ring-offset-2' : ''
+            }`}
+            onClick={() => setLanguage('fr')}
           >
             <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
               <rect x="0" y="0" width="8" height="18" fill="#002395"/>
@@ -503,12 +506,11 @@ export default function Home() {
           
           {/* British Flag Button */}
           <button
-            aria-label="Switch to English"
-            className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
-            onClick={() => {
-              // TODO: Implement English language switch
-              console.log('Switching to English');
-            }}
+            aria-label={t('navigation.switchToEnglish')}
+            className={`w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm ${
+              language === 'en' ? 'ring-2 ring-[#007B79] ring-offset-2' : ''
+            }`}
+            onClick={() => setLanguage('en')}
           >
             <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
               <rect width="24" height="18" fill="#012169"/>
@@ -529,7 +531,7 @@ export default function Home() {
             }, 100);
           }}
         >
-          Get started
+          {t('navigation.getStarted')}
         </button>
         
         {/* Mobile Menu Overlay */}
@@ -546,7 +548,7 @@ export default function Home() {
                     }, 100);
                   }}
                 >
-                  Benefits
+                  {t('navigation.benefits')}
                 </button>
                 <button
                   className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
@@ -557,7 +559,7 @@ export default function Home() {
                     }, 100);
                   }}
                 >
-                  Services
+                  {t('navigation.services')}
                 </button>
                 <button
                   className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
@@ -568,7 +570,7 @@ export default function Home() {
                     }, 100);
                   }}
                 >
-                  Testimonials
+                  {t('navigation.testimonials')}
                 </button>
                 <button
                   className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
@@ -579,19 +581,18 @@ export default function Home() {
                     }, 100);
                   }}
                 >
-                  FAQ's
+                  {t('navigation.faqs')}
                 </button>
                 
                 {/* Language Toggle Buttons - Mobile */}
                 <div className="flex items-center justify-center gap-2 mt-4">
                   {/* French Flag Button */}
                   <button
-                    aria-label="Switch to French"
-                    className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
-                    onClick={() => {
-                      // TODO: Implement French language switch
-                      console.log('Switching to French');
-                    }}
+                    aria-label={t('navigation.switchToFrench')}
+                    className={`w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm ${
+                      language === 'fr' ? 'ring-2 ring-[#007B79] ring-offset-2' : ''
+                    }`}
+                    onClick={() => setLanguage('fr')}
                   >
                     <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
                       <rect x="0" y="0" width="8" height="18" fill="#002395"/>
@@ -602,12 +603,11 @@ export default function Home() {
                   
                   {/* British Flag Button */}
                   <button
-                    aria-label="Switch to English"
-                    className="w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm"
-                    onClick={() => {
-                      // TODO: Implement English language switch
-                      console.log('Switching to English');
-                    }}
+                    aria-label={t('navigation.switchToEnglish')}
+                    className={`w-10 h-10 rounded-full border-0 bg-white flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-gray-50 cursor-pointer shadow-sm ${
+                      language === 'en' ? 'ring-2 ring-[#007B79] ring-offset-2' : ''
+                    }`}
+                    onClick={() => setLanguage('en')}
                   >
                     <svg width="24" height="24" viewBox="0 0 24 18" className="w-6 h-4">
                       <rect width="24" height="18" fill="#012169"/>
@@ -628,7 +628,7 @@ export default function Home() {
                     }, 100);
                   }}
                 >
-                  Get started
+                  {t('navigation.getStarted')}
                 </button>
               </div>
             </div>
@@ -1316,4 +1316,12 @@ export default function Home() {
 
     </div>
   )
+}
+
+export default function Home() {
+  return (
+    <LanguageProvider>
+      <HomeContent />
+    </LanguageProvider>
+  );
 }
