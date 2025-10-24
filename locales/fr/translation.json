@@ -1,24 +1,34 @@
 {
   "navigation": {
     "benefits": "Avantages",
-    "services": "Services", 
+    "services": "Services",
     "testimonials": "Témoignages",
     "faqs": "FAQ",
     "getStarted": "Commencer",
     "switchToFrench": "Passer au français",
     "switchToEnglish": "Passer à l'anglais"
   },
-  "hero": {
-    "videoAlt": "Vidéo promotionnelle Hupscale"
+  "logo": {
+    "hupsc": "HUPSC",
+    "a": "A",
+    "le": "LE"
   },
   "benefits": {
-    "heading1": "QU'EST-CE QUE",
-    "heading2": "Hupscale ?",
-    "description": "Chez Hupscale, nous créons des marques personnelles puissantes grâce à une clarté stratégique, une perspicacité profonde et un dévouement inébranlable — puis nous amplifions les entreprises avec la même précision, transformant la vision en influence.",
-    "weWorkWith": "Nous travaillons avec...",
+    "heading": {
+      "what": "QU'EST-CE",
+      "is": "QUE"
+    },
+    "company": "Hupscale?",
+    "description": "Chez Hupscale, nous créons des marques personnelles puissantes grâce à une clarté stratégique, une compréhension profonde et un dévouement inébranlable — puis nous amplifions les entreprises avec la même précision, transformant la vision en influence.",
+    "weWorkWith": {
+      "we": "Nous",
+      "work": "travaillons",
+      "with": "avec",
+      "dots": "..."
+    },
     "categories": {
       "motorsport": "Sport automobile",
-      "contentCreators": "Créateurs de contenu", 
+      "contentCreators": "Créateurs de contenu",
       "golfAthletes": "Athlètes de golf",
       "soccerTeams": "Équipes de football",
       "personalBrand": "Marque personnelle",
@@ -30,90 +40,118 @@
     }
   },
   "services": {
-    "heading1": "QUE",
-    "heading2": "NOUS FAISONS ?",
+    "heading": {
+      "what": "QUE"
+    },
+    "weDoQuestion": {
+      "we": "FAISONS",
+      "do": "NOUS",
+      "question": "?"
+    },
     "subtitle1": "Services Numériques",
-    "subtitle2": "expériences humaines",
+    "subtitle2": {
+      "human": "expériences",
+      "experiences": "humaines"
+    },
     "socialMedia": {
-      "title": "Médias sociaux",
+      "title": "Médias Sociaux",
       "boostAI": {
-        "label": "Boost IA :",
-        "description": " Hupscale vous aide à faire évoluer votre contenu — portée plus intelligente, plus de liberté."
+        "label": "Boost IA:",
+        "description": " Hupscale vous aide à développer votre contenu — portée plus intelligente, plus de liberté."
       },
       "engagementGroups": {
-        "label": "Groupes d'Engagement :",
+        "label": "Groupes d'Engagement:",
         "description": " Développez votre communauté avec Hupscale — connectez, grandissez, répétez."
       },
       "communityManager": {
-        "label": "Gestionnaire de Communauté :",
+        "label": "Gestionnaire Communauté:",
         "description": " Votre vie est hors ligne. Hupscale maintient votre présence haut de gamme — toujours au point."
       }
     },
     "website": {
       "title": "Site Web",
       "landingPage": {
-        "label": "Page d'Atterrissage :",
-        "description": " Parfait pour la vente de cours, l'augmentation d'abonnements, les projets précoces nécessitant une validation d'idée."
+        "label": "Page d'Atterrissage:",
+        "description": " Convertissez les visiteurs en clients avec des pages à fort impact conçues pour inciter à l'action."
       },
       "corporativeWeb": {
-        "label": "Web corporatif :",
-        "description": " recommandé pour les entreprises recherchant la mesure d'analyse, la stratégie SEO et la visibilité Google."
+        "label": "Web Corporatif:",
+        "description": " Sites web professionnels qui établissent la crédibilité et mettent en valeur l'excellence de votre entreprise."
       },
       "ecommerce": {
-        "label": "E-commerce :",
-        "description": " Suggéré pour les entreprises avec des produits validés et des capacités de gestion web interne."
+        "label": "E-commerce:",
+        "description": " Boutiques en ligne complètes optimisées pour les ventes, l'expérience utilisateur et la croissance."
       }
     },
     "design": {
       "title": "Design",
       "brandIdentity": {
-        "label": "Identité de Marque :",
-        "description": " Création d'identité visuelle complète incluant logo, couleurs et directives de marque."
+        "label": "Identité de Marque:",
+        "description": " Identités visuelles distinctives qui capturent votre essence et résonnent avec votre audience."
       },
       "uiUxDesign": {
-        "label": "Design UI/UX :",
-        "description": " Approche de design centrée sur l'utilisateur pour une expérience utilisateur optimale et un design d'interface."
+        "label": "Design UI/UX:",
+        "description": " Interfaces intuitives qui ravissent les utilisateurs et stimulent l'engagement grâce à un design réfléchi."
       },
       "printDesign": {
-        "label": "Design d'Impression :",
-        "description": " Matériaux d'impression professionnels incluant brochures, cartes de visite et supports marketing."
+        "label": "Design d'Impression:",
+        "description": " Matériaux d'impression professionnels qui laissent des impressions durables et élèvent votre présence de marque."
       }
     },
     "press": {
       "title": "Presse",
       "mediaRelations": {
-        "label": "Relations Médias :",
-        "description": " Sensibilisation médiatique stratégique et établissement de relations avec les publications clés de l'industrie."
+        "label": "Relations Médias:",
+        "description": " Sensibilisation médiatique stratégique qui amplifie votre message et construit des connexions précieuses."
       },
       "pressReleases": {
-        "label": "Communiqués de Presse :",
-        "description": " Rédaction et distribution professionnelles de communiqués de presse vers les médias pertinents."
+        "label": "Communiqués de Presse:",
+        "description": " Annonces convaincantes qui capturent l'attention et génèrent une couverture significative."
       },
       "crisisManagement": {
-        "label": "Gestion de Crise :",
-        "description": " Stratégies de communication de crise proactives et services de gestion de réputation."
+        "label": "Gestion de Crise:",
+        "description": " Conseils d'experts pour protéger votre réputation et naviguer dans des situations difficiles."
       }
     }
   },
   "process": {
-    "heading": "DE L'IDÉE À L'EXÉCUTION",
+    "heading": {
+      "idea": "IDÉE",
+      "to": "À",
+      "execution": "EXÉCUTION"
+    },
     "listen": {
-      "title": "NOUS ÉCOUTONS",
+      "we": "NOUS",
+      "listen": "ÉCOUTONS",
       "description": "Nous nous engageons dans une écoute stratégique capturant votre vision et les attentes de votre audience."
     },
     "analyze": {
-      "title": "NOUS ANALYSONS", 
+      "we": "NOUS",
+      "analyze": "ANALYSONS",
       "description": "Nous explorons et évaluons des solutions sur mesure, pesant l'impact et l'alignement."
     },
     "create": {
-      "title": "NOUS CRÉONS",
-      "description": "Nous concevons avec un but en créant des expériences élevées qui résonnent."
+      "we": "NOUS",
+      "create": "CRÉONS",
+      "description": "Nous concevons avec un but créant des expériences élevées qui résonnent."
     }
   },
   "testimonials": {
-    "heading1": "NOUS DÉVELOPPONS",
-    "heading2": "POUR DE GRANDES PERSONNES",
-    "subtitle": "Depuis 2019, nous travaillons avec des entreprises incroyables pour créer un impact significatif et des expériences convaincantes.",
+    "heading": {
+      "we": "NOUS",
+      "scale": "DÉVELOPPONS"
+    },
+    "forGreatPeople": {
+      "for": "POUR DE",
+      "great": "GRANDES",
+      "people": "PERSONNES"
+    },
+    "subtitle": {
+      "since": "Depuis 2019",
+      "weWork": "nous travaillons avec des entreprises incroyables",
+      "toCreate": "pour créer",
+      "meaningful": "un impact significatif et des expériences convaincantes."
+    },
     "customers": {
       "sarah": "Sarah M.",
       "rachel": "Rachel T.",
@@ -122,31 +160,37 @@
       "paul": "Paul T."
     },
     "reviews": {
-      "sarah": "J'avais du mal à obtenir de la traction pour mon entreprise de coaching jusqu'à ce que je trouve Hupscale. En trois mois, ma base de clients a triplé et mes revenus ont doublé. Leurs stratégies sont simples mais incroyablement efficaces. Si vous voulez de vrais résultats, pas seulement des promesses, c'est votre équipe !",
-      "rachel": "Hupscale a complètement transformé ma stratégie de contenu ! Je suis passée de publications aléatoires à avoir un plan clair qui convertit réellement. Ma liste d'emails est passée de 200 à 5 000 abonnés en seulement quatre mois. L'équipe comprend vraiment ce qu'il faut pour développer une entreprise !",
-      "marcus": "En tant que propriétaire de petite entreprise, je pensais que la croissance était hors de portée. Hupscale m'a prouvé le contraire. Ils m'ont aidé à rationaliser mes processus et à atteindre des clients que je n'aurais jamais cru possibles. Mes ventes ont augmenté de 150% en six mois. Absolument rentable !",
-      "emma": "J'ai travaillé avec plusieurs agences auparavant, mais Hupscale est différent. Ils se soucient vraiment de votre succès. La visibilité de ma marque a explosé, et je me sens enfin confiante dans la direction de mon entreprise. Les résultats parlent d'eux-mêmes — mon meilleur investissement cette année !",
-      "paul": "Hupscale a complètement transformé mon entreprise ! Je suis passé de la lutte pour développer à générer des revenus à six chiffres en seulement quatre mois. Leurs stratégies sont pratiques et puissantes. Si vous êtes prêt à amener votre entreprise au niveau supérieur, Hupscale est l'équipe dont vous avez besoin !"
+      "sarah": "J'avais du mal à obtenir de la traction pour mon entreprise de coaching jusqu'à ce que je trouve Hupscale. En trois mois, ma clientèle a triplé et mes revenus ont doublé. Leurs stratégies sont simples mais incroyablement efficaces. Si vous voulez de vrais résultats, pas seulement des promesses, c'est votre équipe!",
+      "rachel": "Hupscale a complètement transformé ma stratégie de contenu! Je suis passée de publications aléatoires à un plan clair qui convertit réellement. Ma liste d'emails est passée de 200 à 5 000 abonnés en seulement quatre mois. L'équipe comprend vraiment ce qu'il faut pour développer une entreprise!",
+      "marcus": "En tant que propriétaire de petite entreprise, je pensais que la croissance était hors de portée. Hupscale m'a prouvé le contraire. Ils m'ont aidé à rationaliser mes processus et à atteindre des clients que je n'aurais jamais pensé possibles. Mes ventes ont augmenté de 150% en six mois. Ça vaut vraiment chaque centime!",
+      "emma": "J'ai travaillé avec plusieurs agences auparavant, mais Hupscale est différent. Ils se soucient vraiment de votre succès. La visibilité de ma marque a explosé, et je me sens enfin confiante dans la direction de mon entreprise. Les résultats parlent d'eux-mêmes — mon meilleur investissement cette année!",
+      "paul": "Hupscale a complètement transformé mon entreprise! Je suis passé de la difficulté à développer à générer des revenus à six chiffres en seulement quatre mois. Leurs stratégies sont pratiques et puissantes. Si vous êtes prêt à amener votre entreprise au niveau supérieur, Hupscale est l'équipe dont vous avez besoin!"
     }
   },
   "interaction": {
     "heading1": "HUPSCALE",
-    "heading2": "votre ENTREPRISE.",
+    "heading2": {
+      "your": "votre",
+      "business": "ENTREPRISE."
+    },
     "cta": "Développons"
   },
   "faq": {
-    "heading": "RÉPONSES DONT VOUS AVEZ BESOIN",
+    "heading": {
+      "answers": "RÉPONSES",
+      "youNeed": "DONT VOUS AVEZ BESOIN"
+    },
     "questions": {
-      "whyChoose": "Pourquoi choisir Hupscale ?",
-      "whyGrow": "Pourquoi devrais-je grandir ?",
-      "guarantees": "Quel type de garanties ai-je ?",
-      "information": "Quelles informations dois-je fournir ?"
+      "whyChoose": "Pourquoi choisir Hupscale?",
+      "whyGrow": "Pourquoi devrais-je grandir?",
+      "guarantees": "Quel type de garanties ai-je?",
+      "information": "Quelles informations dois-je fournir?"
     },
     "answers": {
       "whyChoose": "Chez Hupscale, nous ressentons que — c'est le chaos là-bas pour grandir sur les réseaux sociaux. Alors, nous sommes là pour aider. Nous sommes plus qu'une agence de marketing, nous sommes vos partenaires de croissance. Nos tactiques sont conçues pour être évolutives pour les développeurs nouveaux ou avancés. Nous fournissons des résultats, un support 1:1 et une grande affection. Grandissons ensemble.",
-      "whyGrow": "Vous pourriez penser que c'est très facile parce que vous obtiendrez plus de followers, cependant cela doit être sur la croissance d'une communauté qui aime ce que vous faites. La croissance est importante pour tout ce que vous faites, que ce soit une petite entreprise ou un créateur ou partager votre message et vous connecter avec de nouvelles personnes. Et être le centre d'attention sur les réseaux sociaux débloquera également de nouvelles opportunités pour vous et donc, la collaboration avec d'autres. Quand vous pouvez prospérer, pourquoi être petit ?",
-      "guarantees": "Nous croyons en ce que nous faisons et les résultats que nous obtenons. Nous ne vous mentirons pas — personne ne peut garantir que vous deviendrez célèbre du jour au lendemain, mais nous serons avec vous à chaque étape, ajustant les stratégies au besoin pour vous maintenir sur la voie du vrai progrès. Notre succès se mesure à votre sourire satisfait, donc nous ne nous arrêterons pas jusqu'à ce que vous soyez heureux des résultats.",
-      "information": "Nous n'exigeons que les informations essentielles dont toute agence pourrait avoir besoin, comme votre public cible, votre audience actuelle, vos objectifs, et comment nous pouvons vous aider à les atteindre. Hupscale ou tout membre de notre personnel ne demandera jamais votre nom d'utilisateur ou mot de passe."
+      "whyGrow": "Vous pourriez penser que c'est très facile parce que vous obtiendrez plus de followers, cependant cela doit être à propos de faire grandir une communauté qui aime ce que vous faites. La croissance est importante pour tout ce que vous faites, que ce soit une petite entreprise ou un créateur ou partager votre message et vous connecter avec de nouvelles personnes. Et être le centre d'attention sur les réseaux sociaux débloquera également de nouvelles opportunités pour vous et donc, la collaboration avec d'autres. Quand vous pouvez prospérer, pourquoi être petit?",
+      "guarantees": "Nous croyons en ce que nous faisons et les résultats que nous obtenons. Nous ne vous mentirons pas — personne ne peut garantir que vous deviendrez célèbre du jour au lendemain, mais nous serons avec vous à chaque étape, ajustant les stratégies au besoin pour vous maintenir sur la bonne voie pour un vrai progrès. Notre succès se mesure par votre sourire satisfait, donc nous ne nous arrêterons pas jusqu'à ce que vous soyez heureux avec les résultats.",
+      "information": "Nous n'exigeons que les informations essentielles dont toute agence pourrait avoir besoin, comme votre audience cible, votre audience actuelle, vos objectifs, et comment nous pouvons vous aider à les atteindre. Hupscale ou tout membre de notre personnel ne demandera jamais votre nom d'utilisateur ou mot de passe."
     }
   },
   "cta": {

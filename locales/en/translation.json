@@ -8,14 +8,24 @@
     "switchToFrench": "Switch to French",
     "switchToEnglish": "Switch to English"
   },
-  "hero": {
-    "videoAlt": "Hupscale promotional video"
+  "logo": {
+    "hupsc": "HUPSC",
+    "a": "A",
+    "le": "LE"
   },
   "benefits": {
-    "heading1": "WHAT IS",
-    "heading2": "Hupscale?",
+    "heading": {
+      "what": "WHAT",
+      "is": "IS"
+    },
+    "company": "Hupscale?",
     "description": "At Hupscale, we craft powerful personal brands through strategic clarity, deep insight, and unwavering dedication — then amplify businesses with the same precision, turning vision into influence.",
-    "weWorkWith": "We work with...",
+    "weWorkWith": {
+      "we": "We",
+      "work": "work",
+      "with": "with",
+      "dots": "..."
+    },
     "categories": {
       "motorsport": "Motorsport",
       "contentCreators": "Content creators", 
@@ -30,12 +40,21 @@
     }
   },
   "services": {
-    "heading1": "WHAT",
-    "heading2": "WE DO?",
+    "heading": {
+      "what": "WHAT"
+    },
+    "weDoQuestion": {
+      "we": "WE",
+      "do": "DO",
+      "question": "?"
+    },
     "subtitle1": "Digital Services",
-    "subtitle2": "human experiences",
+    "subtitle2": {
+      "human": "human",
+      "experiences": "experiences"
+    },
     "socialMedia": {
-      "title": "Social media",
+      "title": "Social Media",
       "boostAI": {
         "label": "Boost AI:",
         "description": " Hupscale helps you upscale your content — smarter reach, more freedom."
@@ -53,67 +72,86 @@
       "title": "Website",
       "landingPage": {
         "label": "Landing Page:",
-        "description": " Perfect for course sale, subscription boosts, early projects needing idea validation."
+        "description": " Convert visitors into customers with high-impact pages designed to drive action."
       },
       "corporativeWeb": {
-        "label": "Corporative web:",
-        "description": " recommended for businesses seeking analytics measurement, SEO strategy, and Google visibility."
+        "label": "Corporative Web:",
+        "description": " Professional websites that establish credibility and showcase your business excellence."
       },
       "ecommerce": {
         "label": "E-commerce:",
-        "description": " Suggested for companies with validated products and internal web management capabilities."
+        "description": " Complete online stores optimized for sales, user experience, and growth."
       }
     },
     "design": {
       "title": "Design",
       "brandIdentity": {
         "label": "Brand Identity:",
-        "description": " Complete visual identity creation including logo, colors, and brand guidelines."
+        "description": " Distinctive visual identities that capture your essence and resonate with your audience."
       },
       "uiUxDesign": {
         "label": "UI/UX Design:",
-        "description": " User-centered design approach for optimal user experience and interface design."
+        "description": " Intuitive interfaces that delight users and drive engagement through thoughtful design."
       },
       "printDesign": {
         "label": "Print Design:",
-        "description": " Professional print materials including brochures, business cards, and marketing collateral."
+        "description": " Professional print materials that make lasting impressions and elevate your brand presence."
       }
     },
     "press": {
       "title": "Press",
       "mediaRelations": {
         "label": "Media Relations:",
-        "description": " Strategic media outreach and relationship building with key industry publications."
+        "description": " Strategic media outreach that amplifies your message and builds valuable connections."
       },
       "pressReleases": {
         "label": "Press Releases:",
-        "description": " Professional press release writing and distribution to relevant media outlets."
+        "description": " Compelling announcements that capture attention and generate meaningful coverage."
       },
       "crisisManagement": {
         "label": "Crisis Management:",
-        "description": " Proactive crisis communication strategies and reputation management services."
+        "description": " Expert guidance to protect your reputation and navigate challenging situations."
       }
     }
   },
   "process": {
-    "heading": "IDEA TO EXECUTION",
+    "heading": {
+      "idea": "IDEA",
+      "to": "TO",
+      "execution": "EXECUTION"
+    },
     "listen": {
-      "title": "WE LISTEN",
+      "we": "WE",
+      "listen": "LISTEN",
       "description": "We engage in strategic listening capturing your vision & the expectations of your audience."
     },
     "analyze": {
-      "title": "WE ANALYZE", 
+      "we": "WE",
+      "analyze": "ANALYZE",
       "description": "We explore and assess tailored solutions, weighing impact & alignment."
     },
     "create": {
-      "title": "WE CREATE",
+      "we": "WE",
+      "create": "CREATE",
       "description": "We design with purpose crafting elevated experiences that resonate."
     }
   },
   "testimonials": {
-    "heading1": "WE SCALE",
-    "heading2": "FOR GREAT PEOPLE",
-    "subtitle": "Since 2019 we work with incredible businesses to create meaningful impact and compelling experiences.",
+    "heading": {
+      "we": "WE",
+      "scale": "SCALE"
+    },
+    "forGreatPeople": {
+      "for": "FOR",
+      "great": "GREAT",
+      "people": "PEOPLE"
+    },
+    "subtitle": {
+      "since": "Since 2019",
+      "weWork": "we work with incredible businesses",
+      "toCreate": "to create",
+      "meaningful": "meaningful impact and compelling experiences."
+    },
     "customers": {
       "sarah": "Sarah M.",
       "rachel": "Rachel T.",
@@ -131,11 +169,17 @@
   },
   "interaction": {
     "heading1": "HUPSCALE",
-    "heading2": "your BUSINESS.",
+    "heading2": {
+      "your": "your",
+      "business": "BUSINESS."
+    },
     "cta": "Let's Scale"
   },
   "faq": {
-    "heading": "ANSWERS YOU NEED",
+    "heading": {
+      "answers": "ANSWERS",
+      "youNeed": "YOU NEED"
+    },
     "questions": {
       "whyChoose": "Why choose Hupscale?",
       "whyGrow": "Why should I grow?",

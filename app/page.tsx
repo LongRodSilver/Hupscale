@@ -138,6 +138,60 @@ function HomeContent() {
   const { setLanguage } = useLanguage();
   const [activeService, setActiveService] = useState('Social Media');
 
+  // Get translated testimonials data
+  const getTestimonials = () => [
+    {
+      id: 1,
+      name: t('testimonials.customers.sarah'),
+      image: "/Sarah-M.jpeg",
+      text: t('testimonials.reviews.sarah')
+    },
+    {
+      id: 2,
+      name: t('testimonials.customers.rachel'),
+      image: "/Rachel-T.jpeg",
+      text: t('testimonials.reviews.rachel')
+    },
+    {
+      id: 3,
+      name: t('testimonials.customers.marcus'),
+      image: "/Marcus-D.jpeg",
+      text: t('testimonials.reviews.marcus')
+    },
+    {
+      id: 4,
+      name: t('testimonials.customers.emma'),
+      image: "/Emma-K.jpeg",
+      text: t('testimonials.reviews.emma')
+    },
+    {
+      id: 5,
+      name: t('testimonials.customers.paul'),
+      image: "/Paul-T.jpeg",
+      text: t('testimonials.reviews.paul')
+    }
+  ];
+
+  // Get translated FAQ data
+  const getFaqs = () => [
+    {
+      q: t('faq.questions.whyChoose'),
+      a: t('faq.answers.whyChoose')
+    },
+    {
+      q: t('faq.questions.whyGrow'),
+      a: t('faq.answers.whyGrow')
+    },
+    {
+      q: t('faq.questions.guarantees'),
+      a: t('faq.answers.guarantees')
+    },
+    {
+      q: t('faq.questions.information'),
+      a: t('faq.answers.information')
+    }
+  ];
+
   // Get translated service card data
   const getServiceCard = (service: string) => {
     const serviceKey = service.replace(' ', '').toLowerCase();
@@ -172,60 +226,7 @@ function HomeContent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
-  // Get translated FAQ data
-  const getFaqs = () => [
-    {
-      q: t('faq.questions.whyChoose'),
-      a: t('faq.answers.whyChoose')
-    },
-    {
-      q: t('faq.questions.whyGrow'),
-      a: t('faq.answers.whyGrow')
-    },
-    {
-      q: t('faq.questions.guarantees'),
-      a: t('faq.answers.guarantees')
-    },
-    {
-      q: t('faq.questions.information'),
-      a: t('faq.answers.information')
-    }
-  ];
-
   // TESTIMONIALS CAROUSEL - 50 CARD INFINITE SCROLL IMPLEMENTATION
-  // Get translated testimonials data
-  const getTestimonials = () => [
-    {
-      id: 1,
-      name: t('testimonials.customers.sarah'),
-      image: "/Sarah-M.jpeg",
-      text: t('testimonials.reviews.sarah')
-    },
-    {
-      id: 2,
-      name: t('testimonials.customers.rachel'),
-      image: "/Rachel-T.jpeg",
-      text: t('testimonials.reviews.rachel')
-    },
-    {
-      id: 3,
-      name: t('testimonials.customers.marcus'),
-      image: "/Marcus-D.jpeg",
-      text: t('testimonials.reviews.marcus')
-    },
-    {
-      id: 4,
-      name: t('testimonials.customers.emma'),
-      image: "/Emma-K.jpeg",
-      text: t('testimonials.reviews.emma')
-    },
-    {
-      id: 5,
-      name: t('testimonials.customers.paul'),
-      image: "/Paul-T.jpeg",
-      text: t('testimonials.reviews.paul')
-    }
-  ]
   
   // FIGMA SPECIFICATIONS WITH NATURAL FLOW
   const CARD_WIDTH = 354.4 // Exact width from Figma
@@ -338,6 +339,19 @@ function HomeContent() {
       body {
         overflow-x: hidden;
       }
+      
+      /* Text wrapping for French translations */
+      h1, h2, h3, h4, h5, h6 {
+        word-break: break-word;
+        white-space: normal;
+        hyphens: auto;
+      }
+      
+      /* Ensure section containers can handle longer text */
+      .sticky section, section {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
     `;
     
     document.head.appendChild(style);
@@ -368,7 +382,7 @@ function HomeContent() {
         
         {/* HUPSCALE Logo - Responsive */}
         <div className="flex items-center text-sm sm:text-lg font-black text-[rgb(35,35,35)] font-inter tracking-wide mr-4 sm:mr-8">
-          HUPSC<span style={{ color: '#007B79' }}>A</span>LE
+          {t('logo.hupsc')}<span style={{ color: '#007B79' }}>{t('logo.a')}</span>{t('logo.le')}
         </div>
         
         {/* Mobile menu button */}
@@ -705,10 +719,10 @@ function HomeContent() {
           {/* Heading - Responsive */}
           <div className="mb-6">
             <h2 className="font-inter font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-[#efefef]">
-              {t('benefits.heading1')}
+              {t('benefits.heading.what')} {t('benefits.heading.is')}
             </h2>
             <h2 className="font-inter font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight text-[#181818]">
-              {t('benefits.heading2')}
+              {t('benefits.company')}
             </h2>
           </div>
           
@@ -726,7 +740,10 @@ function HomeContent() {
             {/* We work with heading - Responsive */}
             <div>
               <h3 className="font-inter font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-[#efefef]">
-                {t('benefits.weWorkWith')}
+                <span>{t('benefits.weWorkWith.we')} </span>
+                <span className="text-[#007B79]">{t('benefits.weWorkWith.work')} </span>
+                <span>{t('benefits.weWorkWith.with')}</span>
+                <span className="text-[#007B79]">{t('benefits.weWorkWith.dots')}</span>
               </h3>
             </div>
             
@@ -816,25 +833,17 @@ function HomeContent() {
             <div className="text-white flex-1 max-w-2xl text-center lg:text-left">
               <h2 className="font-black leading-tight mb-5 text-white">
                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase">
-                  {t('services.heading1')}
+                  {t('services.heading.what')}
                 </div>
                 <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase">
-                  {language === 'en' ? (
-                    <>WE <span style={{ color: '#007B79' }}>DO</span>?</>
-                  ) : (
-                    <>{t('services.heading2')}</>
-                  )}
+                  {t('services.weDoQuestion.we')} <span style={{ color: '#007B79' }}>{t('services.weDoQuestion.do')}</span>{t('services.weDoQuestion.question')}
                 </div>
               </h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-white mb-2 font-onest">
                 {t('services.subtitle1')}
               </p>
               <p className="text-lg sm:text-xl lg:text-2xl text-white mb-8 lg:mb-12 font-onest">
-                {language === 'en' ? (
-                  <><span className="text-[#007B79]">human</span> experiences</>
-                ) : (
-                  <>{t('services.subtitle2')}</>
-                )}
+                <span className="text-[#007B79]">{t('services.subtitle2.human')}</span> {t('services.subtitle2.experiences')}
               </p>
               
               {/* 2x2 Button Grid - Responsive */}
@@ -946,11 +955,7 @@ function HomeContent() {
           {/* Main Title - Responsive */}
           <div className="text-center">
             <h2 className="font-black leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#EFEFEF]">
-              {language === 'en' ? (
-                <>IDEA TO <span style={{ color: '#007B79' }}>EXECUTION</span></>
-              ) : (
-                <>{t('process.heading')}</>
-              )}
+              {t('process.heading.idea')} {t('process.heading.to')} <span style={{ color: '#007B79' }}>{t('process.heading.execution')}</span>
             </h2>
           </div>
 
@@ -961,11 +966,7 @@ function HomeContent() {
               {/* Step 1: We listen */}
               <div className="flex flex-col items-start flex-1 max-w-xs">
                 <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
-                  {language === 'en' ? (
-                    <><span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>LISTEN</span></>
-                  ) : (
-                    <>{t('process.listen.title')}</>
-                  )}
+                  <span style={{ color: '#007B79', textTransform: 'uppercase' }}>{t('process.listen.we')}</span> <span style={{ color: '#EFEFEF' }}>{t('process.listen.listen')}</span>
                 </h3>
                 <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
                   {t('process.listen.description')}
@@ -975,11 +976,7 @@ function HomeContent() {
               {/* Step 2: We analyze */}
               <div className="flex flex-col items-start flex-1 max-w-xs">
                 <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
-                  {language === 'en' ? (
-                    <><span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>ANALYZE</span></>
-                  ) : (
-                    <>{t('process.analyze.title')}</>
-                  )}
+                  <span style={{ color: '#007B79', textTransform: 'uppercase' }}>{t('process.analyze.we')}</span> <span style={{ color: '#EFEFEF' }}>{t('process.analyze.analyze')}</span>
                 </h3>
                 <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
                   {t('process.analyze.description')}
@@ -989,11 +986,7 @@ function HomeContent() {
               {/* Step 3: We create */}
               <div className="flex flex-col items-start flex-1 max-w-xs">
                 <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
-                  {language === 'en' ? (
-                    <><span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>CREATE</span></>
-                  ) : (
-                    <>{t('process.create.title')}</>
-                  )}
+                  <span style={{ color: '#007B79', textTransform: 'uppercase' }}>{t('process.create.we')}</span> <span style={{ color: '#EFEFEF' }}>{t('process.create.create')}</span>
                 </h3>
                 <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
                   {t('process.create.description')}
@@ -1024,11 +1017,7 @@ function HomeContent() {
             {/* Mobile Step 1 */}
             <div className="flex flex-col items-center text-center max-w-sm">
               <h3 className="text-xl sm:text-2xl font-black mb-4">
-                {language === 'en' ? (
-                  <><span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>LISTEN</span></>
-                ) : (
-                  <>{t('process.listen.title')}</>
-                )}
+                <span style={{ color: '#007B79' }}>{t('process.listen.we')}</span>&nbsp;<span style={{ color: '#EFEFEF' }}>{t('process.listen.listen')}</span>
               </h3>
               <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
                 {t('process.listen.description')}
@@ -1051,11 +1040,7 @@ function HomeContent() {
             {/* Mobile Step 2 */}
             <div className="flex flex-col items-center text-center max-w-sm">
               <h3 className="text-xl sm:text-2xl font-black mb-4">
-                {language === 'en' ? (
-                  <><span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>ANALYZE</span></>
-                ) : (
-                  <>{t('process.analyze.title')}</>
-                )}
+                <span style={{ color: '#007B79' }}>{t('process.analyze.we')}</span>&nbsp;<span style={{ color: '#EFEFEF' }}>{t('process.analyze.analyze')}</span>
               </h3>
               <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
                 {t('process.analyze.description')}
@@ -1078,11 +1063,7 @@ function HomeContent() {
             {/* Mobile Step 3 */}
             <div className="flex flex-col items-center text-center max-w-sm">
               <h3 className="text-xl sm:text-2xl font-black mb-4">
-                {language === 'en' ? (
-                  <><span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>CREATE</span></>
-                ) : (
-                  <>{t('process.create.title')}</>
-                )}
+                <span style={{ color: '#007B79' }}>{t('process.create.we')}</span>&nbsp;<span style={{ color: '#EFEFEF' }}>{t('process.create.create')}</span>
               </h3>
               <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
                 {t('process.create.description')}
@@ -1102,17 +1083,18 @@ function HomeContent() {
               <div className="text-center flex flex-col gap-2 lg:gap-4">
                 {/* "Great work" text - Responsive */}
                 <p className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white m-0">
-                  {t('testimonials.heading1')}
+                  {t('testimonials.heading.we')} {t('testimonials.heading.scale')}
                 </p>
                 
                 {/* "For great people" text - Responsive */}
                 <p className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(35,35,35)] m-0">
-                  {t('testimonials.heading2')}
+                  {t('testimonials.forGreatPeople.for')} {t('testimonials.forGreatPeople.great')} {t('testimonials.forGreatPeople.people')}
                 </p>
                 
                 {/* Subtext - Responsive */}
                 <p className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-center text-[rgb(35,35,35)] mt-4 mb-8 lg:mb-12 max-w-4xl mx-auto">
-                  {t('testimonials.subtitle')}
+                  {t('testimonials.subtitle.since')} <span className="font-bold">{t('testimonials.subtitle.weWork')}</span> {t('testimonials.subtitle.toCreate')}<br className="hidden sm:block" />
+                  <span className="sm:hidden"> </span>{t('testimonials.subtitle.meaningful')}
                 </p>
               </div>
             </div>
@@ -1236,11 +1218,7 @@ function HomeContent() {
           <p className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-8 lg:mb-10 leading-tight" style={{
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
-            {language === 'en' ? (
-              <>your <span style={{ color: '#007B79' }}>BUSINESS.</span></>
-            ) : (
-              <>{t('interaction.heading2')}</>
-            )}
+{t('interaction.heading2.your')} <span style={{ color: '#007B79' }}>{t('interaction.heading2.business')}</span>
           </p>
           
           <button className="bg-[#007B79] text-white border-none rounded-full px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold cursor-pointer uppercase shadow-lg hover:shadow-xl transition-all duration-200">
@@ -1268,11 +1246,7 @@ function HomeContent() {
 
             {/* Title - Responsive */}
             <h2 className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(239,239,239)] mb-6 lg:mb-8 leading-tight">
-              {language === 'en' ? (
-                <>ANSWERS <span className="text-[rgb(35,35,35)] font-black">YOU NEED</span></>
-              ) : (
-                <>{t('faq.heading')}</>
-              )}
+{t('faq.heading.answers')} <span className="text-[rgb(35,35,35)] font-black">{t('faq.heading.youNeed')}</span>
             </h2>
 
             {/* FAQ Items - Responsive */}
