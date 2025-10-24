@@ -137,63 +137,93 @@ function HomeContent() {
   const { t, language } = useTranslations();
   const { setLanguage } = useLanguage();
   const [activeService, setActiveService] = useState('Social Media');
+
+  // Get translated service card data
+  const getServiceCard = (service: string) => {
+    const serviceKey = service.replace(' ', '').toLowerCase();
+    const originalCard = serviceCards[service as keyof typeof serviceCards];
+    
+    if (!originalCard) return null;
+    
+    return {
+      backgroundImage: originalCard.backgroundImage,
+      title: t(`services.${serviceKey === 'socialmedia' ? 'socialMedia' : serviceKey}.title`),
+      content: originalCard.content.map((item, index) => {
+        const keys = ['boostAI', 'engagementGroups', 'communityManager'];
+        const websiteKeys = ['landingPage', 'corporativeWeb', 'ecommerce'];
+        const designKeys = ['brandIdentity', 'uiUxDesign', 'printDesign'];
+        const pressKeys = ['mediaRelations', 'pressReleases', 'crisisManagement'];
+        
+        let contentKeys = keys;
+        if (service === 'Website') contentKeys = websiteKeys;
+        else if (service === 'Design') contentKeys = designKeys;
+        else if (service === 'Press') contentKeys = pressKeys;
+        
+        const contentKey = contentKeys[index];
+        return {
+          label: t(`services.${serviceKey === 'socialmedia' ? 'socialMedia' : serviceKey}.${contentKey}.label`),
+          description: t(`services.${serviceKey === 'socialmedia' ? 'socialMedia' : serviceKey}.${contentKey}.description`)
+        };
+      })
+    };
+  };
   const [isAnimating, setIsAnimating] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
-  // FAQ Data Array
-  const faqs = [
+  // Get translated FAQ data
+  const getFaqs = () => [
     {
-      q: "Why choose Hupscale?",
-      a: "At Hupscale, we feel that — it's chaos out there to grow on social. So, we are here to help. We are more than a marketing agency, we are your growth partners. Our tactics are designed to be scalable for new or advanced developers alike. We provide results, 1:1 support and great affection. Let's grow together."
+      q: t('faq.questions.whyChoose'),
+      a: t('faq.answers.whyChoose')
     },
     {
-      q: "Why should I grow?",
-      a: "You might think it is very easy because you will get more followers, however this must be about growing a community that loves what do. Growth is important for anything you do, whether that be a small business or creator or sharing your message and connecting with new people. And being the center of attention in social will also unlock new opportunities for you and thus, collaboration with others. When you can flourish, why be small?"
+      q: t('faq.questions.whyGrow'),
+      a: t('faq.answers.whyGrow')
     },
     {
-      q: "What kind of guarantees do I have?",
-      a: "We believe in what we do and the results we achieve. We won't lie to you—no one can guarantee you'll become famous overnight, but we'll be with you every step of the way, tweaking strategies as needed to keep you on track for real progress. Our success is measured by your satisfied smile, so we won't stop until you're happy with the results."
+      q: t('faq.questions.guarantees'),
+      a: t('faq.answers.guarantees')
     },
     {
-      q: "What information do I need to provide?",
-      a: "We only require the essential information that any agency might need, such as your target audience, your current audience, your goals, and how we can help you achieve them. Hupscale or any member of our staff will never ask for your username or password."
+      q: t('faq.questions.information'),
+      a: t('faq.answers.information')
     }
   ];
 
   // TESTIMONIALS CAROUSEL - 50 CARD INFINITE SCROLL IMPLEMENTATION
-  // Default testimonials data array with exactly 5 unique testimonials - EACH WITH THEIR OWN LOCAL PNG
-  const defaultTestimonials = [
+  // Get translated testimonials data
+  const getTestimonials = () => [
     {
       id: 1,
-      name: "Sarah M.",
+      name: t('testimonials.customers.sarah'),
       image: "/Sarah-M.jpeg",
-      text: "I was struggling to get traction for my coaching business until I found Hupscale. Within three months, my client base tripled and my revenue doubled. Their strategies are simple but incredibly effective. If you want real results, not just promises, this is your team!"
+      text: t('testimonials.reviews.sarah')
     },
     {
       id: 2,
-      name: "Rachel T.",
+      name: t('testimonials.customers.rachel'),
       image: "/Rachel-T.jpeg",
-      text: "Hupscale transformed my content strategy completely! I went from posting randomly to having a clear plan that actually converts. My email list grew from 200 to 5,000 subscribers in just four months. The team really understands what it takes to scale a business!"
+      text: t('testimonials.reviews.rachel')
     },
     {
       id: 3,
-      name: "Marcus D.",
+      name: t('testimonials.customers.marcus'),
       image: "/Marcus-D.jpeg",
-      text: "As a small business owner, I thought growth was out of reach. Hupscale proved me wrong. They helped me streamline my processes and reach customers I never thought possible. My sales increased by 150% in six months. Absolutely worth every penny!"
+      text: t('testimonials.reviews.marcus')
     },
     {
       id: 4,
-      name: "Emma K.",
+      name: t('testimonials.customers.emma'),
       image: "/Emma-K.jpeg",
-      text: "I've worked with several agencies before, but Hupscale is different. They actually care about your success. My brand visibility skyrocketed, and I finally feel confident in my business direction. The results speak for themselves—my best investment this year!"
+      text: t('testimonials.reviews.emma')
     },
     {
       id: 5,
-      name: "Paul T.",
+      name: t('testimonials.customers.paul'),
       image: "/Paul-T.jpeg",
-      text: "Hupscale transformed my business completely! I went from struggling to scale to generating six-figure revenue in just four months. Their strategies are practical and powerful. If you're ready to take your business to the next level, Hupscale is the team you need!"
+      text: t('testimonials.reviews.paul')
     }
   ]
   
@@ -205,7 +235,7 @@ function HomeContent() {
   
   // CREATE EXACTLY 50 TESTIMONIAL CARDS (10 SETS OF 5)
   const createInfiniteArray = () => {
-    const baseTestimonials = [...defaultTestimonials] // 5 cards
+    const baseTestimonials = [...getTestimonials()] // 5 cards
     const infiniteArray = []
     for (let i = 0; i < 10; i++) { // Repeat 10 times = 50 cards total
       infiniteArray.push(...baseTestimonials.map(t => ({...t, id: `${t.id}-set${i}` })))
@@ -675,17 +705,17 @@ function HomeContent() {
           {/* Heading - Responsive */}
           <div className="mb-6">
             <h2 className="font-inter font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-[#efefef]">
-              WHAT IS
+              {t('benefits.heading1')}
             </h2>
             <h2 className="font-inter font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight text-[#181818]">
-              Hupscale?
+              {t('benefits.heading2')}
             </h2>
           </div>
           
           {/* Description - Responsive */}
           <div className="max-w-md">
             <p className="font-onest text-lg sm:text-xl lg:text-2xl leading-relaxed text-[#181818]">
-              At Hupscale, we craft powerful personal brands through strategic clarity, deep insight, and unwavering dedication — then amplify businesses with the same precision, turning vision into influence.
+              {t('benefits.description')}
             </p>
           </div>
         </div>
@@ -696,10 +726,7 @@ function HomeContent() {
             {/* We work with heading - Responsive */}
             <div>
               <h3 className="font-inter font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-[#efefef]">
-                <span>We </span>
-                <span className="text-[#007B79]">work </span>
-                <span>with</span>
-                <span className="text-[#007B79]">...</span>
+                {t('benefits.weWorkWith')}
               </h3>
             </div>
             
@@ -709,23 +736,23 @@ function HomeContent() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Motorsport" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-motorsport.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Motorsport</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.motorsport')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Content creators" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-content.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Content creators</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.contentCreators')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Golf athletes" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-golf.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Golf athletes</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.golfAthletes')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Soccer teams" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-soccer.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Soccer teams</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.soccerTeams')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Personal brand" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-personal.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Personal brand</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.personalBrand')}</span>
                 </div>
               </div>
               
@@ -733,23 +760,23 @@ function HomeContent() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Real estate" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-real.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Real estate</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.realEstate')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Models" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-models.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Models</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.models')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Influencers" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-influencer.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Influencers</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.influencers')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Car rentals" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-car.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Car rentals</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.carRentals')}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <img alt="Medical" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-medical.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">Medical</span>
+                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.medical')}</span>
                 </div>
               </div>
             </div>
@@ -789,17 +816,25 @@ function HomeContent() {
             <div className="text-white flex-1 max-w-2xl text-center lg:text-left">
               <h2 className="font-black leading-tight mb-5 text-white">
                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase">
-                  WHAT
+                  {t('services.heading1')}
                 </div>
                 <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase">
-                  WE <span style={{ color: '#007B79' }}>DO</span>?
+                  {language === 'en' ? (
+                    <>WE <span style={{ color: '#007B79' }}>DO</span>?</>
+                  ) : (
+                    <>{t('services.heading2')}</>
+                  )}
                 </div>
               </h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-white mb-2 font-onest">
-                Digital Services
+                {t('services.subtitle1')}
               </p>
               <p className="text-lg sm:text-xl lg:text-2xl text-white mb-8 lg:mb-12 font-onest">
-                <span className="text-[#007B79]">human</span> experiences
+                {language === 'en' ? (
+                  <><span className="text-[#007B79]">human</span> experiences</>
+                ) : (
+                  <>{t('services.subtitle2')}</>
+                )}
               </p>
               
               {/* 2x2 Button Grid - Responsive */}
@@ -813,7 +848,7 @@ function HomeContent() {
                     }`}
                     onClick={() => handleServiceChange('Social Media')}
                   >
-                    Social Media
+                    {t('services.socialMedia.title')}
                   </button>
 
                   {/* Website Button */}
@@ -825,7 +860,7 @@ function HomeContent() {
                     }`}
                     onClick={() => handleServiceChange('Website')}
                   >
-                    Website
+                    {t('services.website.title')}
                   </button>
 
                   {/* Design Button */}
@@ -837,7 +872,7 @@ function HomeContent() {
                     }`}
                     onClick={() => handleServiceChange('Design')}
                   >
-                    Design
+                    {t('services.design.title')}
                   </button>
 
                   {/* Press Button */}
@@ -849,7 +884,7 @@ function HomeContent() {
                     }`}
                     onClick={() => handleServiceChange('Press')}
                   >
-                    Press
+                    {t('services.press.title')}
                   </button>
               </div>
             </div>
@@ -862,7 +897,7 @@ function HomeContent() {
                 minHeight: '400px',
                 height: 'auto',
                 borderRadius: '40px',
-                backgroundImage: `url("${getImagePath(serviceCards[activeService as keyof typeof serviceCards]?.backgroundImage || '')}")`,
+                backgroundImage: `url("${getImagePath(getServiceCard(activeService)?.backgroundImage || '')}")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundColor: '#f0f0f0',
@@ -873,12 +908,12 @@ function HomeContent() {
               <CardContent className="relative h-full p-6 sm:p-8 lg:p-12">
                 {/* Service Title Pill - Responsive */}
                 <div className="bg-[#00BCBE] text-[#232323] font-inter font-black rounded-full px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-tight mb-6 lg:mb-8 inline-block transition-all duration-500 ease-out">
-                  {serviceCards[activeService as keyof typeof serviceCards]?.title}
+                  {getServiceCard(activeService)?.title}
                 </div>
                 
                 {/* Dynamic Content - Responsive */}
                 <div className="space-y-4 sm:space-y-6 lg:space-y-8">
-                  {serviceCards[activeService as keyof typeof serviceCards]?.content?.map((item, i) => (
+                  {getServiceCard(activeService)?.content?.map((item, i) => (
                     <div 
                       key={i}
                       className="flex items-start transition-all duration-300 ease-out"
@@ -911,7 +946,11 @@ function HomeContent() {
           {/* Main Title - Responsive */}
           <div className="text-center">
             <h2 className="font-black leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#EFEFEF]">
-              IDEA TO <span style={{ color: '#007B79' }}>EXECUTION</span>
+              {language === 'en' ? (
+                <>IDEA TO <span style={{ color: '#007B79' }}>EXECUTION</span></>
+              ) : (
+                <>{t('process.heading')}</>
+              )}
             </h2>
           </div>
 
@@ -922,30 +961,42 @@ function HomeContent() {
               {/* Step 1: We listen */}
               <div className="flex flex-col items-start flex-1 max-w-xs">
                 <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
-                  <span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>LISTEN</span>
+                  {language === 'en' ? (
+                    <><span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>LISTEN</span></>
+                  ) : (
+                    <>{t('process.listen.title')}</>
+                  )}
                 </h3>
                 <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
-                  We engage in strategic listening capturing your vision & the expectations of your audience.
+                  {t('process.listen.description')}
                 </p>
               </div>
 
               {/* Step 2: We analyze */}
               <div className="flex flex-col items-start flex-1 max-w-xs">
                 <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
-                  <span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>ANALYZE</span>
+                  {language === 'en' ? (
+                    <><span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>ANALYZE</span></>
+                  ) : (
+                    <>{t('process.analyze.title')}</>
+                  )}
                 </h3>
                 <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
-                  We explore and assess tailored solutions, weighing impact & alignment.
+                  {t('process.analyze.description')}
                 </p>
               </div>
 
               {/* Step 3: We create */}
               <div className="flex flex-col items-start flex-1 max-w-xs">
                 <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
-                  <span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>CREATE</span>
+                  {language === 'en' ? (
+                    <><span style={{ color: '#007B79', textTransform: 'uppercase' }}>WE</span> <span style={{ color: '#EFEFEF' }}>CREATE</span></>
+                  ) : (
+                    <>{t('process.create.title')}</>
+                  )}
                 </h3>
                 <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
-                  We design with purpose crafting elevated experiences that resonate.
+                  {t('process.create.description')}
                 </p>
               </div>
             </div>
@@ -973,10 +1024,14 @@ function HomeContent() {
             {/* Mobile Step 1 */}
             <div className="flex flex-col items-center text-center max-w-sm">
               <h3 className="text-xl sm:text-2xl font-black mb-4">
-                <span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>LISTEN</span>
+                {language === 'en' ? (
+                  <><span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>LISTEN</span></>
+                ) : (
+                  <>{t('process.listen.title')}</>
+                )}
               </h3>
               <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
-                We engage in strategic listening capturing your vision & the expectations of your audience.
+                {t('process.listen.description')}
               </p>
             </div>
 
@@ -996,10 +1051,14 @@ function HomeContent() {
             {/* Mobile Step 2 */}
             <div className="flex flex-col items-center text-center max-w-sm">
               <h3 className="text-xl sm:text-2xl font-black mb-4">
-                <span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>ANALYZE</span>
+                {language === 'en' ? (
+                  <><span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>ANALYZE</span></>
+                ) : (
+                  <>{t('process.analyze.title')}</>
+                )}
               </h3>
               <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
-                We explore and assess tailored solutions, weighing impact & alignment.
+                {t('process.analyze.description')}
               </p>
             </div>
 
@@ -1019,10 +1078,14 @@ function HomeContent() {
             {/* Mobile Step 3 */}
             <div className="flex flex-col items-center text-center max-w-sm">
               <h3 className="text-xl sm:text-2xl font-black mb-4">
-                <span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>CREATE</span>
+                {language === 'en' ? (
+                  <><span style={{ color: '#007B79' }}>WE</span>&nbsp;<span style={{ color: '#EFEFEF' }}>CREATE</span></>
+                ) : (
+                  <>{t('process.create.title')}</>
+                )}
               </h3>
               <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
-                We design with purpose crafting elevated experiences that resonate.
+                {t('process.create.description')}
               </p>
             </div>
           </div>
@@ -1039,18 +1102,17 @@ function HomeContent() {
               <div className="text-center flex flex-col gap-2 lg:gap-4">
                 {/* "Great work" text - Responsive */}
                 <p className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white m-0">
-                  WE SCALE
+                  {t('testimonials.heading1')}
                 </p>
                 
                 {/* "For great people" text - Responsive */}
                 <p className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(35,35,35)] m-0">
-                  FOR GREAT PEOPLE
+                  {t('testimonials.heading2')}
                 </p>
                 
                 {/* Subtext - Responsive */}
                 <p className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-center text-[rgb(35,35,35)] mt-4 mb-8 lg:mb-12 max-w-4xl mx-auto">
-                  Since 2019 <span className="font-bold">we work with incredible businesses</span> to create<br className="hidden sm:block" />
-                  <span className="sm:hidden"> </span>meaningful impact and compelling experiences.
+                  {t('testimonials.subtitle')}
                 </p>
               </div>
             </div>
@@ -1169,16 +1231,20 @@ function HomeContent() {
           <h1 className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 lg:mb-5 leading-tight" style={{
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
-            HUPSCALE
+            {t('interaction.heading1')}
           </h1>
           <p className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-8 lg:mb-10 leading-tight" style={{
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
-            your <span style={{ color: '#007B79' }}>BUSINESS.</span>
+            {language === 'en' ? (
+              <>your <span style={{ color: '#007B79' }}>BUSINESS.</span></>
+            ) : (
+              <>{t('interaction.heading2')}</>
+            )}
           </p>
           
           <button className="bg-[#007B79] text-white border-none rounded-full px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold cursor-pointer uppercase shadow-lg hover:shadow-xl transition-all duration-200">
-            Let's Scale
+            {t('interaction.cta')}
           </button>
         </div>
         
@@ -1202,11 +1268,15 @@ function HomeContent() {
 
             {/* Title - Responsive */}
             <h2 className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(239,239,239)] mb-6 lg:mb-8 leading-tight">
-              ANSWERS <span className="text-[rgb(35,35,35)] font-black">YOU NEED</span>
+              {language === 'en' ? (
+                <>ANSWERS <span className="text-[rgb(35,35,35)] font-black">YOU NEED</span></>
+              ) : (
+                <>{t('faq.heading')}</>
+              )}
             </h2>
 
             {/* FAQ Items - Responsive */}
-            {faqs.map((item, i) => (
+            {getFaqs().map((item, i) => (
               <div key={i}>
                 <div
                   className="flex items-center gap-3 lg:gap-4 cursor-pointer py-2"
