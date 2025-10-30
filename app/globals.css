@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Morgan';
+  src: url('/fonts/Morgan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,4 +92,10 @@
 
 .animate-slide-up {
   animation: slideUp 0.4s ease-out forwards;
+}
+
+/* MORGAN FONT FOR NAVIGATION */
+nav, nav *, .navbar, .navbar * {
+  font-family: 'Morgan', serif !important;
+  font-weight: normal !important;
 }
