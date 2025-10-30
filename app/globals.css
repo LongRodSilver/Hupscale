@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Morgan';
-  src: url('/fonts/Morgan.ttf') format('truetype');
+  src: url('/Hupscale/fonts/Morgan.ttf') format('truetype'),
+       url('/fonts/Morgan.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
