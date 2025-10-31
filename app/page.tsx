@@ -370,7 +370,8 @@ function HomeContent() {
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full max-w-fit px-4" style={{
         backgroundColor: 'rgb(244, 244, 244)',
         borderRadius: '206px',
-        padding: '8px 16px',
+        height: '64px',
+        padding: '0.75rem 1rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -380,9 +381,21 @@ function HomeContent() {
         zIndex: 9999
       }}>
         
-        {/* HUPSCALE Logo - Responsive */}
-        <div className="flex items-center text-sm sm:text-lg font-black text-[rgb(35,35,35)] font-inter tracking-wide mr-4 sm:mr-8">
-          {t('logo.hupsc')}<span style={{ color: '#007B79' }}>{t('logo.a')}</span>{t('logo.le')}
+        {/* HUPSCALE Logo - Image */}
+        <div className="flex items-center mr-8 sm:mr-12">
+          <img
+            src={getImagePath("/HUPSCALE Without Slogan.png")}
+            alt="Hupscale logo"
+            className="navbar-logo"
+            style={{ 
+              height: '48px',
+              width: 'auto', 
+              objectFit: 'contain',
+              display: 'block',
+              transform: 'scale(2.5)',
+              transformOrigin: 'left center'
+            }}
+          />
         </div>
         
         {/* Mobile menu button */}
