@@ -391,16 +391,14 @@ function HomeContent() {
               height: '48px',
               width: 'auto', 
               objectFit: 'contain',
-              display: 'block',
-              transform: 'scale(2.5)',
-              transformOrigin: 'left center'
+              display: 'block'
             }}
           />
         </div>
         
         {/* Mobile menu button */}
         <button 
-          className="md:hidden flex items-center justify-center w-8 h-8 text-[rgb(35,35,35)]" 
+          className="md:hidden flex items-center justify-center mobile-menu-button text-[rgb(35,35,35)]" 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
