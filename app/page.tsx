@@ -137,6 +137,7 @@ function HomeContent() {
   const { t, language } = useTranslations();
   const { setLanguage } = useLanguage();
   const [activeService, setActiveService] = useState('Social Media');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Get translated testimonials data
   const getTestimonials = () => [
@@ -223,8 +224,6 @@ function HomeContent() {
   };
   const [isAnimating, setIsAnimating] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
 
   // TESTIMONIALS CAROUSEL - 50 CARD INFINITE SCROLL IMPLEMENTATION
   
