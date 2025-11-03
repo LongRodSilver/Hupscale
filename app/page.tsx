@@ -370,7 +370,7 @@ function HomeContent() {
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-full max-w-fit px-4" style={{
         backgroundColor: 'rgb(244, 244, 244)',
         borderRadius: '206px',
-        height: '64px',
+        height: '60px',
         padding: '0.75rem 1rem',
         display: 'flex',
         alignItems: 'center',
@@ -378,20 +378,31 @@ function HomeContent() {
         margin: '0 auto',
         border: '1px solid rgb(35, 35, 35)',
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-        zIndex: 9999
+        zIndex: 9999,
+        minWidth: 'fit-content'
       }}>
         
         {/* HUPSCALE Logo - Image */}
-        <div className="flex items-center mr-8 sm:mr-12">
+        <div 
+          className="flex items-center"
+          style={{ 
+            marginRight: '16px',
+            marginLeft: '4px',
+            maxHeight: '100%',
+            overflow: 'hidden'
+          }}
+        >
           <img
             src={getImagePath("/HUPSCALE Without Slogan.png")}
             alt="Hupscale logo"
             className="navbar-logo"
             style={{ 
-              height: '48px',
+              height: '40px',
               width: 'auto', 
               objectFit: 'contain',
-              display: 'block'
+              display: 'block',
+              maxHeight: '40px',
+              maxWidth: '200px'
             }}
           />
         </div>
@@ -407,7 +418,10 @@ function HomeContent() {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-4 lg:gap-6 flex-1 justify-center">
+        <div 
+          className="hidden md:flex items-center flex-1 justify-center"
+          style={{ gap: '20px' }}
+        >
           {/* Benefits */}
           <button
             onClick={() => {
@@ -420,9 +434,9 @@ function HomeContent() {
               background: 'none',
               border: 'none',
               color: 'rgb(35, 35, 35)',
-              fontSize: '14px',
+              fontSize: '13px',
               fontWeight: '500',
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'LEMONMILK, Morgan, sans-serif',
               transition: 'background-color 0.3s ease',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -453,9 +467,9 @@ function HomeContent() {
               background: 'none',
               border: 'none',
               color: 'rgb(35, 35, 35)',
-              fontSize: '14px',
+              fontSize: '13px',
               fontWeight: '500',
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'LEMONMILK, Morgan, sans-serif',
               transition: 'background-color 0.3s ease',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -486,9 +500,9 @@ function HomeContent() {
               background: 'none',
               border: 'none',
               color: 'rgb(35, 35, 35)',
-              fontSize: '14px',
+              fontSize: '13px',
               fontWeight: '500',
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'LEMONMILK, Morgan, sans-serif',
               transition: 'background-color 0.3s ease',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -519,9 +533,9 @@ function HomeContent() {
               background: 'none',
               border: 'none',
               color: 'rgb(35, 35, 35)',
-              fontSize: '14px',
+              fontSize: '13px',
               fontWeight: '500',
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'LEMONMILK, Morgan, sans-serif',
               transition: 'background-color 0.3s ease',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -543,7 +557,10 @@ function HomeContent() {
         </div>
         
         {/* Language Toggle Buttons */}
-        <div className="hidden md:flex items-center gap-2 ml-4 lg:ml-6">
+        <div 
+          className="hidden md:flex items-center"
+          style={{ gap: '6px', marginLeft: '20px' }}
+        >
           {/* French Flag Button */}
           <button
             aria-label={t('navigation.switchToFrench')}
@@ -579,7 +596,8 @@ function HomeContent() {
         
         {/* Get Started Button - Responsive */}
         <button
-          className="hidden md:block bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-4 lg:px-5 py-2 lg:py-3 text-xs lg:text-sm font-medium font-inter cursor-pointer transition-all duration-200 shadow-sm whitespace-nowrap ml-4 lg:ml-6"
+          className="hidden md:block bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-4 lg:px-5 py-2 lg:py-3 text-xs lg:text-sm font-medium font-inter cursor-pointer transition-all duration-200 shadow-sm whitespace-nowrap"
+          style={{ marginLeft: '20px', fontSize: '13px', fontFamily: 'LEMONMILK, Morgan, sans-serif' }}
           onClick={() => {
             setTimeout(() => {
               window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
