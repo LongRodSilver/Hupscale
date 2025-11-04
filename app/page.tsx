@@ -608,8 +608,15 @@ function HomeContent() {
         
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
-          <div className="mobile-menu-overlay md:hidden fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="fixed top-20 left-4 right-4 bg-white rounded-2xl p-6 shadow-xl max-w-[calc(100vw-32px)]" onClick={(e) => e.stopPropagation()}>
+          <div 
+            className="mobile-menu-overlay md:hidden fixed inset-0 bg-black bg-opacity-50 z-[9998]"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <div 
+              className="fixed top-20 left-4 right-4 bg-white rounded-2xl p-6 shadow-xl"
+              style={{ maxWidth: 'calc(100vw - 32px)', zIndex: 9999 }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="flex flex-col space-y-4">
                 <button
                   className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
@@ -709,8 +716,12 @@ function HomeContent() {
         
       </nav>
 
-      {/* Section 1: Hero - Base layer */}
-      <section className="sticky top-0 h-screen z-[1] bg-[#1a1a1a]">
+      {/* Scroll container wrapper around ALL sticky sections */}
+      <div className="scroll-container">
+        
+        <div className="section-layer">
+          {/* Section 1: Hero - Base layer */}
+          <section className="sticky top-0 h-screen bg-[#1a1a1a]" style={{ zIndex: 6 }}>
         {/* Video Container with Mobile Optimization */}
         <div className="hero-video-container absolute inset-0 w-full h-full">
           <video 
@@ -737,10 +748,12 @@ function HomeContent() {
           {/* Mobile Video Quality Enhancement Overlay */}
           <div className="absolute inset-0 bg-black bg-opacity-10 sm:bg-opacity-0 pointer-events-none" />
         </div>
-      </section>
+          </section>
+        </div>
 
-      {/* Section 2: What is Hupscale - Layer 2 */}
-      <section className="sticky top-0 h-screen z-[2] bg-[#007B79] py-16 pl-4 sm:pl-8 lg:pl-16">
+        <div className="section-layer">
+          {/* Section 2: What is Hupscale - Layer 2 */}
+          <section className="sticky top-0 h-screen bg-[#007B79] py-16 pl-4 sm:pl-8 lg:pl-16" style={{ zIndex: 5 }}>
         <div className="flex w-full h-full flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
         {/* What is Hupscale - Left side content */}
         <div className="flex-1 max-w-2xl">
@@ -846,16 +859,14 @@ function HomeContent() {
               <img 
                 src={getImagePath("/YouTube.png")} 
                 alt="YouTube" 
-                className="h-6 sm:h-7 lg:h-8 w-auto"
-              />
-            </div>
           </div>
         </div>
-        </div>
       </section>
+    </div>
 
+    <div className="section-layer">
       {/* Section 3: What we do - Layer 3 */}
-      <section className="sticky top-0 h-screen z-[3] bg-[#181818] py-16 px-4 sm:px-8 lg:px-16">
+      <section className="sticky top-0 h-screen bg-[#181818] py-16 px-4 sm:px-8 lg:px-16" style={{ zIndex: 4 }}>
         <div className="max-w-7xl mx-auto h-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
             {/* Left Content - Responsive */}
             <div className="text-white flex-1 max-w-2xl text-center lg:text-left">
@@ -969,14 +980,17 @@ function HomeContent() {
               </CardContent>
             </Card>
         </div>
-      </section>
+          </section>
+        </div>
 
-      {/* Section 4: Idea to Execution - Layer 4 */}
-      <section 
-        className="sticky top-0 h-screen z-[4] bg-[#F5F5F5] py-16 px-4 sm:px-8 lg:px-16" 
-        style={{
-          backgroundImage: `url('${getImagePath('/gradient-background-teal.png')}')`
-        }}
+        <div className="section-layer">
+          {/* Section 4: Idea to Execution - Layer 4 */}
+          <section 
+            className="sticky top-0 h-screen bg-[#F5F5F5] py-16 px-4 sm:px-8 lg:px-16" 
+            style={{ 
+              zIndex: 3,
+              backgroundImage: `url('${getImagePath('/gradient-background-teal.png')}')`
+            }}
       >
         <div className="max-w-6xl mx-auto">
         <div className="bg-[#181818] rounded-3xl lg:rounded-[84px] p-8 sm:p-12 lg:p-16 xl:p-20 shadow-2xl flex flex-col items-center gap-8 lg:gap-12">
@@ -1103,7 +1117,7 @@ function HomeContent() {
       </section>
 
       {/* Section 5: Testimonials - Layer 5 */}
-      <section className="sticky top-0 h-screen z-[5] bg-[#007B79] pt-6 pb-32">
+      <section className="sticky top-0 h-screen bg-[#007B79] pt-6 pb-32" style={{ zIndex: 2 }}>
         <div className="h-full flex flex-col justify-start">
           {/* Header Section - Constrained */}
           <div className="px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto w-full">
@@ -1222,18 +1236,20 @@ function HomeContent() {
             </div>
           </div>
         </div>
-      </section>
+          </section>
+        </div>
 
-
-      {/* Section 6: Interaction - Top layer */}
-      <section 
-        className="sticky top-0 h-screen z-[6] flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 xl:px-24" 
-        style={{ 
-          backgroundImage: `url(${getImagePath('/hupscale_final_hd.png')})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        <div className="section-layer">
+          {/* Section 6: Interaction - Top layer */}
+          <section 
+            className="sticky top-0 h-screen flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 xl:px-24" 
+            style={{ 
+              zIndex: 1,
+              backgroundImage: `url(${getImagePath('/hupscale_final_hd.png')})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
       >
         
         {/* Text content overlay - Responsive */}
@@ -1254,12 +1270,16 @@ function HomeContent() {
           </button>
         </div>
         
-      </section>
+          </section>
+        </div>
+        
+      </div> {/* End scroll-container */}
 
-      {/* Section 7: FAQ - Top layer */}
+      {/* FAQ section stays outside - it's not sticky */}
       <section 
-        className="sticky top-0 z-[7] bg-cover bg-center bg-no-repeat py-16 px-4 sm:px-8 lg:px-16" 
+        className="bg-cover bg-center bg-no-repeat py-16 px-4 sm:px-8 lg:px-16" 
         style={{
+          zIndex: 7,
           backgroundImage: `url(${getImagePath("/answers-section-bg-teal-vectorized.png")})`,
           height: 'auto'
         }}
