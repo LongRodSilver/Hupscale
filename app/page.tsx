@@ -398,7 +398,7 @@ function HomeContent() {
           aria-label="Scroll to top"
         >
           <img 
-            src="/HUPSCALE Without Slogan.png"
+            src="/Hupscale/HUPSCALE Without Slogan.png"
             alt="Hupscale logo"
             className="navbar-logo"
             style={{
