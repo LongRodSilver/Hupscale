@@ -1,0 +1,208 @@
+{
+  "navigation": {
+    "benefits": "Benefits",
+    "services": "Services", 
+    "testimonials": "Testimonials",
+    "faqs": "FAQ's",
+    "getStarted": "Get started",
+    "switchToFrench": "Switch to French",
+    "switchToEnglish": "Switch to English"
+  },
+  "logo": {
+    "hupsc": "HUPSC",
+    "a": "A",
+    "le": "LE"
+  },
+  "benefits": {
+    "heading": {
+      "what": "WHAT",
+      "is": "IS"
+    },
+    "company": "Hupscale?",
+    "description": "At Hupscale, we craft powerful personal brands through strategic clarity, deep insight, and unwavering dedication — then amplify businesses with the same precision, turning vision into influence.",
+    "weWorkWith": {
+      "we": "We",
+      "work": "work",
+      "with": "with",
+      "dots": "..."
+    },
+    "categories": {
+      "motorsport": "Motorsport",
+      "contentCreators": "Content creators", 
+      "golfAthletes": "Golf athletes",
+      "soccerTeams": "Soccer teams",
+      "personalBrand": "Personal brand",
+      "realEstate": "Real estate",
+      "models": "Models",
+      "influencers": "Influencers",
+      "carRentals": "Car rentals",
+      "medical": "Medical"
+    }
+  },
+  "services": {
+    "heading": {
+      "what": "WHAT"
+    },
+    "weDoQuestion": {
+      "we": "WE",
+      "do": "DO",
+      "question": "?"
+    },
+    "subtitle1": "Digital Services",
+    "subtitle2": {
+      "human": "human",
+      "experiences": "experiences"
+    },
+    "socialMedia": {
+      "title": "Social Media",
+      "boostAI": {
+        "label": "Boost AI:",
+        "description": " Hupscale helps you upscale your content — smarter reach, more freedom."
+      },
+      "engagementGroups": {
+        "label": "Engagement Groups:",
+        "description": " Upscale your community with Hupscale — connect, grow, repeat."
+      },
+      "communityManager": {
+        "label": "Community Manager:",
+        "description": " Your life is offline. Hupscale keeps your presence upscale — always on point."
+      }
+    },
+    "website": {
+      "title": "Website",
+      "landingPage": {
+        "label": "Landing Page:",
+        "description": " Convert visitors into customers with high-impact pages designed to drive action."
+      },
+      "corporativeWeb": {
+        "label": "Corporative Web:",
+        "description": " Professional websites that establish credibility and showcase your business excellence."
+      },
+      "ecommerce": {
+        "label": "E-commerce:",
+        "description": " Complete online stores optimized for sales, user experience, and growth."
+      }
+    },
+    "design": {
+      "title": "Design",
+      "brandIdentity": {
+        "label": "Brand Identity:",
+        "description": " Distinctive visual identities that capture your essence and resonate with your audience."
+      },
+      "uiUxDesign": {
+        "label": "UI/UX Design:",
+        "description": " Intuitive interfaces that delight users and drive engagement through thoughtful design."
+      },
+      "printDesign": {
+        "label": "Print Design:",
+        "description": " Professional print materials that make lasting impressions and elevate your brand presence."
+      }
+    },
+    "press": {
+      "title": "Press",
+      "mediaRelations": {
+        "label": "Media Relations:",
+        "description": " Strategic media outreach that amplifies your message and builds valuable connections."
+      },
+      "pressReleases": {
+        "label": "Press Releases:",
+        "description": " Compelling announcements that capture attention and generate meaningful coverage."
+      },
+      "crisisManagement": {
+        "label": "Crisis Management:",
+        "description": " Expert guidance to protect your reputation and navigate challenging situations."
+      }
+    }
+  },
+  "process": {
+    "heading": {
+      "idea": "IDEA",
+      "to": "TO",
+      "execution": "EXECUTION"
+    },
+    "listen": {
+      "we": "WE",
+      "listen": "LISTEN",
+      "description": "We engage in strategic listening capturing your vision & the expectations of your audience."
+    },
+    "analyze": {
+      "we": "WE",
+      "analyze": "ANALYZE",
+      "description": "We explore and assess tailored solutions, weighing impact & alignment."
+    },
+    "create": {
+      "we": "WE",
+      "create": "CREATE",
+      "description": "We design with purpose crafting elevated experiences that resonate."
+    }
+  },
+  "testimonials": {
+    "heading": {
+      "we": "WE",
+      "scale": "SCALE"
+    },
+    "forGreatPeople": {
+      "for": "FOR",
+      "great": "GREAT",
+      "people": "PEOPLE"
+    },
+    "subtitle": {
+      "since": "Since 2019",
+      "weWork": "we work with incredible businesses",
+      "toCreate": "to create",
+      "meaningful": "meaningful impact and compelling experiences."
+    },
+    "customers": {
+      "sarah": "Sarah M.",
+      "rachel": "Rachel T.",
+      "marcus": "Marcus D.",
+      "emma": "Emma K.",
+      "paul": "Paul T."
+    },
+    "reviews": {
+      "sarah": "I was struggling to get traction for my coaching business until I found Hupscale. Within three months, my client base tripled and my revenue doubled. Their strategies are simple but incredibly effective. If you want real results, not just promises, this is your team!",
+      "rachel": "Hupscale transformed my content strategy completely! I went from posting randomly to having a clear plan that actually converts. My email list grew from 200 to 5,000 subscribers in just four months. The team really understands what it takes to scale a business!",
+      "marcus": "As a small business owner, I thought growth was out of reach. Hupscale proved me wrong. They helped me streamline my processes and reach customers I never thought possible. My sales increased by 150% in six months. Absolutely worth every penny!",
+      "emma": "I've worked with several agencies before, but Hupscale is different. They actually care about your success. My brand visibility skyrocketed, and I finally feel confident in my business direction. The results speak for themselves—my best investment this year!",
+      "paul": "Hupscale transformed my business completely! I went from struggling to scale to generating six-figure revenue in just four months. Their strategies are practical and powerful. If you're ready to take your business to the next level, Hupscale is the team you need!"
+    }
+  },
+  "interaction": {
+    "heading1": "HUPSCALE",
+    "heading2": {
+      "your": "your",
+      "business": "BUSINESS."
+    },
+    "cta": "Let's Scale"
+  },
+  "faq": {
+    "heading": {
+      "answers": "ANSWERS",
+      "youNeed": "YOU NEED"
+    },
+    "questions": {
+      "whyChoose": "Why choose Hupscale?",
+      "whyGrow": "Why should I grow?",
+      "guarantees": "What kind of guarantees do I have?",
+      "information": "What information do I need to provide?"
+    },
+    "answers": {
+      "whyChoose": "At Hupscale, we feel that — it's chaos out there to grow on social. So, we are here to help. We are more than a marketing agency, we are your growth partners. Our tactics are designed to be scalable for new or advanced developers alike. We provide results, 1:1 support and great affection. Let's grow together.",
+      "whyGrow": "You might think it is very easy because you will get more followers, however this must be about growing a community that loves what do. Growth is important for anything you do, whether that be a small business or creator or sharing your message and connecting with new people. And being the center of attention in social will also unlock new opportunities for you and thus, collaboration with others. When you can flourish, why be small?",
+      "guarantees": "We believe in what we do and the results we achieve. We won't lie to you—no one can guarantee you'll become famous overnight, but we'll be with you every step of the way, tweaking strategies as needed to keep you on track for real progress. Our success is measured by your satisfied smile, so we won't stop until you're happy with the results.",
+      "information": "We only require the essential information that any agency might need, such as your target audience, your current audience, your goals, and how we can help you achieve them. Hupscale or any member of our staff will never ask for your username or password."
+    }
+  },
+  "cta": {
+    "heading": "TAKE YOUR ASTEROIDS AND SCALE YOUR VISION",
+    "contactText": "you can also contact us directly",
+    "email": "hello@hupscaleagency.com",
+    "button": "Let's Hupscale"
+  },
+  "footer": {
+    "copyright": "2025 Hupscale. All rights reserved.",
+    "instagram": "Instagram",
+    "terms": "Terms",
+    "privacy": "Privacy"
+  }
+}

@@ -1,0 +1,864 @@
+@font-face {
+  font-family: 'Morgan';
+  src: url('/Hupscale/fonts/Morgan.ttf') format('truetype'),
+       url('/fonts/Morgan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LEMONMILK';
+  src: url('/Hupscale/fonts/LEMONMILK-Regular.otf') format('opentype'),
+       url('/fonts/LEMONMILK-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations for service card */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+/* LEMONMILK-REGULAR FONT FOR NAVIGATION BUTTONS ONLY (EXCLUDE LOGO) */
+nav a,
+nav button,
+.navbar a,
+.navbar button,
+nav .mobile-menu a,
+nav .mobile-menu button {
+  font-family: 'LEMONMILK', 'Morgan', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em;
+}
+
+/* ENSURE LOGO REMAINS UNCHANGED AND VISIBLE */
+.navbar-logo,
+img[alt="Hupscale logo"] {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 180px !important;
+  min-width: 45px !important;
+  flex-shrink: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* LOGO CONTAINER STYLING */
+nav .flex.items-center:first-child {
+  flex-shrink: 0 !important;
+  min-width: fit-content !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* NAVBAR LAYOUT FIXES */
+nav,
+.navbar {
+  display: flex !important;
+  align-items: center !important;
+  overflow: hidden !important;
+  background: rgb(244, 244, 244) !important;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  padding: 12px 16px !important;
+}
+
+/* ENSURE NO FONT INHERITANCE ON LOGO CONTAINER */
+nav .flex.items-center:first-child,
+nav .flex.items-center:first-child * {
+  font-family: inherit !important;
+}
+
+/* RESPONSIVE LOGO SIZING - NO TRANSFORMS */
+/* Base logo styling */
+.navbar-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  max-height: 40px;
+  max-width: 200px;
+}
+
+/* Desktop: Slightly larger */
+@media (min-width: 768px) {
+  .navbar-logo {
+    height: 42px;
+    max-height: 42px;
+    max-width: 220px;
+  }
+}
+
+/* Tablet: Medium size */
+@media (min-width: 640px) and (max-width: 767px) {
+  .navbar-logo {
+    height: 38px;
+    max-height: 38px;
+    max-width: 180px;
+  }
+}
+
+/* Mobile: Smallest */
+@media (max-width: 639px) {
+  .navbar-logo {
+    height: 32px;
+    max-height: 32px;
+    max-width: 140px;
+  }
+}
+
+/* RESPONSIVE VIDEO STYLES */
+/* Responsive video container */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* For embedded videos (YouTube, Vimeo, etc.) */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe,
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* For standard HTML5 video tags */
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+/* Hero video specific styles */
+.hero-video-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 640px) {
+  .video-container {
+    margin: 0 -16px; /* Extend to screen edges on mobile */
+    border-radius: 0;
+  }
+  
+  .hero-video {
+    object-position: center center;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+/* ========================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Global settings - NO overflow restrictions to allow sticky scroll */
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+}
+
+/* Mobile Navigation - Screens < 768px */
+@media (max-width: 767px) {
+  /* Navbar adjustments */
+  nav, .navbar {
+    padding: 12px 16px !important;
+    flex-wrap: wrap;
+    height: auto !important;
+    min-height: 60px !important;
+    max-height: none !important;
+  }
+
+  /* Hide desktop menu items on mobile */
+  .hidden.md\\:flex {
+    display: none !important;
+  }
+
+  /* Mobile menu button styling */
+  .mobile-menu-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+  }
+
+  /* Mobile menu container */
+  .mobile-menu-overlay > div {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 0 16px;
+    max-width: calc(100vw - 32px);
+    width: 100%;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Logo adjustments for mobile */
+  .navbar-logo {
+    height: 32px !important;
+    max-height: 32px !important;
+    max-width: 120px !important;
+  }
+}
+
+/* Mobile Section Layouts */
+@media (max-width: 767px) {
+  /* Preserve sticky scroll behavior - CRITICAL */
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+
+  /* Global section padding adjustments */
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Hero Section - Mobile */
+  .hero-section,
+  section:first-of-type {
+    padding: 40px 20px !important;
+    text-align: center;
+  }
+
+  /* Benefits Section - Mobile */
+  .benefits-section,
+  section[class*="z-[2]"] {
+    padding: 60px 20px !important;
+  }
+
+  /* Two column grid to single column */
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Services Section - Mobile */
+  .services-section,
+  section[class*="z-[3]"] {
+    padding: 60px 20px !important;
+  }
+
+  /* Flex row to column on mobile */
+  .flex.flex-col.lg\\:flex-row {
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+
+  /* Service buttons grid */
+  .grid.grid-cols-2.gap-3 {
+    max-width: 280px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Process Section - Mobile */
+  section[class*="z-[4]"] {
+    padding: 60px 20px !important;
+  }
+
+  /* Testimonials Section - Mobile */
+  section[class*="z-[5]"] {
+    padding: 40px 20px 60px !important;
+  }
+
+  /* Testimonial carousel adjustments */
+  .testimonial-card {
+    width: 280px !important;
+    min-width: 280px !important;
+    height: 380px !important;
+    padding: 20px !important;
+  }
+
+  /* Interaction Section - Mobile */
+  section[class*="z-[6]"] {
+    padding: 60px 20px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* FAQ Section - Mobile */
+  section[class*="z-[7]"] {
+    padding: 60px 20px !important;
+  }
+
+  /* FAQ container adjustments */
+  .max-w-5xl {
+    max-width: 100% !important;
+    padding: 24px 20px !important;
+  }
+}
+
+/* Mobile Typography */
+@media (max-width: 767px) {
+  /* Headings */
+  h1 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+  }
+
+  h3 {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+  }
+
+  h4 {
+    font-size: 18px !important;
+  }
+
+  /* Large text scaling */
+  .text-3xl { font-size: 24px !important; }
+  .text-4xl { font-size: 28px !important; }
+  .text-5xl { font-size: 32px !important; }
+  .text-6xl { font-size: 36px !important; }
+  .text-7xl { font-size: 40px !important; }
+  .text-8xl { font-size: 44px !important; }
+
+  /* Body text */
+  p, .body-text {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Buttons */
+  button, .btn {
+    font-size: 14px !important;
+    padding: 12px 24px !important;
+    min-height: 44px; /* Touch-friendly */
+  }
+
+  /* Navigation buttons in mobile menu */
+  .mobile-menu-overlay button {
+    font-size: 16px !important;
+    padding: 12px 16px !important;
+    text-align: left;
+    width: 100%;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-menu-overlay button:hover {
+    background: #f5f5f5;
+  }
+}
+
+/* Mobile Images & Media */
+@media (max-width: 767px) {
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Video elements */
+  video {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Service card images */
+  .service-image img,
+  .testimonial-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  /* Logo scaling */
+  .navbar-logo {
+    transform: none !important; /* Remove any scaling transforms */
+  }
+}
+
+/* Mobile Spacing Utilities */
+@media (max-width: 767px) {
+  /* Container padding */
+  .container,
+  .section-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Max width containers */
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Margin adjustments */
+  .mt-large { margin-top: 40px !important; }
+  .mb-large { margin-bottom: 40px !important; }
+  
+  /* Gap adjustments */
+  .gap-8 { gap: 24px !important; }
+  .gap-12 { gap: 32px !important; }
+  .gap-16 { gap: 40px !important; }
+}
+
+/* Mobile Footer */
+@media (max-width: 767px) {
+  footer,
+  .footer {
+    padding: 40px 20px !important;
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column !important;
+    gap: 24px !important;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .footer-link {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+/* Mobile Carousel Specific */
+@media (max-width: 767px) {
+  /* Testimonials carousel mobile optimization */
+  .scrollbar-hide {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Navigation arrows positioning */
+  .absolute.-top-12 {
+    top: -40px !important;
+  }
+
+  .absolute.-top-16 {
+    top: -48px !important;
+  }
+
+  /* Arrow button sizing */
+  .w-8.h-8 { width: 36px !important; height: 36px !important; }
+  .w-10.h-10 { width: 40px !important; height: 40px !important; }
+  .w-12.h-12 { width: 44px !important; height: 44px !important; }
+}
+
+/* Critical: Preserve Sticky Scroll Animation */
+@media (max-width: 767px) {
+  /* DO NOT modify these - essential for sticky scroll */
+  .sticky-section {
+    position: sticky !important;
+    top: 0 !important;
+  }
+
+  .section-layer {
+    min-height: 100vh !important;
+  }
+
+  /* Only adjust padding/spacing, NOT positioning */
+  .sticky {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}
+
+/* Mobile Touch Improvements */
+@media (max-width: 767px) {
+  /* Ensure all interactive elements are touch-friendly */
+  button,
+  a,
+  .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Flag buttons */
+  .flag-button {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* Service buttons */
+  .service-button {
+    padding: 12px 20px !important;
+    min-height: 44px;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 767px) {
+  * {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  /* Ensure no element causes horizontal overflow */
+  .overflow-x-auto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide horizontal scrollbars where not needed */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Additional Mobile Enhancements */
+@media (max-width: 767px) {
+  /* Benefits section specific mobile adjustments */
+  .bg-\[\#007B79\] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Dark container in benefits section */
+  .bg-\[\#181818\].flex-1 {
+    border-radius: 20px !important;
+    margin-top: 32px;
+    padding: 24px !important;
+  }
+
+  /* Services section mobile text centering */
+  .text-center.lg\:text-left {
+    text-align: center !important;
+  }
+
+  /* Service card mobile adjustments */
+  .border-none.shadow-lg {
+    margin-top: 24px;
+    border-radius: 20px !important;
+  }
+
+  /* Process section mobile adjustments */
+  .bg-\[\#181818\].rounded-3xl {
+    border-radius: 20px !important;
+    padding: 32px 24px !important;
+  }
+
+  /* FAQ section mobile adjustments */
+  .bg-\[\#007B79\].shadow-2xl {
+    border-radius: 20px !important;
+    padding: 24px 20px !important;
+  }
+
+  /* Mobile video optimization */
+  .hero-video {
+    object-position: center center !important;
+  }
+
+  /* Mobile carousel card sizing */
+  .testimonial-card {
+    width: 280px !important;
+    min-width: 280px !important;
+    height: 360px !important;
+  }
+
+  /* Mobile navigation arrows */
+  .absolute.-top-12,
+  .absolute.-top-16 {
+    right: 20px !important;
+  }
+}
+
+/* Mobile Breakpoint Specific Adjustments */
+@media (max-width: 480px) {
+  /* Extra small mobile devices */
+  .testimonial-card {
+    width: 260px !important;
+    min-width: 260px !important;
+    height: 340px !important;
+    padding: 16px !important;
+  }
+
+  /* Smaller text on very small screens */
+  .text-3xl { font-size: 20px !important; }
+  .text-4xl { font-size: 24px !important; }
+  .text-5xl { font-size: 28px !important; }
+  .text-6xl { font-size: 32px !important; }
+  .text-7xl { font-size: 36px !important; }
+  .text-8xl { font-size: 40px !important; }
+
+  /* Tighter padding on very small screens */
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Mobile Landscape Orientation */
+@media (max-width: 767px) and (orientation: landscape) {
+  /* Adjust heights for landscape mobile */
+  .h-screen {
+    min-height: 100vh;
+  }
+
+  /* Reduce vertical padding in landscape */
+  section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+/* ========================================
+   STICKY SCROLL ANIMATION SYSTEM
+   ======================================== */
+
+/* Scroll container wrapper for all sticky sections */
+.scroll-container {
+  width: 100%;
+  /* No position or overflow properties - let sections stick naturally to body scroll */
+}
+
+/* Section layer wrapper for each sticky section */
+.section-layer {
+  position: relative;
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
+
+/* Improved navbar responsive behavior */
+nav {
+  position: fixed !important;
+  top: 1rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  max-width: fit-content !important;
+  background-color: rgb(244, 244, 244) !important;
+  border-radius: 206px !important;
+  height: 64px !important;
+  padding: 0.75rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border: 1px solid rgb(35, 35, 35) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  z-index: 9999 !important;
+}
+
+/* Desktop - 1024px and above (comfortable spacing) */
+@media (min-width: 1024px) {
+  nav {
+    padding: 0.75rem 1.5rem !important;
+    gap: 1.5rem !important;
+  }
+  
+  .navbar-logo {
+    height: 48px !important;
+    transform: none !important;
+    margin-right: 1rem !important;
+  }
+  
+  nav > div.hidden.md\:flex {
+    gap: 1.5rem !important;
+  }
+}
+
+/* Tablet/Small Desktop - 768px to 1023px (tighter spacing) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  nav {
+    padding: 0.75rem 1rem !important;
+    gap: 0.75rem !important;
+    max-width: 95vw !important;
+  }
+  
+  .navbar-logo {
+    height: 40px !important;
+    transform: none !important;
+    margin-right: 0.75rem !important;
+  }
+  
+  nav > div.hidden.md\:flex {
+    gap: 0.75rem !important;
+  }
+  
+  nav button {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
+}
+
+/* Mobile - below 768px */
+@media (max-width: 767px) {
+  nav {
+    height: 56px !important;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 100px !important;
+  }
+  
+  .navbar-logo {
+    height: 32px !important;
+    transform: none !important;
+  }
+  
+  /* Hide desktop menu */
+  nav > div.hidden.md\:flex {
+    display: none !important;
+  }
+  
+  /* Show mobile menu toggle */
+  .md\:hidden {
+    display: flex !important;
+  }
+}
