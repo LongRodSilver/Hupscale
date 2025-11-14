@@ -626,7 +626,7 @@ function HomeContent() {
             > 
               <div className="flex flex-col space-y-4">
                 <button
-                  className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -637,7 +637,7 @@ function HomeContent() {
                   {t('navigation.benefits')}
                 </button>
                 <button
-                  className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -648,7 +648,7 @@ function HomeContent() {
                   {t('navigation.services')}
                 </button>
                 <button
-                  className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -659,7 +659,7 @@ function HomeContent() {
                   {t('navigation.testimonials')}
                 </button>
                 <button
-                  className="text-left py-2 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -758,7 +758,7 @@ function HomeContent() {
 
         {/* Section 2: What is Hupscale - Layer 2 */}
         <section className="sticky top-0 h-screen w-full" style={{ zIndex: 2, background: '#007B79', minHeight: '100vh' }}>
-        <div className="flex w-full h-full flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 px-4 sm:px-8 lg:px-16 py-8">
+        <div className="flex w-full h-full flex-col lg:flex-row items-center justify-between gap-4 sm:gap-8 lg:gap-16 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16">
         {/* What is Hupscale - Left side content */}
         <div className="flex-1 max-w-2xl">
           {/* Heading - Responsive */}
@@ -873,7 +873,7 @@ function HomeContent() {
 
         {/* Section 3: What we do - Layer 3 */}
         <section className="sticky top-0 h-screen w-full" style={{ zIndex: 3, background: '#181818', minHeight: '100vh' }}>
-        <div className="max-w-7xl mx-auto h-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 px-4 sm:px-8 lg:px-16 py-8">
+        <div className="max-w-7xl mx-auto h-full flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-8 lg:gap-16 px-4 sm:px-6 lg:px-16 py-8 sm:py-12 lg:py-16">
             {/* Left Content - Responsive */}
             <div className="text-white flex-1 max-w-2xl text-center lg:text-left">
               <h2 className="font-black leading-tight mb-5 text-white">
@@ -895,7 +895,7 @@ function HomeContent() {
               <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-6 lg:mt-8 max-w-sm mx-auto lg:mx-0">
                   {/* Social Media Button */}
                   <button
-                    className={`transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
+                    className={`min-h-[44px] transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
                       activeService === 'Social Media' 
                         ? 'bg-[#EFEFEF] text-[#00B081] shadow-lg' 
                         : 'bg-[#00B081] text-black hover:shadow-md'
@@ -907,7 +907,7 @@ function HomeContent() {
 
                   {/* Website Button */}
                   <button
-                    className={`transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
+                    className={`min-h-[44px] transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
                       activeService === 'Website' 
                         ? 'bg-[#EFEFEF] text-[#00B081] shadow-lg' 
                         : 'bg-[#00B081] text-black hover:shadow-md'
@@ -919,7 +919,7 @@ function HomeContent() {
 
                   {/* Design Button */}
                   <button
-                    className={`transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
+                    className={`min-h-[44px] transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
                       activeService === 'Design' 
                         ? 'bg-[#EFEFEF] text-[#00B081] shadow-lg' 
                         : 'bg-[#00B081] text-black hover:shadow-md'
@@ -931,7 +931,7 @@ function HomeContent() {
 
                   {/* Press Button */}
                   <button
-                    className={`transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
+                    className={`min-h-[44px] transition-all duration-200 hover:scale-105 flex justify-center items-center rounded-full px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-medium font-inter cursor-pointer ${
                       activeService === 'Press' 
                         ? 'bg-[#EFEFEF] text-[#00B081] shadow-lg' 
                         : 'bg-[#00B081] text-black hover:shadow-md'
@@ -1000,7 +1000,7 @@ function HomeContent() {
             minHeight: '100vh'
           }}
         >
-        <div className="max-w-6xl mx-auto h-full flex items-center justify-center px-4 sm:px-8 lg:px-16 py-8">
+        <div className="max-w-6xl mx-auto h-full flex items-center justify-center px-4 sm:px-6 lg:px-16 py-8 sm:py-12 lg:py-16">
         <div className="bg-[#181818] rounded-3xl lg:rounded-[84px] p-8 sm:p-12 lg:p-16 xl:p-20 shadow-2xl flex flex-col items-center gap-8 lg:gap-12">
           {/* Main Title - Responsive */}
           <div className="text-center">
@@ -1126,7 +1126,7 @@ function HomeContent() {
 
       {/* Section 5: Testimonials - Layer 5 */}
       <section className="sticky top-0 h-screen w-full" style={{ zIndex: 5, background: '#007B79', minHeight: '100vh' }}>
-        <div className="h-full flex flex-col justify-center py-8">
+        <div className="h-full flex flex-col justify-center py-6 overflow-hidden">
           {/* Header Section - Constrained */}
           <div className="px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto w-full">
             <div className="w-full flex flex-col items-center gap-6 lg:gap-8">
@@ -1156,29 +1156,30 @@ function HomeContent() {
             <div className="absolute -top-12 sm:-top-16 right-4 sm:right-8 lg:right-16 flex gap-2 sm:gap-3 z-10">
               {/* Left Arrow Button - Responsive */}
               <button
-                className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
                 onClick={handlePrevious}
               >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </button>
               
               {/* Right Arrow Button - Responsive */}
               <button
-                className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full border-none cursor-pointer flex items-center justify-center transition-all duration-200 text-[#EFEFEF]"
                 onClick={handleNext}
               >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </button>
             </div>
 
             {/* Natural Viewport-Based Carousel Container */}
             <div 
-              className="relative overflow-x-auto overflow-y-visible scrollbar-hide"
+              className="relative overflow-x-hidden overflow-y-hidden scrollbar-hide"
               style={{
                 width: '100vw',
                 marginLeft: '50%',
                 transform: 'translateX(-50%)',
-                WebkitOverflowScrolling: 'touch', // Momentum scrolling for mobile
+                WebkitOverflowScrolling: 'touch',
+                touchAction: 'pan-y',
                 paddingLeft: '2rem',
                 paddingRight: '2rem'
               }}
@@ -1248,7 +1249,7 @@ function HomeContent() {
 
         {/* Section 6: Interaction - Final layer (NOT sticky) */}
         <section 
-          className="relative w-full flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 xl:px-24" 
+          className="relative w-full overflow-hidden flex items-center justify-center lg:justify-end px-4 sm:px-8 lg:px-16 xl:px-24 py-12 sm:py-16 lg:py-20" 
           style={{ 
             zIndex: 6,
             minHeight: '100vh',
@@ -1273,7 +1274,7 @@ function HomeContent() {
 {t('interaction.heading2.your')} <span style={{ color: '#007B79' }}>{t('interaction.heading2.business')}</span>
           </p>
           
-          <button className="bg-[#007B79] text-white border-none rounded-full px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold cursor-pointer uppercase shadow-lg hover:shadow-xl transition-all duration-200">
+          <button className="bg-[#007B79] text-white border-none rounded-full px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold cursor-pointer uppercase shadow-lg hover:shadow-xl transition-all duration-200 min-h-[44px] min-w-[44px]">
             {t('interaction.cta')}
           </button>
         </div>
