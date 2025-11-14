@@ -398,7 +398,7 @@ function HomeContent() {
           aria-label="Scroll to top"
         >
           <img 
-            src="/HUPSCALE%20Without%20Slogan.png"
+            src={getImagePath("/HUPSCALE Without Slogan.png")}
             alt="Hupscale logo"
             className="navbar-logo"
             style={{
@@ -602,8 +602,8 @@ function HomeContent() {
         
         {/* Get Started Button - Responsive */}
         <button
-          className="hidden md:block bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-4 lg:px-5 py-2 lg:py-3 text-xs lg:text-sm font-medium font-inter cursor-pointer transition-all duration-200 shadow-sm whitespace-nowrap"
-          style={{ marginLeft: '12px', fontSize: '13px', fontFamily: 'LEMONMILK, Morgan, sans-serif' }}
+          className="hidden md:block bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-5 lg:px-6 py-2.5 lg:py-3 text-xs lg:text-sm font-medium font-inter cursor-pointer transition-all duration-200 shadow-sm whitespace-nowrap"
+          style={{ marginLeft: '12px', fontSize: '12px', fontFamily: 'LEMONMILK, Morgan, sans-serif' }}
           onClick={() => {
             setTimeout(() => {
               window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
