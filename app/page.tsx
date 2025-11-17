@@ -415,10 +415,11 @@ function HomeContent() {
         
         {/* Mobile menu button */}
         <button 
-          className="md:hidden flex items-center justify-center mobile-menu-button text-[rgb(35,35,35)]" 
+          className="lg:hidden flex items-center justify-center mobile-menu-button text-[rgb(35,35,35)] p-2" 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor" className="w-6 h-6">
             <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
           </svg>
         </button>
@@ -616,17 +617,33 @@ function HomeContent() {
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
           <div 
-            className="mobile-menu-overlay md:hidden fixed inset-0 bg-black bg-opacity-50 z-[9998]"
+            className="lg:hidden fixed inset-0 bg-white z-[10000] overflow-y-auto"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <div 
-              className="fixed top-20 left-4 right-4 bg-white rounded-2xl p-6 shadow-xl"
-              style={{ maxWidth: 'calc(100vw - 32px)', zIndex: 9999 }}
+              className="w-full min-h-screen bg-white p-6"
               onClick={(e) => e.stopPropagation()}
-            > 
-              <div className="flex flex-col space-y-4">
+            >
+              {/* Close button */}
+              <div className="flex justify-between items-center mb-8">
+                <img 
+                  src={getImagePath("/HUPSCALE Without Slogan.png")}
+                  alt="Hupscale logo"
+                  className="h-8 w-auto"
+                />
                 <button
-                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 text-[rgb(35,35,35)]"
+                  aria-label="Close menu"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div> 
+              <div className="flex flex-col space-y-2">
+                <button
+                  className="text-center text-xl min-h-[44px] py-4 px-6 text-[rgb(35,35,35)] hover:bg-gray-100 border-b border-gray-200"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -637,7 +654,7 @@ function HomeContent() {
                   {t('navigation.benefits')}
                 </button>
                 <button
-                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  className="text-center text-xl min-h-[44px] py-4 px-6 text-[rgb(35,35,35)] hover:bg-gray-100 border-b border-gray-200"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -648,7 +665,7 @@ function HomeContent() {
                   {t('navigation.services')}
                 </button>
                 <button
-                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  className="text-center text-xl min-h-[44px] py-4 px-6 text-[rgb(35,35,35)] hover:bg-gray-100 border-b border-gray-200"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -659,7 +676,7 @@ function HomeContent() {
                   {t('navigation.testimonials')}
                 </button>
                 <button
-                  className="text-left min-h-[44px] py-3 px-4 text-[rgb(35,35,35)] hover:bg-gray-100 rounded-lg"
+                  className="text-center text-xl min-h-[44px] py-4 px-6 text-[rgb(35,35,35)] hover:bg-gray-100 border-b border-gray-200"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setTimeout(() => {
@@ -844,27 +861,29 @@ function HomeContent() {
             </div>
             
             {/* Social Media Logos - Responsive */}
-            <div className="flex items-center gap-4 lg:gap-5 mt-8 lg:mt-10">
-              {/* Facebook Logo */}
-              <img 
-                src={getImagePath("/Facebook.png")} 
-                alt="Facebook" 
-                className="h-6 sm:h-7 lg:h-8 w-auto"
-              />
-              
-              {/* Instagram Logo */}
-              <img 
-                src={getImagePath("/Instagram.png")} 
-                alt="Instagram" 
-                className="h-6 sm:h-7 lg:h-8 w-auto"
-              />
-              
-              {/* YouTube Logo */}
-              <img 
-                src={getImagePath("/YouTube.png")} 
-                alt="YouTube" 
-                className="h-6 sm:h-7 lg:h-8 w-auto"
-              />
+            <div className="w-full max-w-full overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 sm:gap-6 lg:gap-8 w-full">
+                {/* Facebook Logo */}
+                <img 
+                  src={getImagePath("/Facebook.png")} 
+                  alt="Facebook" 
+                  className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 object-contain"
+                />
+                
+                {/* Instagram Logo */}
+                <img 
+                  src={getImagePath("/Instagram.png")} 
+                  alt="Instagram" 
+                  className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 object-contain"
+                />
+                
+                {/* YouTube Logo */}
+                <img 
+                  src={getImagePath("/YouTube.png")} 
+                  alt="YouTube" 
+                  className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
