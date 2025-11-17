@@ -426,7 +426,7 @@ function HomeContent() {
 
         {/* Desktop Navigation */}
         <div 
-          className="hidden md:flex items-center flex-1 justify-center"
+          className="hidden lg:flex items-center flex-1 justify-center"
           style={{ gap: '12px' }}
         >
           {/* Benefits */}
@@ -603,7 +603,7 @@ function HomeContent() {
         
         {/* Get Started Button - Responsive */}
         <button
-          className="hidden md:block bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-5 lg:px-6 py-2.5 lg:py-3 text-xs lg:text-sm font-medium font-inter cursor-pointer transition-all duration-200 shadow-sm whitespace-nowrap"
+          className="hidden lg:block bg-[rgb(0,123,121)] text-[rgb(5,5,5)] border border-[rgb(5,5,5)] rounded-full px-5 lg:px-6 py-2.5 lg:py-3 text-xs lg:text-sm font-medium font-inter cursor-pointer transition-all duration-200 shadow-sm whitespace-nowrap"
           style={{ marginLeft: '12px', fontSize: '12px', fontFamily: 'LEMONMILK, Morgan, sans-serif' }}
           onClick={() => {
             setTimeout(() => {
@@ -867,21 +867,21 @@ function HomeContent() {
                 <img 
                   src={getImagePath("/Facebook.png")} 
                   alt="Facebook" 
-                  className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 object-contain"
+                  className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-32 xl:h-32 flex-shrink-0 object-contain"
                 />
                 
                 {/* Instagram Logo */}
                 <img 
                   src={getImagePath("/Instagram.png")} 
                   alt="Instagram" 
-                  className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 object-contain"
+                  className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-32 xl:h-32 flex-shrink-0 object-contain"
                 />
                 
                 {/* YouTube Logo */}
                 <img 
                   src={getImagePath("/YouTube.png")} 
                   alt="YouTube" 
-                  className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 object-contain"
+                  className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-32 xl:h-32 flex-shrink-0 object-contain"
                 />
               </div>
             </div>
