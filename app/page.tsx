@@ -760,20 +760,20 @@ function HomeContent() {
         <section className="sticky top-0 h-screen w-full" style={{ zIndex: 2, background: '#007B79', minHeight: '100vh' }}>
         <div className="flex w-full h-full flex-col lg:flex-row items-center justify-between gap-4 sm:gap-8 lg:gap-16 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16">
         {/* What is Hupscale - Left side content */}
-        <div className="flex-1 max-w-2xl">
+        <div className="flex-1 max-w-2xl text-center lg:text-left">
           {/* Heading - Responsive */}
-          <div className="mb-6">
-            <h2 className="font-inter font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-[#efefef]">
+          <div className="mb-6 px-4 lg:px-0">
+            <h2 className="font-inter font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-[#efefef] break-words max-w-full">
               {t('benefits.heading.what')} {t('benefits.heading.is')}
             </h2>
-            <h2 className="font-inter font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight text-[#181818]">
+            <h2 className="font-inter font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight text-[#181818] break-words max-w-full">
               {t('benefits.company')}
             </h2>
           </div>
           
           {/* Description - Responsive */}
-          <div className="max-w-md">
-            <p className="font-onest text-lg sm:text-xl lg:text-2xl leading-relaxed text-[#181818]">
+          <div className="max-w-md mx-auto lg:mx-0 px-4 lg:px-0">
+            <p className="font-onest text-lg sm:text-xl lg:text-2xl leading-relaxed text-[#181818] break-words max-w-full">
               {t('benefits.description')}
             </p>
           </div>
@@ -783,8 +783,8 @@ function HomeContent() {
         <div className="bg-[#181818] flex-1 w-full rounded-tl-[60px] rounded-bl-[60px] p-8 lg:p-12 xl:p-16">
           <div className="flex flex-col gap-8 lg:gap-12">
             {/* We work with heading - Responsive */}
-            <div>
-              <h3 className="font-inter font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-[#efefef]">
+            <div className="text-center lg:text-left px-4 lg:px-0">
+              <h3 className="font-inter font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-[#efefef] break-words max-w-full">
                 <span>{t('benefits.weWorkWith.we')} </span>
                 <span className="text-[#007B79]">{t('benefits.weWorkWith.work')} </span>
                 <span>{t('benefits.weWorkWith.with')}</span>
@@ -875,19 +875,19 @@ function HomeContent() {
         <section className="sticky top-0 h-screen w-full" style={{ zIndex: 3, background: '#181818', minHeight: '100vh' }}>
         <div className="max-w-7xl mx-auto h-full flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-8 lg:gap-16 px-4 sm:px-6 lg:px-16 py-8 sm:py-12 lg:py-16">
             {/* Left Content - Responsive */}
-            <div className="text-white flex-1 max-w-2xl text-center lg:text-left">
-              <h2 className="font-black leading-tight mb-5 text-white">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase">
+            <div className="text-white flex-1 max-w-2xl text-center lg:text-left px-4 lg:px-0">
+              <h2 className="font-black leading-tight mb-5 text-white break-words max-w-full">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase break-words">
                   {t('services.heading.what')}
                 </div>
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase">
+                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase break-words">
                   {t('services.weDoQuestion.we')} <span style={{ color: '#007B79' }}>{t('services.weDoQuestion.do')}</span>{t('services.weDoQuestion.question')}
                 </div>
               </h2>
-              <p className="text-lg sm:text-xl lg:text-2xl text-white mb-2 font-onest">
+              <p className="text-lg sm:text-xl lg:text-2xl text-white mb-2 font-onest break-words max-w-full">
                 {t('services.subtitle1')}
               </p>
-              <p className="text-lg sm:text-xl lg:text-2xl text-white mb-8 lg:mb-12 font-onest">
+              <p className="text-lg sm:text-xl lg:text-2xl text-white mb-8 lg:mb-12 font-onest break-words max-w-full">
                 <span className="text-[#007B79]">{t('services.subtitle2.human')}</span> {t('services.subtitle2.experiences')}
               </p>
               
@@ -959,9 +959,9 @@ function HomeContent() {
                 opacity: isAnimating ? 0 : 1
               }}
             >
-              <CardContent className="relative h-full p-6 sm:p-8 lg:p-12">
+              <CardContent className="relative h-full p-6 sm:p-8 lg:p-12 text-center lg:text-left">
                 {/* Service Title Pill - Responsive */}
-                <div className="bg-[#00BCBE] text-[#232323] font-inter font-black rounded-full px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-tight mb-6 lg:mb-8 inline-block transition-all duration-500 ease-out">
+                <div className="bg-[#00BCBE] text-[#232323] font-inter font-black rounded-full px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-tight mb-6 lg:mb-8 inline-block transition-all duration-500 ease-out break-words">
                   {getServiceCard(activeService)?.title}
                 </div>
                 
@@ -970,13 +970,13 @@ function HomeContent() {
                   {getServiceCard(activeService)?.content?.map((item, i) => (
                     <div 
                       key={i}
-                      className="flex items-start transition-all duration-300 ease-out"
+                      className="flex items-start text-center lg:text-left transition-all duration-300 ease-out"
                       style={{
                         transitionDelay: `${i * 100}ms`
                       }}
                     >
                       <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#007B79] rounded-full mr-3 sm:mr-4 mt-1.5 flex-shrink-0"></div>
-                      <div className="font-onest text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed text-[#181818] max-w-full">
+                      <div className="font-onest text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed text-[#181818] max-w-full break-words">
                         <span className="font-bold">{item.label}</span>
                         <span className="font-normal">{item.description}</span>
                       </div>
@@ -1003,8 +1003,8 @@ function HomeContent() {
         <div className="max-w-6xl mx-auto h-full flex items-center justify-center px-4 sm:px-6 lg:px-16 py-8 sm:py-12 lg:py-16">
         <div className="bg-[#181818] rounded-3xl lg:rounded-[84px] p-8 sm:p-12 lg:p-16 xl:p-20 shadow-2xl flex flex-col items-center gap-8 lg:gap-12">
           {/* Main Title - Responsive */}
-          <div className="text-center">
-            <h2 className="font-black leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#EFEFEF]">
+          <div className="text-center px-4">
+            <h2 className="font-black leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#EFEFEF] break-words max-w-full">
               {t('process.heading.idea')} {t('process.heading.to')} <span style={{ color: '#007B79' }}>{t('process.heading.execution')}</span>
             </h2>
           </div>
@@ -1014,31 +1014,31 @@ function HomeContent() {
             {/* Desktop Process Steps Row */}
             <div className="hidden lg:flex items-start justify-between w-full max-w-5xl mx-auto mb-12">
               {/* Step 1: We listen */}
-              <div className="flex flex-col items-start flex-1 max-w-xs">
-                <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
+              <div className="flex flex-col items-center lg:items-start flex-1 max-w-xs text-center lg:text-left">
+                <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 break-words">
                   <span style={{ color: '#007B79', textTransform: 'uppercase' }}>{t('process.listen.we')}</span> <span style={{ color: '#EFEFEF' }}>{t('process.listen.listen')}</span>
                 </h3>
-                <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
+                <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full break-words">
                   {t('process.listen.description')}
                 </p>
               </div>
 
               {/* Step 2: We analyze */}
-              <div className="flex flex-col items-start flex-1 max-w-xs">
-                <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
+              <div className="flex flex-col items-center lg:items-start flex-1 max-w-xs text-center lg:text-left">
+                <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 break-words">
                   <span style={{ color: '#007B79', textTransform: 'uppercase' }}>{t('process.analyze.we')}</span> <span style={{ color: '#EFEFEF' }}>{t('process.analyze.analyze')}</span>
                 </h3>
-                <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
+                <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full break-words">
                   {t('process.analyze.description')}
                 </p>
               </div>
 
               {/* Step 3: We create */}
-              <div className="flex flex-col items-start flex-1 max-w-xs">
-                <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 whitespace-nowrap">
+              <div className="flex flex-col items-center lg:items-start flex-1 max-w-xs text-center lg:text-left">
+                <h3 className="font-black text-2xl lg:text-3xl xl:text-4xl mb-6 lg:mb-8 break-words">
                   <span style={{ color: '#007B79', textTransform: 'uppercase' }}>{t('process.create.we')}</span> <span style={{ color: '#EFEFEF' }}>{t('process.create.create')}</span>
                 </h3>
-                <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full">
+                <p className="font-onest text-base lg:text-lg xl:text-xl leading-relaxed text-[#EFEFEF] max-w-full break-words">
                   {t('process.create.description')}
                 </p>
               </div>
@@ -1065,11 +1065,11 @@ function HomeContent() {
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col items-center space-y-8 sm:space-y-12 w-full">
             {/* Mobile Step 1 */}
-            <div className="flex flex-col items-center text-center max-w-sm">
-              <h3 className="text-xl sm:text-2xl font-black mb-4">
+            <div className="flex flex-col items-center text-center max-w-sm px-4">
+              <h3 className="text-xl sm:text-2xl font-black mb-4 break-words max-w-full">
                 <span style={{ color: '#007B79' }}>{t('process.listen.we')}</span>&nbsp;<span style={{ color: '#EFEFEF' }}>{t('process.listen.listen')}</span>
               </h3>
-              <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
+              <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed break-words max-w-full">
                 {t('process.listen.description')}
               </p>
             </div>
@@ -1088,11 +1088,11 @@ function HomeContent() {
             </div>
 
             {/* Mobile Step 2 */}
-            <div className="flex flex-col items-center text-center max-w-sm">
-              <h3 className="text-xl sm:text-2xl font-black mb-4">
+            <div className="flex flex-col items-center text-center max-w-sm px-4">
+              <h3 className="text-xl sm:text-2xl font-black mb-4 break-words max-w-full">
                 <span style={{ color: '#007B79' }}>{t('process.analyze.we')}</span>&nbsp;<span style={{ color: '#EFEFEF' }}>{t('process.analyze.analyze')}</span>
               </h3>
-              <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
+              <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed break-words max-w-full">
                 {t('process.analyze.description')}
               </p>
             </div>
@@ -1111,11 +1111,11 @@ function HomeContent() {
             </div>
 
             {/* Mobile Step 3 */}
-            <div className="flex flex-col items-center text-center max-w-sm">
-              <h3 className="text-xl sm:text-2xl font-black mb-4">
+            <div className="flex flex-col items-center text-center max-w-sm px-4">
+              <h3 className="text-xl sm:text-2xl font-black mb-4 break-words max-w-full">
                 <span style={{ color: '#007B79' }}>{t('process.create.we')}</span>&nbsp;<span style={{ color: '#EFEFEF' }}>{t('process.create.create')}</span>
               </h3>
-              <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed">
+              <p className="text-sm sm:text-base text-[#EFEFEF] font-onest leading-relaxed break-words max-w-full">
                 {t('process.create.description')}
               </p>
             </div>
@@ -1130,19 +1130,19 @@ function HomeContent() {
           {/* Header Section - Constrained */}
           <div className="px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto w-full">
             <div className="w-full flex flex-col items-center gap-6 lg:gap-8">
-              <div className="text-center flex flex-col gap-2 lg:gap-4">
+              <div className="text-center flex flex-col gap-2 lg:gap-4 px-4">
                 {/* "Great work" text - Responsive */}
-                <p className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white m-0">
+                <p className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white m-0 break-words max-w-full">
                   {t('testimonials.heading.we')} {t('testimonials.heading.scale')}
                 </p>
                 
                 {/* "For great people" text - Responsive */}
-                <p className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(35,35,35)] m-0">
+                <p className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(35,35,35)] m-0 break-words max-w-full">
                   {t('testimonials.forGreatPeople.for')} {t('testimonials.forGreatPeople.great')} {t('testimonials.forGreatPeople.people')}
                 </p>
                 
                 {/* Subtext - Responsive */}
-                <p className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-center text-[rgb(35,35,35)] mt-4 mb-8 lg:mb-12 max-w-4xl mx-auto">
+                <p className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-center text-[rgb(35,35,35)] mt-4 mb-8 lg:mb-12 max-w-4xl mx-auto break-words">
                   {t('testimonials.subtitle.since')} <span className="font-bold">{t('testimonials.subtitle.weWork')}</span> {t('testimonials.subtitle.toCreate')}<br className="hidden sm:block" />
                   <span className="sm:hidden"> </span>{t('testimonials.subtitle.meaningful')}
                 </p>
@@ -1262,13 +1262,13 @@ function HomeContent() {
         >
         
         {/* Text content overlay - Responsive */}
-        <div className="text-center lg:text-right text-white max-w-2xl">
-          <h1 className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 lg:mb-5 leading-tight" style={{
+        <div className="text-center lg:text-right text-white max-w-2xl px-4">
+          <h1 className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 lg:mb-5 leading-tight break-words max-w-full" style={{
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
             {t('interaction.heading1')}
           </h1>
-          <p className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-8 lg:mb-10 leading-tight" style={{
+          <p className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-8 lg:mb-10 leading-tight break-words max-w-full" style={{
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
 {t('interaction.heading2.your')} <span style={{ color: '#007B79' }}>{t('interaction.heading2.business')}</span>
