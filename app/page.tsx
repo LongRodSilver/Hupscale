@@ -1285,7 +1285,7 @@ function HomeContent() {
 
       {/* FAQ section stays outside - it's not sticky */}
       <section 
-        className="bg-cover bg-center bg-no-repeat py-16 px-4 sm:px-8 lg:px-16" 
+        className="relative flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-16 px-4 sm:px-8 lg:px-16" 
         style={{
           zIndex: 7,
           backgroundImage: `url(${getImagePath("/answers-section-bg-teal-vectorized.png")})`,
@@ -1301,15 +1301,15 @@ function HomeContent() {
           <div className="inline-flex flex-col h-auto w-full max-w-5xl bg-[#007B79] shadow-2xl p-6 sm:p-8 lg:p-12 xl:p-16 mx-auto overflow-visible transition-all duration-300 rounded-3xl lg:rounded-[60px]">
 
             {/* Title - Responsive */}
-            <h2 className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(239,239,239)] mb-6 lg:mb-8 leading-tight">
+            <h2 className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center text-[rgb(239,239,239)] mb-6 lg:mb-8 leading-tight break-words max-w-full">
 {t('faq.heading.answers')} <span className="text-[rgb(35,35,35)] font-black">{t('faq.heading.youNeed')}</span>
             </h2>
 
             {/* FAQ Items - Responsive */}
             {getFaqs().map((item, i) => (
-              <div key={i}>
+              <div key={i} className="w-full max-w-2xl mx-auto text-center lg:text-left">
                 <div
-                  className="flex items-center gap-3 lg:gap-4 cursor-pointer py-2"
+                  className="flex flex-col sm:flex-row items-center sm:items-center gap-3 lg:gap-4 cursor-pointer py-2"
                   onClick={() => setOpenFaqIdx(openFaqIdx === i ? null : i)}
                 >
                   {/* Custom Plus/Minus Icon - Responsive */}
@@ -1321,12 +1321,12 @@ function HomeContent() {
                       <div className="absolute w-0.5 h-3 sm:h-4 bg-[#232323] rounded-sm" />
                     )}
                   </div>
-                  <span className="font-onest text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-[#232323] flex-1">
+                  <span className="font-onest text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-[#232323] flex-1 text-center lg:text-left break-words">
                     {item.q}
                   </span>
                 </div>
                 {openFaqIdx === i && item.a && (
-                  <div className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-white max-w-full w-full ml-8 sm:ml-12 mt-2 mb-4 lg:mb-6 leading-relaxed break-words">
+                  <div className="font-onest text-base sm:text-lg lg:text-xl xl:text-2xl text-white max-w-full w-full sm:ml-8 lg:ml-12 mt-2 mb-4 lg:mb-6 leading-relaxed break-words text-center lg:text-left px-4 sm:px-0">
                     {item.a}
                   </div>
                 )}
@@ -1341,7 +1341,7 @@ function HomeContent() {
         <div className="relative z-10 flex flex-col items-center gap-12 lg:gap-16 pt-20 lg:pt-32 pb-20 lg:pb-32">
           
           {/* Main Heading - Responsive */}
-          <h1 className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-[#232323] leading-tight uppercase max-w-4xl mx-auto">
+          <h1 className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-[#232323] leading-tight uppercase max-w-4xl mx-auto break-words px-4">
             TAKE YOUR ASTEROIDS AND<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>SCALE YOUR VISION
           </h1>
