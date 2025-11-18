@@ -810,7 +810,15 @@ function HomeContent() {
             </div>
             
             {/* Industry categories - Two Column Grid */}
-            <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:gap-x-6 sm:gap-y-4 lg:gap-x-16 w-full px-4 sm:px-6 lg:px-0 max-w-4xl mx-auto mb-8">
+            <div 
+              className="grid grid-cols-2 gap-x-4 gap-y-3 sm:gap-x-6 sm:gap-y-4 lg:gap-x-16 w-full px-4 sm:px-6 lg:px-0 max-w-4xl mx-auto mb-8"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '1rem',
+                width: '100%'
+              }}
+            >
               
               {/* Motorsport */}
               <div className="flex items-center gap-2 sm:gap-3 w-full max-w-full">
