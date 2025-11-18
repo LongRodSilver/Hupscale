@@ -809,54 +809,66 @@ function HomeContent() {
               </h3>
             </div>
             
-            {/* Industry categories - Two Column Grid */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-4 mb-8">
-              {/* LEFT COLUMN */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Motorsport" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-motorsport.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.motorsport')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Content creators" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-content.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.contentCreators')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Golf athletes" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-golf.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.golfAthletes')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Soccer teams" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-soccer.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.soccerTeams')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Personal brand" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-personal.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.personalBrand')}</span>
-                </div>
+            {/* Industry categories - Responsive Grid */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:gap-x-8 sm:gap-y-6 lg:grid-cols-4 mb-8">
+              {/* Motorsport */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Motorsport" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-motorsport.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.motorsport')}</span>
               </div>
               
-              {/* RIGHT COLUMN */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Real estate" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-real.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.realEstate')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Models" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-models.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.models')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Influencers" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-influencer.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.influencers')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Car rentals" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-car.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.carRentals')}</span>
-                </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <img alt="Medical" className="w-8 h-8 flex-shrink-0" src={getImagePath("/svg-medical.svg")} />
-                  <span className="font-onest text-lg text-[#efefef]">{t('benefits.categories.medical')}</span>
-                </div>
+              {/* Content creators */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Content creators" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-content.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.contentCreators')}</span>
+              </div>
+              
+              {/* Golf athletes */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Golf athletes" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-golf.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.golfAthletes')}</span>
+              </div>
+              
+              {/* Soccer teams */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Soccer teams" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-soccer.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.soccerTeams')}</span>
+              </div>
+              
+              {/* Personal brand */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Personal brand" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-personal.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.personalBrand')}</span>
+              </div>
+              
+              {/* Real estate */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Real estate" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-real.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.realEstate')}</span>
+              </div>
+              
+              {/* Models */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Models" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-models.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.models')}</span>
+              </div>
+              
+              {/* Influencers */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Influencers" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-influencer.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.influencers')}</span>
+              </div>
+              
+              {/* Car rentals */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Car rentals" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-car.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.carRentals')}</span>
+              </div>
+              
+              {/* Medical */}
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <img alt="Medical" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" src={getImagePath("/svg-medical.svg")} />
+                <span className="font-onest text-sm sm:text-base lg:text-lg text-[#efefef]">{t('benefits.categories.medical')}</span>
               </div>
             </div>
             
